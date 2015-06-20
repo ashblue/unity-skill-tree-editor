@@ -17,7 +17,7 @@ public class ComparisonNode : BaseInputNode {
 	BaseInputNode input2;
 	Rect input2Rect;
 
-	string compareText = "";
+//	string compareText = "";
 
 	public ComparisonNode () {
 		windowTitle = "Comparison Node";

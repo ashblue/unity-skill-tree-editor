@@ -11,17 +11,18 @@ public class NodeEditor : EditorWindow {
 
 	[MenuItem("Window/Node Editor")]
 	static void ShowEditor () {
-		NodeEditor editor = EditorWindow.GetWindow<NodeEditor>();
+		EditorWindow.GetWindow<NodeEditor>();
 	}
 
 	void OnGUI () {
 		Event e = Event.current;
 		mousePos = e.mousePosition;
+		int selectIndex;
 
 		if (e.button == 1 && !makeTransistionMode) {
 			if (e.type == EventType.MouseDown) {
 				bool clickedOnWindow = false;
-				int selectIndex = -1;
+				selectIndex = -1;
 
 				for (int i = 0; i < windows.Count; i++) {
 					if (windows[i].windowRect.Contains(mousePos)) {
@@ -53,7 +54,7 @@ public class NodeEditor : EditorWindow {
 
 		} else if (e.button == 0 && e.type == EventType.MouseDown && makeTransistionMode) {
 			bool clickedOnWindow = false;
-			int selectIndex = -1;
+			selectIndex = -1;
 			
 			for (int i = 0; i < windows.Count; i++) {
 				if (windows[i].windowRect.Contains(mousePos)) {
@@ -79,7 +80,7 @@ public class NodeEditor : EditorWindow {
 
 		} else if (e.button == 0 && e.type == EventType.MouseDown && !makeTransistionMode) {
 			bool clickedOnWindow = false;
-			int selectIndex = -1;
+			selectIndex = -1;
 			
 			for (int i = 0; i < windows.Count; i++) {
 				if (windows[i].windowRect.Contains(mousePos)) {
