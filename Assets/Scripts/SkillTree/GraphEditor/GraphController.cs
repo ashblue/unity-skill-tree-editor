@@ -11,6 +11,7 @@ namespace Adnc.SkillTree {
 		Vector2 mousePos;
 
 		float sidebarWidth = 240f;
+		int selectIndex = -1; // Currently selected window
 
 		void OnEnable () {
 			titleContent.text = "Skill Tree";
@@ -51,15 +52,51 @@ namespace Adnc.SkillTree {
 
 			Event e = Event.current;
 			mousePos = e.mousePosition;
+			bool clickedNode = false;
+			SkillCollection[] collect = target.currentCategory.GetComponentsInChildren<SkillCollection>();
+
 
 			// Context menu
 			if (mousePos.x < position.width - sidebarWidth) {
+
+				// Context menu
 				if (e.button == 1) {
 					if (e.type == EventType.MouseDown) {
-						GenericMenu menu = new GenericMenu();
-						menu.AddItem(new GUIContent("Add Skill Group"), false, CreateSkillGroup);
-						menu.ShowAsContext();
-						e.Use();
+						for (int i = 0; i < collect.Length; i++) {
+							if (collect[i].windowRect.Contains(mousePos)) {
+								selectIndex = i;
+								clickedNode = true;
+								break;
+							}
+						}
+
+						if (clickedNode) {
+							GenericMenu menu = new GenericMenu();
+							menu.AddItem(new GUIContent("Delete Skill Group"), false, DeleteSkillGroup);
+							menu.ShowAsContext();
+							e.Use();
+						} else {
+							GenericMenu menu = new GenericMenu();
+							menu.AddItem(new GUIContent("Add Skill Group"), false, CreateSkillGroup);
+							menu.ShowAsContext();
+							e.Use();
+						}
+					}
+				} else if (e.button == 0) {
+					if (e.type == EventType.MouseDown) {
+						for (int i = 0; i < collect.Length; i++) {
+							if (collect[i].windowRect.Contains(mousePos)) {
+								selectIndex = i;
+								clickedNode = true;
+								break;
+							}
+						}
+
+						if (clickedNode) {
+							Selection.activeGameObject = target.currentCategory.transform.GetChild(selectIndex).gameObject;
+						} else {
+							// @TODO Integrate camera drag here
+						}
 					}
 				}
 			}
@@ -86,8 +123,11 @@ namespace Adnc.SkillTree {
 			SkillCollection skill = go.AddComponent<SkillCollection>();
 			skill.windowRect = new Rect(mousePos.x, mousePos.y, 200, 150);
 			go.transform.SetParent(target.currentCategory.transform);
+		}
 
-			// @TODO Create the skill group at the current mouse position
+		void DeleteSkillGroup () {
+			Transform t = target.currentCategory.transform.GetChild(selectIndex);
+			DestroyImmediate(t.gameObject);
 		}
 
 		void DrawTitle () {

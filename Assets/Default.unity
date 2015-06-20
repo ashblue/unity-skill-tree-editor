@@ -174,19 +174,18 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1206701754}
+  m_Children: []
   m_Father: {fileID: 2133046860}
   m_RootOrder: 0
---- !u!1 &1206701753
+--- !u!1 &1186644843
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 1206701754}
-  - 114: {fileID: 1206701755}
+  - 4: {fileID: 1186644844}
+  - 114: {fileID: 1186644845}
   m_Layer: 0
   m_Name: SkillCollection
   m_TagString: Untagged
@@ -194,24 +193,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1206701754
+--- !u!4 &1186644844
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1206701753}
+  m_GameObject: {fileID: 1186644843}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 699787812}
+  m_Father: {fileID: 1503757696}
   m_RootOrder: 0
---- !u!114 &1206701755
+--- !u!114 &1186644845
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1206701753}
+  m_GameObject: {fileID: 1186644843}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e4cbdb114d91455c954a8c09159f6bc, type: 3}
@@ -219,8 +218,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windowRect:
     serializedVersion: 2
-    x: 169
-    y: 184
+    x: 70
+    y: 75
     width: 200
     height: 150
   displayName: Skill Collection
@@ -332,7 +331,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1186644844}
+  - {fileID: 1774761427}
   m_Father: {fileID: 2133046860}
   m_RootOrder: 1
 --- !u!1 &1511611735
@@ -423,6 +424,58 @@ Transform:
   - {fileID: 127579}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &1774761425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1774761427}
+  - 114: {fileID: 1774761426}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1774761426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1774761425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4cbdb114d91455c954a8c09159f6bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windowRect:
+    serializedVersion: 2
+    x: 386
+    y: 258
+    width: 200
+    height: 150
+  displayName: Skill Collection
+  uniqueName: 
+  description: 
+  imgRegular: {fileID: 0}
+  imgHighlight: {fileID: 0}
+  imgSelect: {fileID: 0}
+  imgPurchase: {fileID: 0}
+--- !u!4 &1774761427
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1774761425}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1503757696}
+  m_RootOrder: 1
 --- !u!1 &1933044221
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,7 +635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Coal's Skill Tree
   description: My long desc.
-  currentCategory: {fileID: 699787811}
+  currentCategory: {fileID: 1503757695}
 --- !u!4 &2133046860
 Transform:
   m_ObjectHideFlags: 0
