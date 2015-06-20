@@ -216,12 +216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4cbdb114d91455c954a8c09159f6bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windowRect:
-    serializedVersion: 2
-    x: 70
-    y: 75
-    width: 200
-    height: 150
   displayName: Skill Collection
   uniqueName: 
   description: 
@@ -229,6 +223,12 @@ MonoBehaviour:
   imgHighlight: {fileID: 0}
   imgSelect: {fileID: 0}
   imgPurchase: {fileID: 0}
+  windowRect:
+    serializedVersion: 2
+    x: 87
+    y: 88
+    width: 200
+    height: 150
 --- !u!1 &1502253165
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,12 +451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4cbdb114d91455c954a8c09159f6bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windowRect:
-    serializedVersion: 2
-    x: 386
-    y: 258
-    width: 200
-    height: 150
   displayName: Skill Collection
   uniqueName: 
   description: 
@@ -464,6 +458,12 @@ MonoBehaviour:
   imgHighlight: {fileID: 0}
   imgSelect: {fileID: 0}
   imgPurchase: {fileID: 0}
+  windowRect:
+    serializedVersion: 2
+    x: 475
+    y: 330
+    width: 200
+    height: 150
 --- !u!4 &1774761427
 Transform:
   m_ObjectHideFlags: 0
