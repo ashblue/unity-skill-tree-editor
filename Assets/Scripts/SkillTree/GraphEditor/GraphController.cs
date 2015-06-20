@@ -12,12 +12,19 @@ namespace Adnc.SkillTree {
 
 		GUIStyle textStyle;
 
+		GraphSidebar sidebar;
+
 		void OnEnable () {
 			titleContent.text = "Skill Tree";
-			UpdateTarget(Selection.activeGameObject);
 
 			textStyle = new GUIStyle();
 			textStyle.fontSize = 20;
+
+			if (sidebar == null) {
+				sidebar = new GraphSidebar();
+			}
+
+			UpdateTarget(Selection.activeGameObject);
 		}
 
 		[MenuItem("Window/Skill Tree")]
@@ -34,6 +41,7 @@ namespace Adnc.SkillTree {
 				SkillTree skillTree = go.GetComponent<SkillTree>();
 				if (skillTree) {
 					target = skillTree;
+					sidebar.target = target;
 				}
 			}
 
@@ -41,26 +49,17 @@ namespace Adnc.SkillTree {
 		}
 
 		void OnGUI () {
-			DrawSidebar(200, Color.gray);
 			DrawTitle();
+			sidebar.DrawSidebar(new Rect(position.width - 200, 0, 200, position.height), 10f, Color.gray);
 		}
 
 		void DrawTitle () {
 			if (target != null) {
-				GUI.Label(new Rect(10, 10, 100, 20), target.title, textStyle);
+				string title = target.title;
+				if (target.currentCategory != null) title += ": " + target.currentCategory.name;
+
+				GUI.Label(new Rect(10, 10, 100, 20), title, textStyle);
 			}
-		}
-
-		void DrawSidebar (int width, Color color) {
-			DrawBox(new Rect(position.width - width, 0, width, position.height), color);
-		}
-
-		void DrawBox (Rect position, Color color) {
-			Texture2D texture = new Texture2D(1, 1);
-			texture.SetPixel(0,0,color);
-			texture.Apply();
-			GUI.skin.box.normal.background = texture;
-			GUI.Box(position, GUIContent.none);
 		}
 	}
 }
