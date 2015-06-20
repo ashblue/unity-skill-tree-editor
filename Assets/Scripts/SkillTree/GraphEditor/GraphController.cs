@@ -5,9 +5,6 @@ using System.Collections.Generic;
 
 namespace Adnc.SkillTree {
 	public class GraphController : EditorWindow {
-		// Lock the currently active target
-		// @TODO Not implemented
-		bool lockTarget;
 		SkillTree target;
 
 		GUIStyle textStyle;
@@ -37,7 +34,7 @@ namespace Adnc.SkillTree {
 		}
 
 		void UpdateTarget (GameObject go) {
-			if (go != null && !lockTarget) {
+			if (go != null) {
 				SkillTree skillTree = go.GetComponent<SkillTree>();
 				if (skillTree) {
 					target = skillTree;
