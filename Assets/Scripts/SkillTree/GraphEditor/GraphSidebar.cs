@@ -20,11 +20,12 @@ namespace Adnc.SkillTree {
 			if (target != null) {
 				float y = 0f;
 				foreach (Transform child in target.transform) {
+					SkillCategory cat = child.GetComponent<SkillCategory>();
 					GUI.BeginGroup(new Rect(0f, y, innerWidth, 300f));
 					
-					if (GUI.Button(new Rect(0f, 0f, innerWidth - 25f, 20f), child.name)) {
-						target.currentCategory = child.GetComponent<SkillCategory>();
-						Selection.activeGameObject = child.gameObject;
+					if (GUI.Button(new Rect(0f, 0f, innerWidth - 25f, 20f), cat.displayName)) {
+						target.currentCategory = cat;
+						Selection.activeGameObject = cat.gameObject;
 					}
 					
 					if (GUI.Button(new Rect(innerWidth - 20f, 0f, 20f, 20f), "X")) {
@@ -33,15 +34,22 @@ namespace Adnc.SkillTree {
 						                                "Delete Category", 
 						                                "Cancel")) {
 
-							if (target.currentCategory == child.GetComponent<SkillCategory>())
+							if (target.currentCategory == cat)
 								target.currentCategory = null;
 
-							GameObject.DestroyImmediate(child.gameObject);
+							GameObject.DestroyImmediate(cat.gameObject);
 						}
 					}
 					
 					GUI.EndGroup();
 					y += 24f;
+				}
+
+				if (GUI.Button(new Rect(0f, y, innerWidth, 20f), "Create Category")) {
+					GameObject go = new GameObject();
+					go.name = "Category";
+					go.AddComponent<SkillCategory>();
+					go.transform.SetParent(target.transform);
 				}
 			}
 			

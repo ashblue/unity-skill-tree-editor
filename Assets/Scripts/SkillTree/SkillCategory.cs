@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace Adnc.SkillTree {
 	public class SkillCategory : MonoBehaviour {
-		public string title;
+		public string displayName = "Category";
 
 		[TextArea(3, 5)]
 		public string description;
