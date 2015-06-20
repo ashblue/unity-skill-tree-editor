@@ -8,7 +8,7 @@ namespace Adnc.SkillTree {
 		public string displayName = "Category";
 
 		[Tooltip("Used for data retrieval purposes")]
-		public string uniqueName = "category";
+		public string uniqueName;
 		
 		[TextArea(3, 5)]
 		public string description;
