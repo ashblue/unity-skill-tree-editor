@@ -22,23 +22,30 @@ namespace Adnc.SkillTree {
 				foreach (Transform child in target.transform) {
 					SkillCategory cat = child.GetComponent<SkillCategory>();
 					GUI.BeginGroup(new Rect(0f, y, innerWidth, 300f));
-					
-					if (GUI.Button(new Rect(0f, 0f, innerWidth - 25f, 20f), cat.displayName)) {
-						target.currentCategory = cat;
-						Selection.activeGameObject = cat.gameObject;
-					}
-					
-					if (GUI.Button(new Rect(innerWidth - 20f, 0f, 20f, 20f), "X")) {
+
+					if (GUI.Button(new Rect(0f, 0f, 22f, 20f), "X")) {
 						if (EditorUtility.DisplayDialog("Delete Category?", 
 						                                "Are you sure you want to delete this category? The delete action cannot be undone.",
 						                                "Delete Category", 
 						                                "Cancel")) {
-
 							if (target.currentCategory == cat)
 								target.currentCategory = null;
-
+							
 							GameObject.DestroyImmediate(cat.gameObject);
 						}
+					}
+
+					if (GUI.Button(new Rect(24f, 0f, innerWidth - 82f, 20f), cat.displayName)) {
+						target.currentCategory = cat;
+						Selection.activeGameObject = cat.gameObject;
+					}
+
+					if (GUI.Button(new Rect(innerWidth - 56f, 0f, 27f, 20f), "UP")) {
+						child.SetSiblingIndex(child.GetSiblingIndex() - 1);
+					}
+					
+					if (GUI.Button(new Rect(innerWidth - 27f, 0f, 27f, 20f), "DN")) {
+						child.SetSiblingIndex(child.GetSiblingIndex() + 1);
 					}
 					
 					GUI.EndGroup();

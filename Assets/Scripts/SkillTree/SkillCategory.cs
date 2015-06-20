@@ -4,8 +4,12 @@ using System.Collections;
 
 namespace Adnc.SkillTree {
 	public class SkillCategory : MonoBehaviour {
+		[Tooltip("Name the user will see")]
 		public string displayName = "Category";
 
+		[Tooltip("Used for data retrieval purposes")]
+		public string uniqueName = "category";
+		
 		[TextArea(3, 5)]
 		public string description;
 

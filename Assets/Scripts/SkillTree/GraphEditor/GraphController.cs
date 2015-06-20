@@ -50,7 +50,7 @@ namespace Adnc.SkillTree {
 
 		void OnGUI () {
 			DrawTitle();
-			sidebar.DrawSidebar(new Rect(position.width - 200, 0, 200, position.height), 10f, Color.gray);
+			sidebar.DrawSidebar(new Rect(position.width - 240, 0, 240, position.height), 10f, Color.gray);
 		}
 
 		void DrawTitle () {
