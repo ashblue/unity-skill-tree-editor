@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Adnc.SkillTree {
 	public class SkillTree : MonoBehaviour {
-		public string title;
+		public string title = "Skill Tree";
 		[TextArea(3, 5)]
 		public string description;
 

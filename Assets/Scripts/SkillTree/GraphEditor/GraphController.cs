@@ -56,7 +56,7 @@ namespace Adnc.SkillTree {
 		void DrawTitle () {
 			if (target != null) {
 				string title = target.title;
-				if (target.currentCategory != null) title += ": " + target.currentCategory.name;
+				if (target.currentCategory != null) title += ": " + target.currentCategory.displayName;
 
 				GUI.Label(new Rect(10, 10, 100, 20), title, textStyle);
 			}
