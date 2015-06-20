@@ -30,11 +30,12 @@ namespace Adnc.SkillTree {
 		}
 
 		void UpdateTarget (GameObject go) {
-			if (go == null || lockTarget) return;
-
-			Debug.Log("Updating data target");
-			SkillTree skillTree = go.GetComponent<SkillTree>();
-			target = skillTree;
+			if (go != null && !lockTarget) {
+				SkillTree skillTree = go.GetComponent<SkillTree>();
+				if (skillTree) {
+					target = skillTree;
+				}
+			}
 
 			Repaint();
 		}
