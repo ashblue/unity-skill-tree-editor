@@ -227,15 +227,20 @@ namespace Adnc.SkillTree {
 		}
 
 		void DeleteSkillGroup () {
-			SkillCollection[] collect = target.currentCategory.GetComponentsInChildren<SkillCollection>();
-			SkillCollection t = collect[selectIndex];
-
-			// Clean out all references to our skill collection
-			foreach (SkillCollection node in collect) {
-				node.childSkills.Remove(t);
+			if (EditorUtility.DisplayDialog("Delete Skill Collection?", 
+			                                "Are you sure you want to delete this skill collection? It will delete this collection plus all skills it contains.",
+			                                "Delete Skill Collection", 
+			                                "Cancel")) {
+				SkillCollection[] collect = target.currentCategory.GetComponentsInChildren<SkillCollection>();
+				SkillCollection t = collect[selectIndex];
+				
+				// Clean out all references to our skill collection
+				foreach (SkillCollection node in collect) {
+					node.childSkills.Remove(t);
+				}
+				
+				DestroyImmediate(t.gameObject);
 			}
-
-			DestroyImmediate(t.gameObject);
 		}
 
 		void DrawTitle () {
