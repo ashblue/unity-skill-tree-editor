@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Adnc.SkillTree {
 	public class GraphSidebar {
 		public SkillTree target;
-		Texture2D texture;
+		Texture2D texture = new Texture2D(1, 1);
 
 		public void DrawSidebar (Rect rect, float padding, Color color) {
 			float innerWidth = rect.width - (padding * 2f);
@@ -66,7 +66,6 @@ namespace Adnc.SkillTree {
 		}
 		
 		void DrawBox (Rect position, Color color) {
-			if (texture == null) texture = new Texture2D(1, 1);
 			texture.SetPixel(0,0,color);
 			texture.Apply();
 			GUI.skin.box.normal.background = texture;
