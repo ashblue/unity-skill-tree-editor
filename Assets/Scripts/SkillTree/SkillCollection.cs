@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace Adnc.SkillTree {
 	public class SkillCollection : MonoBehaviour {
@@ -18,5 +18,12 @@ namespace Adnc.SkillTree {
 
 		[Header("Window Data")]
 		public Rect windowRect;
+		public List<SkillCollection> childSkills = new List<SkillCollection>();
+		
+//		#if UNITY_EDITOR
+//		public void DrawCurves () {
+//
+//		}
+//		#endif
 	}
 }

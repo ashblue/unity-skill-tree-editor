@@ -35,9 +35,13 @@ namespace Adnc.SkillTree {
 			return true;
 		}
 
+		// Get the mouse position considering the current camera offset
 		public Vector2 GetMouseGlobal (Vector2 mouse) {
 			return new Vector2(mouse.x + offset.x - (viewportSize / 2f), mouse.y + offset.y - (viewportSize / 2f));
-//			return new Vector2(mouse.x + (viewportSize / 2f) - offset.x, mouse.y + (viewportSize / 2f) - offset.y);
+		}
+
+		public Vector2 GetOffsetGlobal () {
+			return new Vector2(offset.x - (viewportSize / 2f), offset.y - (viewportSize / 2f));
 		}
 
 		public void Reset () {
