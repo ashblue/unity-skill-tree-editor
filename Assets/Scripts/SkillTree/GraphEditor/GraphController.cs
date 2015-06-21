@@ -194,7 +194,7 @@ namespace Adnc.SkillTree {
 			Vector3 startPos = new Vector3(start.x + (start.width / 2f), start.y + start.height, 0f);
 			Vector3 endPos = new Vector3(end.x + (end.width / 2f), end.y, 0f);
 			Vector3 startTan = startPos + Vector3.up * 50f;
-			Vector3 endTan = endPos + Vector3.up * 50f;
+			Vector3 endTan = endPos - Vector3.up * 50f;
 			Handles.DrawBezier(startPos, endPos, startTan, endTan, Color.black, null, 3f);
 		}
 
