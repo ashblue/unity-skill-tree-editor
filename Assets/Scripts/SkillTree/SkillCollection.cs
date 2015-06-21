@@ -16,7 +16,7 @@ namespace Adnc.SkillTree {
 		public Image imgSelect;
 		public Image imgPurchase;
 
-		[Header("Window Data")]
+		[Header("Window Debug Data")]
 		public Rect windowRect;
 		public List<SkillCollection> childSkills = new List<SkillCollection>();
 		

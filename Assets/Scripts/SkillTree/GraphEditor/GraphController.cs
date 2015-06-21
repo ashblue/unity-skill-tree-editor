@@ -85,7 +85,14 @@ namespace Adnc.SkillTree {
 							if (clickedNode) {
 								GenericMenu menu = new GenericMenu();
 								menu.AddItem(new GUIContent("Add Child Transition"), false, BeginSkillGroupTransition);
+								menu.AddSeparator("");
 								menu.AddItem(new GUIContent("Delete Skill Group"), false, DeleteSkillGroup);
+								menu.AddSeparator("");
+
+								foreach (SkillCollection child in collect[selectIndex].childSkills) {
+									menu.AddItem(new GUIContent("Delete Transition " + child.displayName), false, DeleteSkillGroupTransition, child);
+								}
+
 								menu.ShowAsContext();
 								e.Use();
 							} else {
@@ -167,6 +174,15 @@ namespace Adnc.SkillTree {
 			isTransition = true;
 			SkillCollection[] collect = target.currentCategory.GetComponentsInChildren<SkillCollection>();
 			selectNode = collect[selectIndex];
+		}
+
+		void DeleteSkillGroupTransition (object obj) {
+			SkillCollection col = obj as SkillCollection;
+			SkillCollection[] collect = target.currentCategory.GetComponentsInChildren<SkillCollection>();
+
+			foreach (SkillCollection node in collect) {
+				node.childSkills.Remove(col);
+			}
 		}
 
 		void EndSkillGroupTransition () {
