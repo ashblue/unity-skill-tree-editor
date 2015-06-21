@@ -61,67 +61,67 @@ namespace Adnc.SkillTree {
 			mousePos = e.mousePosition; // Mouse position local to the viewing window
 			mousePosGlobal = camera.GetMouseGlobal(e.mousePosition); // Mouse position local to the scroll window
 			bool clickedNode = false;
-			SkillCollection[] collect = target.currentCategory.GetComponentsInChildren<SkillCollection>();
 
-			// Context menu
-			if (mousePos.x < position.width - sidebarWidth) {
+			if (target.currentCategory != null) {
 
-				// Context menu
-				if (e.button == 1) {
-					if (e.type == EventType.MouseDown) {
-						for (int i = 0; i < collect.Length; i++) {
-							if (collect[i].windowRect.Contains(mousePosGlobal)) {
-								selectIndex = i;
-								clickedNode = true;
-								break;
+				SkillCollection[] collect = target.currentCategory.GetComponentsInChildren<SkillCollection>();
+
+				// Clicked outside sidebar
+				if (mousePos.x < position.width - sidebarWidth) {
+
+					// Context menu
+					if (e.button == 1) {
+						if (e.type == EventType.MouseDown) {
+							for (int i = 0; i < collect.Length; i++) {
+								if (collect[i].windowRect.Contains(mousePosGlobal)) {
+									selectIndex = i;
+									clickedNode = true;
+									break;
+								}
+							}
+
+							if (clickedNode) {
+								GenericMenu menu = new GenericMenu();
+								menu.AddItem(new GUIContent("Delete Skill Group"), false, DeleteSkillGroup);
+								menu.ShowAsContext();
+								e.Use();
+							} else {
+								GenericMenu menu = new GenericMenu();
+								menu.AddItem(new GUIContent("Add Skill Group"), false, CreateSkillGroup);
+								menu.ShowAsContext();
+								e.Use();
 							}
 						}
-
-						if (clickedNode) {
-							GenericMenu menu = new GenericMenu();
-							menu.AddItem(new GUIContent("Delete Skill Group"), false, DeleteSkillGroup);
-							menu.ShowAsContext();
-							e.Use();
-						} else {
-							GenericMenu menu = new GenericMenu();
-							menu.AddItem(new GUIContent("Add Skill Group"), false, CreateSkillGroup);
-							menu.ShowAsContext();
-							e.Use();
-						}
-					}
-				} else if (e.button == 0) {
-					if (e.type == EventType.MouseDown) {
-						for (int i = 0; i < collect.Length; i++) {
-							if (collect[i].windowRect.Contains(mousePosGlobal)) {
-								selectIndex = i;
-								clickedNode = true;
-								break;
+					} else if (e.button == 0) {
+						if (e.type == EventType.MouseDown) {
+							for (int i = 0; i < collect.Length; i++) {
+								if (collect[i].windowRect.Contains(mousePosGlobal)) {
+									selectIndex = i;
+									clickedNode = true;
+									break;
+								}
 							}
-						}
 
-						if (clickedNode) {
-							Selection.activeGameObject = target.currentCategory.transform.GetChild(selectIndex).gameObject;
-						} else {
-							camera.BeginMove(mousePos);
+							if (clickedNode) {
+								Selection.activeGameObject = target.currentCategory.transform.GetChild(selectIndex).gameObject;
+							} else {
+								camera.BeginMove(mousePos);
+							}
 						}
 					}
 				}
-			}
 
-//			camera.offset = EditorGUILayout.BeginScrollView(camera.offset, true, true, 
-//			                                                GUILayout.Width(position.width - sidebarWidth), 
-//			                                                GUILayout.Height(position.height),
-//			                                                new Rect(0, 0, 600, 600)); // GUILayout.MaxWidth(3000), GUILayout.MaxHeight(3000)
-			camera.offset = GUI.BeginScrollView(new Rect(0f, 0f, position.width - sidebarWidth, position.height), camera.offset, new Rect(camera.viewportSize / -2f, camera.viewportSize / -2f, camera.viewportSize, camera.viewportSize));
-			
-			BeginWindows();
-			foreach (Transform child in target.currentCategory.transform) {
-				SkillCollection node = child.gameObject.GetComponent<SkillCollection>();
-				node.windowRect = GUI.Window(node.GetInstanceID(), node.windowRect, DrawNodeWindow, node.displayName);
+				camera.offset = GUI.BeginScrollView(new Rect(0f, 0f, position.width - sidebarWidth, position.height), camera.offset, new Rect(camera.viewportSize / -2f, camera.viewportSize / -2f, camera.viewportSize, camera.viewportSize));
+				
+				BeginWindows();
+				foreach (Transform child in target.currentCategory.transform) {
+					SkillCollection node = child.gameObject.GetComponent<SkillCollection>();
+					node.windowRect = GUI.Window(node.GetInstanceID(), node.windowRect, DrawNodeWindow, node.displayName);
+				}
+				EndWindows();
+				
+				GUI.EndScrollView(); // Camera scroll for windows
 			}
-			EndWindows();
-
-			GUI.EndScrollView(); // Camera scroll for windows
 
 			sidebar.DrawSidebar(new Rect(position.width - sidebarWidth, 0, sidebarWidth, position.height), 10f, Color.gray);
 
