@@ -91,7 +91,6 @@ namespace Adnc.SkillTree {
 					}
 				} else if (e.button == 0) {
 					if (e.type == EventType.MouseDown) {
-						Debug.LogFormat("Click pos: {0}", mousePosGlobal);
 						for (int i = 0; i < collect.Length; i++) {
 							if (collect[i].windowRect.Contains(mousePosGlobal)) {
 								selectIndex = i;
@@ -105,8 +104,6 @@ namespace Adnc.SkillTree {
 						} else {
 							camera.BeginMove(mousePos);
 						}
-					} else if (e.type == EventType.MouseUp) {
-						camera.EndMove();
 					}
 				}
 			}
@@ -128,6 +125,12 @@ namespace Adnc.SkillTree {
 
 			sidebar.DrawSidebar(new Rect(position.width - sidebarWidth, 0, sidebarWidth, position.height), 10f, Color.gray);
 
+			// Always stop the camera on mouse up (even if not in the window)
+			if (Event.current.rawType == EventType.MouseUp) {
+				camera.EndMove();
+			}
+
+			// Poll and update the viewport if the camera has moved
 			if (camera.PollCamera(mousePos)) {
 				Repaint();
 			}
