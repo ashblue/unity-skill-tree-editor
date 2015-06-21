@@ -145,7 +145,7 @@ namespace Adnc.SkillTree {
 			GameObject go = new GameObject();
 			go.name = "SkillCollection";
 			SkillCollection skill = go.AddComponent<SkillCollection>();
-			skill.windowRect = new Rect(mousePos.x, mousePos.y, 200, 150);
+			skill.windowRect = new Rect(mousePosGlobal.x, mousePosGlobal.y, 200, 150);
 			go.transform.SetParent(target.currentCategory.transform);
 		}
 
