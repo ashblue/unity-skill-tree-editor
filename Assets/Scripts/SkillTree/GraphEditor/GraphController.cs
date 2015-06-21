@@ -13,6 +13,7 @@ namespace Adnc.SkillTree {
 		Vector2 mousePos; // Local screen mouse position
 		Vector2 mousePosGlobal; // Global mouse position based on camera offsets
 		bool isTransition; // Are we in transistion mode
+		SkillCollection[] collect = new SkillCollection[0];
 
 		float sidebarWidth = 240f; // Size of the sidebar
 		int selectIndex = -1; // Currently selected window
@@ -64,10 +65,15 @@ namespace Adnc.SkillTree {
 			mousePosGlobal = camera.GetMouseGlobal(e.mousePosition); // Mouse position local to the scroll window
 			bool clickedNode = false;
 
+			// Poll the current skill collection
 			if (target.currentCategory != null) {
+				collect = target.currentCategory.GetComponentsInChildren<SkillCollection>();
+			} else {
+				collect = new SkillCollection[0];
+			}
 
-				SkillCollection[] collect = target.currentCategory.GetComponentsInChildren<SkillCollection>();
-
+			// Main content area
+			if (target.currentCategory != null) {
 				// Clicked outside sidebar
 				if (mousePos.x < position.width - sidebarWidth) {
 
@@ -84,6 +90,7 @@ namespace Adnc.SkillTree {
 
 							if (clickedNode) {
 								GenericMenu menu = new GenericMenu();
+								menu.AddItem(new GUIContent("Add Skill"), false, AddSkill, collect[selectIndex]);
 								menu.AddItem(new GUIContent("Add Child Transition"), false, BeginSkillGroupTransition);
 								menu.AddSeparator("");
 								menu.AddItem(new GUIContent("Delete Skill Group"), false, DeleteSkillGroup);
@@ -130,11 +137,11 @@ namespace Adnc.SkillTree {
 				camera.offset = GUI.BeginScrollView(new Rect(0f, 0f, position.width - sidebarWidth, position.height), camera.offset, new Rect(camera.viewportSize / -2f, camera.viewportSize / -2f, camera.viewportSize, camera.viewportSize));
 				
 				BeginWindows();
-				foreach (SkillCollection node in collect) {
-					node.windowRect = GUI.Window(node.GetInstanceID(), node.windowRect, DrawNodeWindow, node.displayName);
-
-					foreach (SkillCollection child in node.childSkills) {
-						DrawLineBottomToTop(node.windowRect, child.windowRect);
+				for (int i = 0; i < collect.Length; i++) {
+					collect[i].windowRect = GUI.Window(i, collect[i].windowRect, DrawNodeWindow, collect[i].displayName);
+					
+					foreach (SkillCollection child in collect[i].childSkills) {
+						DrawLineBottomToTop(collect[i].windowRect, child.windowRect);
 					}
 				}
 				EndWindows();
@@ -142,7 +149,7 @@ namespace Adnc.SkillTree {
 				GUI.EndScrollView(); // Camera scroll for windows
 			}
 
-			// Draw the transistion
+			// Draw a transistion if in transistion mode
 			if (isTransition && selectNode != null) {
 				Vector2 globalOffset = camera.GetOffsetGlobal();
 				Rect beginRect = selectNode.windowRect;
@@ -213,8 +220,37 @@ namespace Adnc.SkillTree {
 		}
 
 		void DrawNodeWindow (int id) {
-			// @TODO Spit out the attached skills here (mostly copy / paste sidebar code)
-			EditorGUILayout.TextField("test");
+			Skill deleteSkill = null;
+			foreach (Skill skill in collect[id].GetComponentsInChildren<Skill>()) {
+				GUILayout.BeginHorizontal();
+				skill.unlocked = GUILayout.Toggle(skill.unlocked, "");
+
+				if (GUILayout.Button(skill.displayName, GUILayout.Width(100f))) {
+					Selection.activeGameObject = skill.gameObject;
+				}
+
+				if (GUILayout.Button("UP")) {
+					skill.transform.SetSiblingIndex(skill.transform.GetSiblingIndex() - 1);
+				}
+
+				if (GUILayout.Button("DN")) {
+					skill.transform.SetSiblingIndex(skill.transform.GetSiblingIndex() + 1);
+				}
+
+				if (GUILayout.Button("X")) {
+					if (EditorUtility.DisplayDialog("Delete Skill?", 
+					                                "Are you sure you want to delete this skill? This cannot be undone.",
+					                                "Delete Skill", 
+					                                "Cancel")) {
+						deleteSkill = skill;
+					}
+				}
+
+				GUILayout.EndHorizontal();
+			}
+
+			if (deleteSkill != null) DestroyImmediate(deleteSkill.gameObject);
+
 			GUI.DragWindow();
 		}
 
@@ -222,8 +258,10 @@ namespace Adnc.SkillTree {
 			GameObject go = new GameObject();
 			go.name = "SkillCollection";
 			SkillCollection skill = go.AddComponent<SkillCollection>();
-			skill.windowRect = new Rect(mousePosGlobal.x, mousePosGlobal.y, 200, 150);
+			skill.windowRect = new Rect(mousePosGlobal.x, mousePosGlobal.y, 220, 150);
 			go.transform.SetParent(target.currentCategory.transform);
+
+			AddSkill(skill);
 		}
 
 		void DeleteSkillGroup () {
@@ -241,6 +279,20 @@ namespace Adnc.SkillTree {
 				
 				DestroyImmediate(t.gameObject);
 			}
+		}
+
+		void AddSkill (object obj) {
+			SkillCollection col = obj as SkillCollection;
+			AddSkill(col);
+		}
+
+		void AddSkill (SkillCollection col) {
+			GameObject go = new GameObject();
+			go.name = "Skill";
+			go.AddComponent<Skill>();
+			go.transform.SetParent(col.transform);
+			
+//			col.skills.Add(skill);
 		}
 
 		void DrawTitle () {
