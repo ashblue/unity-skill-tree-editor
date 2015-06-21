@@ -176,7 +176,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2133046860}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &1186644843
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4cbdb114d91455c954a8c09159f6bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: Skill Collection
+  displayName: Special Attack
   uniqueName: 
   description: 
   imgRegular: {fileID: 0}
@@ -225,8 +225,8 @@ MonoBehaviour:
   imgPurchase: {fileID: 0}
   windowRect:
     serializedVersion: 2
-    x: 87
-    y: 88
+    x: -330
+    y: -391
     width: 200
     height: 150
 --- !u!1 &1502253165
@@ -335,7 +335,7 @@ Transform:
   - {fileID: 1186644844}
   - {fileID: 1774761427}
   m_Father: {fileID: 2133046860}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &1511611735
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,8 +460,8 @@ MonoBehaviour:
   imgPurchase: {fileID: 0}
   windowRect:
     serializedVersion: 2
-    x: 475
-    y: 330
+    x: 764
+    y: 453
     width: 200
     height: 150
 --- !u!4 &1774761427
@@ -646,8 +646,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 699787812}
   - {fileID: 1503757696}
+  - {fileID: 699787812}
   - {fileID: 1933044222}
   - {fileID: 1511611736}
   m_Father: {fileID: 0}
