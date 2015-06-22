@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Adnc.SkillTree {
 	public class GraphSidebar {
-		public SkillTree target;
+		public SkillTreeBase target;
 
 		public void DrawSidebar (Rect rect, float padding, Color color) {
 			float innerWidth = rect.width - (padding * 2f);
@@ -20,7 +20,7 @@ namespace Adnc.SkillTree {
 			if (target != null) {
 				float y = 0f;
 				foreach (Transform child in target.transform) {
-					SkillCategory cat = child.GetComponent<SkillCategory>();
+					SkillCategoryBase cat = child.GetComponent<SkillCategoryBase>();
 					GUI.BeginGroup(new Rect(0f, y, innerWidth, 300f));
 
 					if (GUI.Button(new Rect(0f, 0f, 22f, 20f), "X")) {

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Adnc.SkillTree {
 	public class GraphController : EditorWindow {
-		SkillTree target;
+		SkillTreeBase target;
 		GraphSidebar sidebar;
 		GraphCamera camera;
 
@@ -14,11 +14,11 @@ namespace Adnc.SkillTree {
 		Vector2 mousePos; // Local screen mouse position
 		Vector2 mousePosGlobal; // Global mouse position based on camera offsets
 		bool isTransition; // Are we in transistion mode
-		SkillCollection[] collect = new SkillCollection[0];
+		SkillCollectionBase[] collect = new SkillCollectionBase[0];
 
 		float sidebarWidth = 240f; // Size of the sidebar
 		int selectIndex = -1; // Currently selected window
-		SkillCollection selectNode; // Actively selected node for a transition
+		SkillCollectionBase selectNode; // Actively selected node for a transition
 
 		void OnEnable () {
 			titleContent.text = "Skill Tree";
@@ -45,7 +45,7 @@ namespace Adnc.SkillTree {
 
 		void UpdateTarget (GameObject go) {
 			if (go != null) {
-				SkillTree skillTree = go.GetComponent<SkillTree>();
+				SkillTreeBase skillTree = go.GetComponent<SkillTreeBase>();
 				if (skillTree) {
 					// Verify inheritance on SkillTree
 					if (IsValidInheritance(skillTree)) {
@@ -63,12 +63,12 @@ namespace Adnc.SkillTree {
 		}
 
 		// Checks if the current skill tree classes properly inherit from a base class
-		bool IsValidInheritance (SkillTree target) {
-			if (!target.SkillCategory.IsSubclassOf(typeof(SkillCategory))) {
+		bool IsValidInheritance (SkillTreeBase target) {
+			if (!target.SkillCategory.IsSubclassOf(typeof(SkillCategoryBase))) {
 				return false;
-			} else if (!target.SkillCollection.IsSubclassOf(typeof(SkillCollection))) {
+			} else if (!target.SkillCollection.IsSubclassOf(typeof(SkillCollectionBase))) {
 				return false;
-			} else if (!target.Skill.IsSubclassOf(typeof(Skill))) {
+			} else if (!target.Skill.IsSubclassOf(typeof(SkillBase))) {
 				return false;
 			}
 
@@ -87,9 +87,9 @@ namespace Adnc.SkillTree {
 
 			// Poll the current skill collection
 			if (target.currentCategory != null) {
-				collect = target.currentCategory.GetComponentsInChildren<SkillCollection>();
+				collect = target.currentCategory.GetComponentsInChildren<SkillCollectionBase>();
 			} else {
-				collect = new SkillCollection[0];
+				collect = new SkillCollectionBase[0];
 			}
 
 			// Main content area
@@ -116,7 +116,7 @@ namespace Adnc.SkillTree {
 								menu.AddItem(new GUIContent("Delete Skill Group"), false, DeleteSkillGroup);
 								menu.AddSeparator("");
 
-								foreach (SkillCollection child in collect[selectIndex].childSkills) {
+								foreach (SkillCollectionBase child in collect[selectIndex].childSkills) {
 									menu.AddItem(new GUIContent("Delete Transition " + child.displayName), false, DeleteSkillGroupTransition, child);
 								}
 
@@ -160,7 +160,7 @@ namespace Adnc.SkillTree {
 				for (int i = 0; i < collect.Length; i++) {
 					collect[i].windowRect = GUI.Window(i, collect[i].windowRect, DrawNodeWindow, collect[i].displayName);
 					
-					foreach (SkillCollection child in collect[i].childSkills) {
+					foreach (SkillCollectionBase child in collect[i].childSkills) {
 						DrawLineBottomToTop(collect[i].windowRect, child.windowRect);
 					}
 				}
@@ -199,15 +199,15 @@ namespace Adnc.SkillTree {
 
 		void BeginSkillGroupTransition () {
 			isTransition = true;
-			SkillCollection[] collect = target.currentCategory.GetComponentsInChildren<SkillCollection>();
+			SkillCollectionBase[] collect = target.currentCategory.GetComponentsInChildren<SkillCollectionBase>();
 			selectNode = collect[selectIndex];
 		}
 
 		void DeleteSkillGroupTransition (object obj) {
-			SkillCollection col = obj as SkillCollection;
-			SkillCollection[] collect = target.currentCategory.GetComponentsInChildren<SkillCollection>();
+			SkillCollectionBase col = obj as SkillCollectionBase;
+			SkillCollectionBase[] collect = target.currentCategory.GetComponentsInChildren<SkillCollectionBase>();
 
-			foreach (SkillCollection node in collect) {
+			foreach (SkillCollectionBase node in collect) {
 				node.childSkills.Remove(col);
 			}
 		}
@@ -240,8 +240,8 @@ namespace Adnc.SkillTree {
 		}
 
 		void DrawNodeWindow (int id) {
-			Skill deleteSkill = null;
-			foreach (Skill skill in collect[id].GetComponentsInChildren<Skill>()) {
+			SkillBase deleteSkill = null;
+			foreach (SkillBase skill in collect[id].GetComponentsInChildren<SkillBase>()) {
 				GUILayout.BeginHorizontal();
 				skill.unlocked = GUILayout.Toggle(skill.unlocked, "");
 
@@ -277,7 +277,7 @@ namespace Adnc.SkillTree {
 		void CreateSkillGroup () {
 			GameObject go = new GameObject();
 			go.name = "SkillCollection";
-			SkillCollection skill = go.AddComponent(target.SkillCollection) as SkillCollection;
+			SkillCollectionBase skill = go.AddComponent(target.SkillCollection) as SkillCollectionBase;
 			skill.windowRect = new Rect(mousePosGlobal.x, mousePosGlobal.y, 220, 150);
 			go.transform.SetParent(target.currentCategory.transform);
 
@@ -289,11 +289,11 @@ namespace Adnc.SkillTree {
 			                                "Are you sure you want to delete this skill collection? It will delete this collection plus all skills it contains.",
 			                                "Delete Skill Collection", 
 			                                "Cancel")) {
-				SkillCollection[] collect = target.currentCategory.GetComponentsInChildren<SkillCollection>();
-				SkillCollection t = collect[selectIndex];
+				SkillCollectionBase[] collect = target.currentCategory.GetComponentsInChildren<SkillCollectionBase>();
+				SkillCollectionBase t = collect[selectIndex];
 				
 				// Clean out all references to our skill collection
-				foreach (SkillCollection node in collect) {
+				foreach (SkillCollectionBase node in collect) {
 					node.childSkills.Remove(t);
 				}
 				
@@ -302,14 +302,14 @@ namespace Adnc.SkillTree {
 		}
 
 		void AddSkill (object obj) {
-			SkillCollection col = obj as SkillCollection;
+			SkillCollectionBase col = obj as SkillCollectionBase;
 			AddSkill(col);
 		}
 
-		void AddSkill (SkillCollection col) {
+		void AddSkill (SkillCollectionBase col) {
 			GameObject go = new GameObject();
 			go.name = "Skill";
-			Skill s = go.AddComponent(target.Skill) as Skill;
+			SkillBase s = go.AddComponent(target.Skill) as SkillBase;
 			s.uuid = Guid.NewGuid().ToString();
 			go.transform.SetParent(col.transform);
 		}

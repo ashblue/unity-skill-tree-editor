@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 namespace Adnc.SkillTree {
-	abstract public class SkillCategory : MonoBehaviour {
+	abstract public class SkillCategoryBase : MonoBehaviour {
 		[Tooltip("Name the user will see")]
 		public string displayName = "Category";
 

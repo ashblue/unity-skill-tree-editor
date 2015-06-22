@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace Adnc.SkillTree {
-	abstract public class SkillTree : MonoBehaviour {
+	abstract public class SkillTreeBase : MonoBehaviour {
 		public GraphSidebar[] test;
 
 		public string title = "Skill Tree";
@@ -10,7 +10,7 @@ namespace Adnc.SkillTree {
 		public string description;
 
 		// Used by the skill tree window to discover the currently active category for editing
-		[HideInInspector] public SkillCategory currentCategory;
+		[HideInInspector] public SkillCategoryBase currentCategory;
 
 		// Override these base classes with custom classes that inherit from the base
 		abstract public System.Type SkillCategory { get; }

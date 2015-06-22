@@ -3,7 +3,8 @@ using System;
 using System.Collections;
 
 namespace Adnc.SkillTree {
-	public class SkillDefault : Skill {
+	[AddComponentMenu("")]
+	public class Skill : SkillBase {
 
 	}
 }
