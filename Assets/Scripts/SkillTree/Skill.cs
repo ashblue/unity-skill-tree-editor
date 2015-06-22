@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
 namespace Adnc.SkillTree {
@@ -11,5 +12,8 @@ namespace Adnc.SkillTree {
 		
 		[TextArea(3, 5)]
 		public string description;
+
+//		[Header("Window Debug Data")]
+		[HideInInspector ]public string uuid;
 	}
 }

@@ -176,6 +176,50 @@ MonoBehaviour:
   title: Test Tree
   description: 
   currentCategory: {fileID: 1147459996}
+--- !u!1 &282856145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 282856146}
+  - 114: {fileID: 282856147}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &282856146
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 282856145}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1770103050}
+  m_RootOrder: 2
+--- !u!114 &282856147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 282856145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc22ca97398ec439796f44fd3ef8723a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: 
+  uuid: c5e3c59c-91eb-4fab-83ec-69eb367ccabb
 --- !u!1 &336788403
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +416,50 @@ MonoBehaviour:
   imgRegular: {fileID: 0}
   imgHighlight: {fileID: 0}
   imgPress: {fileID: 0}
+--- !u!1 &1120308745
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1120308746}
+  - 114: {fileID: 1120308747}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1120308746
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120308745}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1770103050}
+  m_RootOrder: 1
+--- !u!114 &1120308747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120308745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc22ca97398ec439796f44fd3ef8723a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: 
+  uuid: 
 --- !u!1 &1147459994
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,6 +646,7 @@ MonoBehaviour:
   displayName: Delete Me Blah Blah Blah
   uniqueName: 
   description: 
+  uuid: 
 --- !u!1 &1316769156
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,49 +701,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1147459995}
   m_RootOrder: 1
---- !u!1 &1456367096
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1456367097}
-  - 114: {fileID: 1456367098}
-  m_Layer: 0
-  m_Name: Skill
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1456367097
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1456367096}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1770103050}
-  m_RootOrder: 2
---- !u!114 &1456367098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1456367096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc22ca97398ec439796f44fd3ef8723a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unlocked: 0
-  displayName: Skill
-  uniqueName: 
-  description: 
 --- !u!1 &1502253165
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,49 +897,6 @@ Transform:
   - {fileID: 127579}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!1 &1693714343
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1693714344}
-  - 114: {fileID: 1693714345}
-  m_Layer: 0
-  m_Name: Skill
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1693714344
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1693714343}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1770103050}
-  m_RootOrder: 1
---- !u!114 &1693714345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1693714343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc22ca97398ec439796f44fd3ef8723a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unlocked: 0
-  displayName: Skill
-  uniqueName: 
-  description: 
 --- !u!1 &1770103049
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,8 +924,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1272534856}
-  - {fileID: 1693714344}
-  - {fileID: 1456367097}
+  - {fileID: 1120308746}
+  - {fileID: 282856146}
   m_Father: {fileID: 1147459995}
   m_RootOrder: 2
 --- !u!114 &1770103051
@@ -945,8 +948,8 @@ MonoBehaviour:
   imgPurchase: {fileID: 0}
   windowRect:
     serializedVersion: 2
-    x: 166
-    y: 98.0068359
+    x: 140
+    y: 88.0068359
     width: 220
     height: 130
   childSkills:

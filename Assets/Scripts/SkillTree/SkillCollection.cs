@@ -18,6 +18,6 @@ namespace Adnc.SkillTree {
 
 		[Header("Window Debug Data")]
 		public Rect windowRect;
-		public List<SkillCollection> childSkills = new List<SkillCollection>();
+		[HideInInspector] public List<SkillCollection> childSkills = new List<SkillCollection>();
 	}
 }

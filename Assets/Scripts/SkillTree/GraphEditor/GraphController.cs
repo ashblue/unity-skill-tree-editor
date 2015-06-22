@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -289,7 +290,8 @@ namespace Adnc.SkillTree {
 		void AddSkill (SkillCollection col) {
 			GameObject go = new GameObject();
 			go.name = "Skill";
-			go.AddComponent<Skill>();
+			Skill s = go.AddComponent<Skill>();
+			s.uuid = Guid.NewGuid().ToString();
 			go.transform.SetParent(col.transform);
 			
 //			col.skills.Add(skill);
