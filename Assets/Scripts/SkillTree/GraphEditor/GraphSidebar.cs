@@ -6,14 +6,13 @@ using System.Collections.Generic;
 namespace Adnc.SkillTree {
 	public class GraphSidebar {
 		public SkillTree target;
-		Texture2D texture = new Texture2D(1, 1);
 
 		public void DrawSidebar (Rect rect, float padding, Color color) {
 			float innerWidth = rect.width - (padding * 2f);
 			float innerHeight = rect.height - (padding * 2f);
 
 			GUI.BeginGroup(rect); // Container
-			
+
 			DrawBox(new Rect(0, 0, rect.width, rect.height), color);
 
 			GUI.BeginGroup(new Rect(padding, padding, innerWidth, innerHeight)); // Padding
@@ -66,10 +65,12 @@ namespace Adnc.SkillTree {
 		}
 		
 		void DrawBox (Rect position, Color color) {
-			texture.SetPixel(0,0,color);
-			texture.Apply();
-			GUI.skin.box.normal.background = texture;
-			GUI.Box(position, GUIContent.none);
+			Color oldColor = GUI.color;
+
+			GUI.color = color;
+			GUI.Box(position, "");
+
+			GUI.color = oldColor;
 		}
 	}
 }
