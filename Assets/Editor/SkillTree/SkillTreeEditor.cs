@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEditor;
 
 namespace Adnc.SkillTree {
-	[CustomEditor(typeof(SkillTree))]
+	[CustomEditor(typeof(SkillTree), true)]
 	public class SkillTreeEditor : Editor {
 		EditorWindow window;
 

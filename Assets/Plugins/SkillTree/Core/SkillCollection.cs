@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 namespace Adnc.SkillTree {
-	public class SkillCollection : MonoBehaviour {
+	abstract public class SkillCollection : MonoBehaviour {
 		public string displayName = "Skill Collection";
 		public string uniqueName;
 

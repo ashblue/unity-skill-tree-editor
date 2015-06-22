@@ -47,13 +47,32 @@ namespace Adnc.SkillTree {
 			if (go != null) {
 				SkillTree skillTree = go.GetComponent<SkillTree>();
 				if (skillTree) {
-					target = skillTree;
-					sidebar.target = target;
-					camera.Reset();
+					// Verify inheritance on SkillTree
+					if (IsValidInheritance(skillTree)) {
+						// Assign the new skill tree
+						target = skillTree;
+						sidebar.target = target;
+						camera.Reset();
+					} else {
+						Debug.LogError("Invalid inheritance for skill classes. Please verify they inherit from proper base classes before proceeding.");
+					}
 				}
 			}
 
 			Repaint();
+		}
+
+		// Checks if the current skill tree classes properly inherit from a base class
+		bool IsValidInheritance (SkillTree target) {
+			if (!target.SkillCategory.IsSubclassOf(typeof(SkillCategory))) {
+				return false;
+			} else if (!target.SkillCollection.IsSubclassOf(typeof(SkillCollection))) {
+				return false;
+			} else if (!target.Skill.IsSubclassOf(typeof(Skill))) {
+				return false;
+			}
+
+			return true;
 		}
 
 		void OnGUI () {
@@ -258,7 +277,7 @@ namespace Adnc.SkillTree {
 		void CreateSkillGroup () {
 			GameObject go = new GameObject();
 			go.name = "SkillCollection";
-			SkillCollection skill = go.AddComponent<SkillCollection>();
+			SkillCollection skill = go.AddComponent(target.SkillCollection) as SkillCollection;
 			skill.windowRect = new Rect(mousePosGlobal.x, mousePosGlobal.y, 220, 150);
 			go.transform.SetParent(target.currentCategory.transform);
 
@@ -290,11 +309,9 @@ namespace Adnc.SkillTree {
 		void AddSkill (SkillCollection col) {
 			GameObject go = new GameObject();
 			go.name = "Skill";
-			Skill s = go.AddComponent<Skill>();
+			Skill s = go.AddComponent(target.Skill) as Skill;
 			s.uuid = Guid.NewGuid().ToString();
 			go.transform.SetParent(col.transform);
-			
-//			col.skills.Add(skill);
 		}
 
 		void DrawTitle () {

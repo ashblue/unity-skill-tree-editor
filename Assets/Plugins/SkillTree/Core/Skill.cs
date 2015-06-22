@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 
 namespace Adnc.SkillTree {
-	public class Skill : MonoBehaviour {
+	abstract public class Skill : MonoBehaviour {
 		[Tooltip("Has this skill been unlocked by the player?")]
 		public bool unlocked;
 

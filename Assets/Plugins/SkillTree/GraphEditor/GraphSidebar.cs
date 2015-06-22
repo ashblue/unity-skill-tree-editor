@@ -55,7 +55,7 @@ namespace Adnc.SkillTree {
 				if (GUI.Button(new Rect(0f, y, innerWidth, 20f), "Create Category")) {
 					GameObject go = new GameObject();
 					go.name = "Category";
-					go.AddComponent<SkillCategory>();
+					go.AddComponent(target.SkillCategory);
 					go.transform.SetParent(target.transform);
 				}
 			}
