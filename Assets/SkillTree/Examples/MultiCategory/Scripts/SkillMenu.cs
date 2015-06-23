@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace Adnc.SkillTree.Example.MultiCategory {
 	public class SkillMenu : MonoBehaviour {
+		Dictionary<SkillCollectionBase, SkillNode> nodeRef;
+		List<SkillNode> skillNodes;
+
 		[SerializeField] SkillTreeBase skillTree;
 
 		[Header("Header")]
@@ -14,10 +17,13 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 		[SerializeField] Text categoryName;
 
 		[Header("Nodes")]
-		[SerializeField] GameObject linePrefab;
 		[SerializeField] Transform nodeContainer;
 		[SerializeField] GameObject nodeRowPrefab;
 		[SerializeField] GameObject nodePrefab;
+
+		[Header("Node Lines")]
+		[SerializeField] Transform lineContainer;
+		[SerializeField] GameObject linePrefab;
 
 		void Start () {
 			SkillCategoryBase[] skillCategories = skillTree.GetCategories();
@@ -43,7 +49,6 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 				});
 			}
 
-//			DrawLine(nodeContainer, new Vector3(50f, 50f), new Vector3(25f, 75f));
 			if (skillCategories.Length > 0) {
 				ShowCategory(skillCategories[0]);
 			}
@@ -51,17 +56,9 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 			Repaint();
 		}
 
-		void DrawLine (Transform container, Vector3 start, Vector3 end) {
-			float angle = Vector2.Angle(start, end);
-
-			GameObject go = Instantiate(linePrefab);
-			go.transform.SetParent(container);
-			go.transform.localScale = Vector3.one;
-			go.transform.Rotate(new Vector3(0f, 0f, angle));
-			go.GetComponent<RectTransform>().anchoredPosition = start;
-		}
-
 		void ShowCategory (SkillCategoryBase category) {
+			skillNodes = new List<SkillNode>();
+			nodeRef = new Dictionary<SkillCollectionBase, SkillNode>();
 			categoryName.text = string.Format("{0}: Level {1}", category.displayName, category.skillLv);
 
 			foreach (Transform child in nodeContainer) {
@@ -74,7 +71,7 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 			rows.Add(rootNodes);
 			RecursiveRowAdd(rows);
 
-			// Output proper rows
+			// Output proper rows and attach data
 			foreach (List<SkillCollectionBase> row in rows) {
 				GameObject nodeRow = Instantiate(nodeRowPrefab);
 				nodeRow.transform.SetParent(nodeContainer);
@@ -85,23 +82,63 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 					node.transform.SetParent(nodeRow.transform);
 					node.transform.localScale = Vector3.one;
 
+					SkillNode skillNode = node.GetComponent<SkillNode>();
+					skillNode.skillCollection = rowItem;
+					skillNodes.Add(skillNode);
+
+					nodeRef[rowItem] = skillNode;
+
 					node.GetComponentInChildren<Text>().text = rowItem.displayName;
 				}
 			}
 
-//			nodeContainer
-					
-					// Populate skill collections and groups procedurally with lines drawn
+			StartCoroutine(ConnectNodes());
+		}
+
+		// Done after a frame skip so they nodes are sorted properly into position
+		IEnumerator ConnectNodes () {
+			bool skipFrame = true;
+
+			if (skipFrame) {
+				skipFrame = false;
+				yield return null;
+			}
+
+			// Procedurally draw lines between each node
+//			DrawLine(lineContainer, new Vector3(382f, 414f, 0f), new Vector3(325f, 367f, 64f));
+			foreach (SkillNode node in skillNodes) {
+				foreach (SkillCollectionBase child in node.skillCollection.childSkills) {
+					DrawLine(lineContainer, node.transform.position, nodeRef[child].transform.position);
+				}
+			}
+		}
+
+		void DrawLine (Transform container, Vector3 start, Vector3 end) {
+			GameObject go = Instantiate(linePrefab);
+			go.transform.localScale = Vector3.one;
+
+			// Adjust the layering so it appears underneath
+			go.transform.SetParent(container);
+			go.transform.SetSiblingIndex(0);
+
+			// Adjust height to proper sizing
+			RectTransform rectTrans = go.GetComponent<RectTransform>();
+			Rect rect = rectTrans.rect;
+			rect.height = Vector3.Distance(start, end);
+			rectTrans.sizeDelta = new Vector2(rect.width, rect.height);
+
+			// Adjust rotation and placement
+			go.transform.rotation = Helper.Rotate2D(start, end);
+			go.transform.position = start;
 		}
 
 		void RecursiveRowAdd (List<List<SkillCollectionBase>> rows) {
-			Debug.Log("New row");
 			List<SkillCollectionBase> row = new List<SkillCollectionBase>();
 			foreach (SkillCollectionBase collection in rows[rows.Count - 1]) {
 				foreach (SkillCollectionBase child in collection.childSkills) {
 					// @TODO We need to remove any duplicate entries (keep a record of every node added for ref)
+					// As an entry might leak through as a deeper child node later down the tree
 					if (!row.Contains(child)) {
-						Debug.Log("Item added " + child.displayName);
 						row.Add(child);
 					}
 				}
