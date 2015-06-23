@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 namespace Adnc.SkillTree.Example.MultiCategory {
 	public class SkillMenu : MonoBehaviour {
+		public static SkillMenu current;
+
 		Dictionary<SkillCollectionBase, SkillNode> nodeRef;
 		List<SkillNode> skillNodes;
 
@@ -24,6 +26,17 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 		[Header("Node Lines")]
 		[SerializeField] Transform lineContainer;
 		[SerializeField] GameObject linePrefab;
+
+		[Header("Context Sidebar")]
+		[SerializeField] RectTransform sidebarContainer;
+		[SerializeField] Text sidebarTitle;
+		[SerializeField] Text sidebarBody;
+		[SerializeField] Text sidebarRequirements;
+		[SerializeField] Button sidebarPurchase;
+
+		void Awake () {
+			current = this;
+		}
 
 		void Start () {
 			SkillCategoryBase[] skillCategories = skillTree.GetCategories();
@@ -60,6 +73,7 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 			skillNodes = new List<SkillNode>();
 			nodeRef = new Dictionary<SkillCollectionBase, SkillNode>();
 			categoryName.text = string.Format("{0}: Level {1}", category.displayName, category.skillLv);
+			ClearDetails();
 
 			foreach (Transform child in nodeContainer) {
 				Destroy(child.gameObject);
@@ -95,6 +109,16 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 			StartCoroutine(ConnectNodes());
 		}
 
+		void UpdateRequirements () {
+			foreach (SkillNode node in skillNodes) {
+				if (node.skillCollection.Skill.unlocked) {
+					node.GetComponent<Button>().interactable = true;
+				}
+
+				node.GetComponent<Button>().interactable = skillTree.skillPoints > 0 && node.skillCollection.Skill.IsRequirements();
+			}
+		}
+
 		// Done after a frame skip so they nodes are sorted properly into position
 		IEnumerator ConnectNodes () {
 			bool skipFrame = true;
@@ -105,7 +129,6 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 			}
 
 			// Procedurally draw lines between each node
-//			DrawLine(lineContainer, new Vector3(382f, 414f, 0f), new Vector3(325f, 367f, 64f));
 			foreach (SkillNode node in skillNodes) {
 				foreach (SkillCollectionBase child in node.skillCollection.childSkills) {
 					DrawLine(lineContainer, node.transform.position, nodeRef[child].transform.position);
@@ -150,8 +173,32 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 			}
 		}
 
+		public void ShowNodeDetails (SkillCollectionBase skillCollection) {
+			sidebarTitle.text = skillCollection.displayName;
+			sidebarBody.text = skillCollection.Skill.description;
+
+			string requirements = skillCollection.Skill.GetRequirements();
+			if (string.IsNullOrEmpty(requirements)) {
+				sidebarRequirements.text = "";
+			} else {
+				sidebarRequirements.text = "<b>Requirements:</b> \n" + skillCollection.Skill.GetRequirements();
+			}
+
+			sidebarContainer.gameObject.SetActive(true);
+		}
+
+		void ClearDetails () {
+			sidebarContainer.gameObject.SetActive(false);
+		}
+
 		void Repaint () {
 			skillOutput.text = "Skill Points: " + skillTree.skillPoints;
+
+			// @TODO Update tree node display status
+		}
+
+		void OnDestroy () {
+			current = null;
 		}
 	}
 }

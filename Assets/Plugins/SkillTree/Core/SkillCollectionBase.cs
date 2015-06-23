@@ -7,14 +7,28 @@ namespace Adnc.SkillTree {
 		public string displayName = "Skill Collection";
 		public string uniqueName;
 
+		// Determines what skill is currently active and returns it
+		int skillIndex = 0;
+		public int SkillIndex {
+			get {
+				return skillIndex;
+			}
+
+			set {
+				if (value >= 0 && value < transform.childCount) {
+					skillIndex = value;
+				} 
+			}
+		}
+
+		public SkillBase Skill {
+			get {
+				return transform.GetChild(skillIndex).GetComponent<SkillBase>();
+			}
+		}
+
 		[TextArea(3, 5)]
 		public string description;
-
-		[Header("Menu Icons")]
-		public Image imgRegular;
-		public Image imgHighlight;
-		public Image imgSelect;
-		public Image imgPurchase;
 
 		[Header("Window Debug Data")]
 		public Rect windowRect;
