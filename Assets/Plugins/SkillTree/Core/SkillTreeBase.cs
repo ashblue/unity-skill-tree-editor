@@ -20,8 +20,6 @@ namespace Adnc.SkillTree {
 		[Tooltip("How many skill points are available")]
 		public int skillPoints = 0; // Number of available skill points
 
-//		Dictionary<
-
 		void Awake () {
 			// @TODO Pre-cache all unique IDs for speed purposes
 			// @TODO Remove loop methods where possible, not effecient enough
@@ -95,8 +93,7 @@ namespace Adnc.SkillTree {
 			return skill;
 		}
 
-		// @TODO Remove mock save pattern after implementing with ADNC
-		// This is just an implementation example of a save, you must implement your own
+		// @TODO Should spit back a giant array of data so the user can save it however they want
 		// @TODO change to abstract when moving SkillTree to an abstract class
 		virtual public void Save () {
 //			Dictionary<string, bool> skillRecords = new Dictionary<string, bool>();
@@ -122,6 +119,7 @@ namespace Adnc.SkillTree {
 		}
 
 		// @TODO change to abstract when moving SkillTree to an abstract class
+		// @TODO Should swallow Save data format to update all active skills
 		virtual public void Load () {
 			// Loop through skill dictionary
 			// For each UUID apply the unlocked skill value

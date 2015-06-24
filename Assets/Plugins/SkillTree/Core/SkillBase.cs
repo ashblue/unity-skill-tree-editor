@@ -23,6 +23,10 @@ namespace Adnc.SkillTree {
 		// @TODO Consider removing
 		[HideInInspector ]public string uuid;
 
+		/// <summary>
+		/// Visual print out of requirements
+		/// </summary>
+		/// <returns>The requirements.</returns>
 		virtual public string GetRequirements () {
 			string requirements = "";
 			SkillCategoryBase category = transform.parent.parent.GetComponent<SkillCategoryBase>();

@@ -17,7 +17,10 @@ namespace Adnc.SkillTree {
 		[Tooltip("What is the current skill level in this category?")]
 		public int skillLv = 0;
 
-		// Retreives skill collections without any parents
+		/// <summary>
+		/// Retreives skill collections without any parents
+		/// </summary>
+		/// <returns>The root skill collections.</returns>
 		public List<SkillCollectionBase> GetRootSkillCollections () {
 			List<SkillCollectionBase> skills = new List<SkillCollectionBase>();
 

@@ -7,6 +7,13 @@ namespace Adnc.SkillTree {
 		public string displayName = "Skill Collection";
 		public string uniqueName;
 
+		[TextArea(3, 5)]
+		public string description;
+		
+		[Header("Window Debug Data")]
+		public Rect windowRect;
+		[HideInInspector] public List<SkillCollectionBase> childSkills = new List<SkillCollectionBase>();
+
 		// Determines what skill is currently active and returns it
 		int skillIndex = 0;
 		public int SkillIndex {
@@ -21,18 +28,23 @@ namespace Adnc.SkillTree {
 			}
 		}
 
+		// Returns the current active skill
 		public SkillBase Skill {
 			get {
 				return transform.GetChild(skillIndex).GetComponent<SkillBase>();
 			}
 		}
 
+		// How many skills does this collection contain
 		public int SkillCount {
 			get {
 				return transform.childCount;
 			}
 		}
 
+		/// <summary>
+		/// Unlock the currently active skill and set the pointer to the next unlocked if available
+		/// </summary>
 		public void Purchase () {
 			SkillTree skillTree = transform.parent.parent.GetComponent<SkillTree>();
 
@@ -43,15 +55,13 @@ namespace Adnc.SkillTree {
 			SkillIndex += 1;
 		}
 
+		/// <summary>
+		/// Get the currently active skill
+		/// </summary>
+		/// <returns>The skill.</returns>
+		/// <param name="index">Index.</param>
 		public SkillBase GetSkill (int index) {
 			return transform.GetChild(index).GetComponent<SkillBase>();
 		}
-
-		[TextArea(3, 5)]
-		public string description;
-
-		[Header("Window Debug Data")]
-		public Rect windowRect;
-		[HideInInspector] public List<SkillCollectionBase> childSkills = new List<SkillCollectionBase>();
 	}
 }
