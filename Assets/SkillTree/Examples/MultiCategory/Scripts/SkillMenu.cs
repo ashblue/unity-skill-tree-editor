@@ -29,6 +29,7 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 		[Header("Node Lines")]
 		[SerializeField] Transform lineContainer;
 		[SerializeField] GameObject linePrefab;
+		[SerializeField] Color lineColor;
 
 		[Header("Context Sidebar")]
 		[SerializeField] RectTransform sidebarContainer;
@@ -152,16 +153,18 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 				foreach (SkillCollectionBase child in node.skillCollection.childSkills) {
 					node.children.Add(nodeRef[child]);
 					nodeRef[child].parents.Add(node);
-					DrawLine(lineContainer, node.transform.position, nodeRef[child].transform.position);
+					DrawLine(lineContainer, node.transform.position, nodeRef[child].transform.position, lineColor);
 				}
 			}
 
 			Repaint();
 		}
 
-		void DrawLine (Transform container, Vector3 start, Vector3 end) {
+		void DrawLine (Transform container, Vector3 start, Vector3 end, Color color) {
 			GameObject go = Instantiate(linePrefab);
 			go.transform.localScale = Vector3.one;
+
+			go.GetComponent<Image>().color = color;
 
 			// Adjust the layering so it appears underneath
 			go.transform.SetParent(container);

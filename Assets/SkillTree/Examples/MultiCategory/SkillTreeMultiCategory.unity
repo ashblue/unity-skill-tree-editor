@@ -824,6 +824,7 @@ MonoBehaviour:
   colorLock: {r: .433823526, g: .433823526, b: .433823526, a: 1}
   lineContainer: {fileID: 1448965059}
   linePrefab: {fileID: 133558, guid: ae115f44bb2b444dcb3e90e1f2cee93a, type: 2}
+  lineColor: {r: .647058845, g: .647058845, b: .647058845, a: 1}
   sidebarContainer: {fileID: 445126383}
   sidebarTitle: {fileID: 1371613502}
   sidebarBody: {fileID: 1315184615}
@@ -1821,7 +1822,7 @@ MonoBehaviour:
   title: Skill Tree
   description: 
   currentCategory: {fileID: 604047852}
-  skillPoints: 0
+  skillPoints: 2
 --- !u!4 &1195464872
 Transform:
   m_ObjectHideFlags: 0
