@@ -94,8 +94,9 @@ namespace Adnc.SkillTree {
 
 			// Main content area
 			if (target.currentCategory != null) {
-				// Clicked outside sidebar
-				if (mousePos.x < position.width - sidebarWidth) {
+				// Clicked outside of sidebar and scrollbar GUI
+				if (mousePos.x < position.width - sidebarWidth - GUI.skin.verticalScrollbar.fixedWidth &&
+				    mousePos.y < position.height - GUI.skin.horizontalScrollbar.fixedHeight) {
 
 					// Context menu
 					if (e.button == 1 && !isTransition) {
