@@ -23,7 +23,6 @@ namespace Adnc.SkillTree {
 		[Tooltip("List of additional requirements beyond unlocking the previous skill entry and skill collection")]
 		public SkillBase[] requiredSkills;
 
-		// @TODO Consider removing
 		[HideInInspector ]public string uuid;
 
 		/// <summary>

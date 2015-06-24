@@ -59,7 +59,7 @@ namespace Adnc.SkillTree {
 		}
 
 		/// <summary>
-		/// Get the currently active skill
+		/// Get the skill at a specific index
 		/// </summary>
 		/// <returns>The skill.</returns>
 		/// <param name="index">Index.</param>
