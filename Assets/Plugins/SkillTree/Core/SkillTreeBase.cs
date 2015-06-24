@@ -23,18 +23,25 @@ namespace Adnc.SkillTree {
 		Dictionary<string, SkillCategoryBase> categoryLib = new Dictionary<string, SkillCategoryBase>();
 		Dictionary<string, SkillCollectionBase> skillCollectionLib = new Dictionary<string, SkillCollectionBase>();
 		Dictionary<string, SkillBase> skillLib = new Dictionary<string, SkillBase>();
+
+		Dictionary<string, SkillCategoryBase> categoryUuidLib = new Dictionary<string, SkillCategoryBase>();
+		Dictionary<string, SkillCollectionBase> collectionUuidLib = new Dictionary<string, SkillCollectionBase>();
+		Dictionary<string, SkillBase> skillUuidLib = new Dictionary<string, SkillBase>();
 		
 		void Awake () {
 			foreach (SkillCategoryBase cat in GetCategories()) {
 				if (!string.IsNullOrEmpty(cat.id)) categoryLib[cat.id] = cat;
+				categoryUuidLib[cat.Uuid] = cat;
 			}
 
 			foreach (SkillCollectionBase col in GetSkillCollections()) {
 				if (!string.IsNullOrEmpty(col.id)) skillCollectionLib[col.id] = col;
+				collectionUuidLib[col.Uuid] = col;
 			}
 
 			foreach (SkillBase skill in GetSkills()) {
 				if (!string.IsNullOrEmpty(skill.id)) skillLib[skill.id] = skill;
+				skillUuidLib[skill.Uuid] = skill;
 			}
 		}
 
@@ -117,37 +124,63 @@ namespace Adnc.SkillTree {
 			return GetSkill(skillId).unlocked;
 		}
 
-		// @TODO Should spit back a giant array of data so the user can save it however they want
-		// @TODO change to abstract when moving SkillTree to an abstract class
-		virtual public void Save () {
-//			Dictionary<string, bool> skillRecords = new Dictionary<string, bool>();
-//
-//			foreach (Transform collection in transform) {
-//				foreach (Transform child in collection.transform) {
-//					Skill skill = child.GetComponent<Skill>();
-//					if (string.IsNullOrEmpty(skill.uuid)) {
-//						Debug.LogErrorFormat("Skill {0} has no UUID", skill.uuid);
-//					} else {
-//						skillRecords.Add(skill.uuid, skill.unlocked);
-//					}
-//				}
-//			}
+		/// <summary>
+		/// Returns a snapshot of this skill tree's current state. It is recommended that you save this data to a file
+		/// in a way it can be easily restored to the same structure.
+		/// </summary>
+		/// <returns>The snapshot.</returns>
+		virtual public SaveSkillTree GetSnapshot () {
+			List<SaveSkill> skills = new List<SaveSkill>();
+			List<SaveSkillCollection> skillCollections = new List<SaveSkillCollection>();
+			List<SaveSkillCategory> skillCategories = new List<SaveSkillCategory>();
 
-			// Create a special save class that we can load or create
-//			SaveData saveData = new SaveData {
-//				name = title,
-//				skills = skillRecords
-//			};
+			foreach (SkillBase s in GetSkills()) {
+				skills.Add(new SaveSkill {
+					uuid = s.Uuid,
+					unlocked = s.unlocked
+				});
+			}
 
-			// Turn save class into JSON via JSON.net or your preferred JSON library
+			foreach (SkillCollectionBase s in GetSkillCollections()) {
+				skillCollections.Add(new SaveSkillCollection {
+					uuid = s.Uuid,
+					skillIndex = s.SkillIndex
+				});
+			}
+
+			foreach (SkillCategoryBase s in GetCategories()) {
+				skillCategories.Add(new SaveSkillCategory {
+					uuid = s.Uuid,
+					skillLv = s.skillLv
+				});
+			}
+
+			return new SaveSkillTree {
+				skillPoints = skillPoints,
+				skills = skills,
+				collections = skillCollections,
+				categories = skillCategories
+			};
 		}
 
-		// @TODO change to abstract when moving SkillTree to an abstract class
-		// @TODO Should swallow Save data format to update all active skills
-		virtual public void Load () {
-			// Loop through skill dictionary
-			// For each UUID apply the unlocked skill value
-			// If we hit a missing UUID fire a warning
+		/// <summary>
+		/// Restores a snapshot and overwrites the current skill tree values with it
+		/// </summary>
+		/// <param name="snapshot">Snapshot.</param>
+		virtual public void LoadSnapshot (SaveSkillTree snapshot) {
+			skillPoints = snapshot.skillPoints;
+
+			foreach (SaveSkill s in snapshot.skills) {
+				skillUuidLib[s.uuid].unlocked = s.unlocked;
+			}
+			
+			foreach (SaveSkillCollection c in snapshot.collections) {
+				collectionUuidLib[c.uuid].SkillIndex = c.skillIndex;
+			}
+
+			foreach (SaveSkillCategory c in snapshot.categories) {
+				categoryUuidLib[c.uuid].skillLv = c.skillLv;
+			}
 		}
 	}
 }

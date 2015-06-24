@@ -17,6 +17,21 @@ namespace Adnc.SkillTree {
 		public Rect windowRect;
 		[HideInInspector] public List<SkillCollectionBase> childSkills = new List<SkillCollectionBase>();
 
+		string uuid;
+		public string Uuid {
+			get {
+				if (string.IsNullOrEmpty(uuid)) {
+					uuid = System.Guid.NewGuid().ToString();
+				}
+				
+				return uuid;
+			}
+			
+			set {
+				uuid = value;
+			}
+		}
+
 		// Determines what skill is currently active and returns it
 		int skillIndex = 0;
 		public int SkillIndex {

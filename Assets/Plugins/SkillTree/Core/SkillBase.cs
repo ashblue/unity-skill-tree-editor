@@ -23,7 +23,20 @@ namespace Adnc.SkillTree {
 		[Tooltip("List of additional requirements beyond unlocking the previous skill entry and skill collection")]
 		public SkillBase[] requiredSkills;
 
-		[HideInInspector ]public string uuid;
+		string uuid;
+		public string Uuid {
+			get {
+				if (string.IsNullOrEmpty(uuid)) {
+					uuid = System.Guid.NewGuid().ToString();
+				}
+
+				return uuid;
+			}
+
+			set {
+				uuid = value;
+			}
+		}
 
 		/// <summary>
 		/// Visual print out of requirements

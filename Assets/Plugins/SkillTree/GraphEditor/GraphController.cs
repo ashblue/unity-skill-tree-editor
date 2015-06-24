@@ -314,7 +314,7 @@ namespace Adnc.SkillTree {
 			GameObject go = new GameObject();
 			go.name = "Skill";
 			SkillBase s = go.AddComponent(target.Skill) as SkillBase;
-			s.uuid = Guid.NewGuid().ToString();
+			s.Uuid = Guid.NewGuid().ToString();
 			go.transform.SetParent(col.transform);
 		}
 

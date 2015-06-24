@@ -17,6 +17,21 @@ namespace Adnc.SkillTree {
 		[Tooltip("What is the current skill level in this category?")]
 		public int skillLv = 0;
 
+		string uuid;
+		public string Uuid {
+			get {
+				if (string.IsNullOrEmpty(uuid)) {
+					uuid = System.Guid.NewGuid().ToString();
+				}
+				
+				return uuid;
+			}
+			
+			set {
+				uuid = value;
+			}
+		}
+
 		/// <summary>
 		/// Retreives skill collections without any parents
 		/// </summary>
