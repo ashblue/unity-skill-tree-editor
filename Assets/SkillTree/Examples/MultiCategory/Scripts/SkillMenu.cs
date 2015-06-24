@@ -5,8 +5,6 @@ using System.Collections.Generic;
 
 namespace Adnc.SkillTree.Example.MultiCategory {
 	public class SkillMenu : MonoBehaviour {
-		public static SkillMenu current; // @TODO We probably can't have a static reference since it will cause issues
-
 		Dictionary<SkillCollectionBase, SkillNode> nodeRef;
 		List<SkillNode> skillNodes;
 
@@ -37,10 +35,6 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 		[SerializeField] Text sidebarBody;
 		[SerializeField] Text sidebarRequirements;
 		[SerializeField] Button sidebarPurchase;
-
-		void Awake () {
-			current = this;
-		}
 
 		void Start () {
 			SkillCategoryBase[] skillCategories = skillTree.GetCategories();
@@ -99,6 +93,7 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 					node.transform.localScale = Vector3.one;
 
 					SkillNode skillNode = node.GetComponent<SkillNode>();
+					skillNode.menu = this;
 					skillNode.skillCollection = rowItem;
 					skillNodes.Add(skillNode);
 
@@ -222,10 +217,6 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 
 			// @TODO Update tree node display status
 			UpdateNodes();
-		}
-
-		void OnDestroy () {
-			current = null;
 		}
 	}
 }

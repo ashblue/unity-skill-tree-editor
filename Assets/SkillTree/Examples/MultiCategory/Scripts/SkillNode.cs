@@ -5,6 +5,7 @@ using System.Collections.Generic;
 namespace Adnc.SkillTree.Example.MultiCategory {
 	public class SkillNode : MonoBehaviour {
 		Button btn;
+		[HideInInspector] public SkillMenu menu;
 
 		[Tooltip("Simple reference to pre-existing skill node data. Used for updating skill nodes in real time.")]
 		public SkillCollectionBase skillCollection;
@@ -20,7 +21,7 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 		}
 
 		public void ShowDetails () {
-			SkillMenu.current.ShowNodeDetails(skillCollection);
+			menu.ShowNodeDetails(skillCollection);
 		}
 
 		public void SetStatus (NodeStatus status, Color color) {
