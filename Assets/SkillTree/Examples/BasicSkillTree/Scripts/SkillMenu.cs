@@ -8,7 +8,7 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 		Dictionary<SkillCollectionBase, SkillNode> nodeRef;
 		List<SkillNode> skillNodes;
 
-		[SerializeField] SkillTreeBase skillTree;
+		public SkillTreeBase skillTree;
 
 		[Header("Header")]
 		[SerializeField] Transform categoryContainer;
@@ -67,7 +67,7 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 			}
 		}
 
-		void ShowCategory (SkillCategoryBase category) {
+		public void ShowCategory (SkillCategoryBase category) {
 			skillNodes = new List<SkillNode>();
 			nodeRef = new Dictionary<SkillCollectionBase, SkillNode>();
 			categoryName.text = string.Format("{0}: Level {1}", category.displayName, category.skillLv);

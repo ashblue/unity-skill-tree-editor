@@ -183,7 +183,6 @@ MonoBehaviour:
   description: Increase restoration by 2x.
   requiredLevel: 0
   requiredSkills: []
-  uuid: d3bb8d9f-97ab-4ec5-a918-64f665de64fa
 --- !u!1 &73677435
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,7 +352,6 @@ MonoBehaviour:
   requiredLevel: 10
   requiredSkills:
   - {fileID: 1688196762}
-  uuid: cfb08645-f499-47b5-b4fa-b8ec94eac484
 --- !u!1 &90736797
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +501,6 @@ MonoBehaviour:
   description: Add a shield that blocks damage equal to 25% of max health.
   requiredLevel: 0
   requiredSkills: []
-  uuid: 5489d2e1-ea24-4c6e-a8ec-a88ac0f966c4
 --- !u!1 &147900914
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,7 +669,6 @@ MonoBehaviour:
   description: Restore health by 50% of max health.
   requiredLevel: 0
   requiredSkills: []
-  uuid: ac06f29e-9f23-4ef2-82b3-99831a6ec8fb
 --- !u!1 &230957920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,7 +1208,121 @@ MonoBehaviour:
     the target of all damage.
   requiredLevel: 10
   requiredSkills: []
-  uuid: d86478ef-c80a-4c44-8cf5-5c5a0e2f9a54
+--- !u!1 &380476320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 380476321}
+  - 222: {fileID: 380476324}
+  - 114: {fileID: 380476323}
+  - 114: {fileID: 380476322}
+  m_Layer: 5
+  m_Name: Button (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &380476321
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 380476320}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1523395397}
+  m_Father: {fileID: 1748451362}
+  m_RootOrder: 1
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &380476322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 380476320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}
+    m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
+    m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
+    m_ColorMultiplier: 1
+    m_FadeDuration: .100000001
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 380476323}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 442209093}
+        m_MethodName: LoadSnapshot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &380476323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 380476320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &380476324
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 380476320}
 --- !u!1 &416822872
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,6 +1386,7 @@ GameObject:
   - 114: {fileID: 442209090}
   - 114: {fileID: 442209089}
   - 114: {fileID: 442209092}
+  - 114: {fileID: 442209093}
   m_Layer: 5
   m_Name: SkillMenu
   m_TagString: Untagged
@@ -1296,6 +1407,7 @@ RectTransform:
   - {fileID: 1545289020}
   - {fileID: 1656858501}
   - {fileID: 2072538580}
+  - {fileID: 1748451362}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
@@ -1388,6 +1500,17 @@ MonoBehaviour:
   sidebarRequirements: {fileID: 593481926}
   sidebarPurchasedMessage: {fileID: 240544790}
   sidebarPurchase: {fileID: 73677436}
+--- !u!114 &442209093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 442209087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff4669e461940458e811e7d33fb05424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &445126382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,7 +1716,6 @@ MonoBehaviour:
   description: Dual wielding attacks ignore 25% or target's armor.
   requiredLevel: 5
   requiredSkills: []
-  uuid: 7080b442-0ed2-4793-a9f5-5938a09c6d9d
 --- !u!1 &524590427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1724,7 +1846,6 @@ MonoBehaviour:
   description: Long sword usage gets a 10% damage boost.
   requiredLevel: 0
   requiredSkills: []
-  uuid: ead5cb50-bb36-4a34-ae71-a28fa36ad91d
 --- !u!1 &588180203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,7 +1891,6 @@ MonoBehaviour:
   description: Your magic attacks do 3x damage.
   requiredLevel: 5
   requiredSkills: []
-  uuid: 8d9e1252-d9b5-43ea-90c2-9ad0304832b3
 --- !u!1 &593481924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1954,6 +2074,72 @@ Transform:
   - {fileID: 749188065}
   m_Father: {fileID: 1195464872}
   m_RootOrder: 0
+--- !u!1 &621356300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 621356301}
+  - 222: {fileID: 621356303}
+  - 114: {fileID: 621356302}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &621356301
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 621356300}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1929023827}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &621356302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 621356300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: .196078435, g: .196078435, b: .196078435, a: 1}
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 12
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Store Snapshot
+--- !u!222 &621356303
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 621356300}
 --- !u!1 &675333263
 GameObject:
   m_ObjectHideFlags: 0
@@ -2105,7 +2291,6 @@ MonoBehaviour:
   description: Increase destruction by 2x.
   requiredLevel: 0
   requiredSkills: []
-  uuid: f7b725c0-fa2f-4da5-be0d-86f85899d36c
 --- !u!1 &749188064
 GameObject:
   m_ObjectHideFlags: 0
@@ -2201,7 +2386,6 @@ MonoBehaviour:
   description: Increase your magic regen by 200%.
   requiredLevel: 5
   requiredSkills: []
-  uuid: 641c5be1-cd3f-4827-be66-7aaa48fcc8ad
 --- !u!1 &756137895
 GameObject:
   m_ObjectHideFlags: 0
@@ -2719,7 +2903,6 @@ MonoBehaviour:
   description: Increased chance to not be noticed.
   requiredLevel: 0
   requiredSkills: []
-  uuid: 9ba4f6e6-9505-4b8b-bd14-766faeead9ce
 --- !u!1 &977690040
 GameObject:
   m_ObjectHideFlags: 0
@@ -2831,7 +3014,6 @@ MonoBehaviour:
   description: Random high damage AOE strikes throughout the area.
   requiredLevel: 10
   requiredSkills: []
-  uuid: caca5d36-da8d-461e-8e6b-c1b6d8e04754
 --- !u!1 &1007428153
 GameObject:
   m_ObjectHideFlags: 0
@@ -2993,7 +3175,6 @@ MonoBehaviour:
   description: Using a really big sword gives you a 10% damage boost.
   requiredLevel: 0
   requiredSkills: []
-  uuid: 1a987f1d-3dbe-4568-96af-8f26100ccc0e
 --- !u!1 &1078934581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3039,7 +3220,6 @@ MonoBehaviour:
   description: Fire 5 normal attacks at once.
   requiredLevel: 0
   requiredSkills: []
-  uuid: de9cbd78-3d82-4b10-aee2-d2bd61eadf43
 --- !u!1 &1089258456
 GameObject:
   m_ObjectHideFlags: 0
@@ -3136,7 +3316,6 @@ MonoBehaviour:
   description: Global AOE damage over time to all enemies.
   requiredLevel: 10
   requiredSkills: []
-  uuid: 5134c8e0-85f0-4e41-9b48-0121050ff841
 --- !u!1 &1189115322
 GameObject:
   m_ObjectHideFlags: 0
@@ -3170,7 +3349,6 @@ MonoBehaviour:
   description: Transfer 20% of shield to base armor.
   requiredLevel: 5
   requiredSkills: []
-  uuid: 0107355d-b43f-4ed7-9d21-8fdcf16260fd
 --- !u!4 &1189115324
 Transform:
   m_ObjectHideFlags: 0
@@ -3378,7 +3556,6 @@ MonoBehaviour:
   description: Using a really big sword gives you a 20% damage boost.
   requiredLevel: 5
   requiredSkills: []
-  uuid: 4644e94a-8229-4892-81be-faa57f372976
 --- !u!1 &1312828395
 GameObject:
   m_ObjectHideFlags: 0
@@ -3697,7 +3874,6 @@ MonoBehaviour:
   description: Wake up a character with 25% health in the middle of a battle.
   requiredLevel: 10
   requiredSkills: []
-  uuid: d538bdb0-2d85-42a9-8b5e-c7d939473ba7
 --- !u!1 &1448965058
 GameObject:
   m_ObjectHideFlags: 0
@@ -3930,7 +4106,72 @@ MonoBehaviour:
   description: Dual wielding penalty removed if weilding shortswords.
   requiredLevel: 0
   requiredSkills: []
-  uuid: b967879b-c94e-4895-b679-a32cb619e317
+--- !u!1 &1523395394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1523395397}
+  - 222: {fileID: 1523395396}
+  - 114: {fileID: 1523395395}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1523395395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1523395394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: .196078435, g: .196078435, b: .196078435, a: 1}
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 12
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Restore Snapshot
+--- !u!222 &1523395396
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1523395394}
+--- !u!224 &1523395397
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1523395394}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 380476321}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: .5, y: .5}
 --- !u!1 &1528209231
 GameObject:
   m_ObjectHideFlags: 0
@@ -4170,7 +4411,6 @@ MonoBehaviour:
   description: 20% reduction of all costs in stores.
   requiredLevel: 0
   requiredSkills: []
-  uuid: 7aa4a467-d3e0-4c35-a1ae-92da415d17e5
 --- !u!1 &1548661338
 GameObject:
   m_ObjectHideFlags: 0
@@ -4282,7 +4522,6 @@ MonoBehaviour:
   description: Long sword usage gets a 20% damage boost.
   requiredLevel: 5
   requiredSkills: []
-  uuid: 37cf8a35-2cf7-46ee-b233-aee3e2430536
 --- !u!1 &1604079261
 GameObject:
   m_ObjectHideFlags: 0
@@ -4328,7 +4567,6 @@ MonoBehaviour:
   description: Transfer 30% of shield to base armor.
   requiredLevel: 10
   requiredSkills: []
-  uuid: b207109c-3bc2-4657-a6b5-e449ffd288eb
 --- !u!1 &1614963196
 GameObject:
   m_ObjectHideFlags: 0
@@ -4375,7 +4613,6 @@ MonoBehaviour:
     by 2x.
   requiredLevel: 10
   requiredSkills: []
-  uuid: 82100a6e-3732-47f6-8350-eeb8dbf47617
 --- !u!1 &1641194689
 GameObject:
   m_ObjectHideFlags: 0
@@ -4473,7 +4710,6 @@ MonoBehaviour:
     prey on the fearful.
   requiredLevel: 5
   requiredSkills: []
-  uuid: 9e68d900-8432-4394-9842-6240af42a7a7
 --- !u!1 &1656858500
 GameObject:
   m_ObjectHideFlags: 0
@@ -4554,7 +4790,6 @@ MonoBehaviour:
   description: You may now disarm and take traps.
   requiredLevel: 0
   requiredSkills: []
-  uuid: 2f203059-def1-450e-ae80-1a1ef6259340
 --- !u!1 &1675981776
 GameObject:
   m_ObjectHideFlags: 0
@@ -4653,7 +4888,6 @@ MonoBehaviour:
   description: AOE damage attack.
   requiredLevel: 5
   requiredSkills: []
-  uuid: 6350d3cf-6bf5-4d7f-bda4-4a203cd6646a
 --- !u!1 &1705536196
 GameObject:
   m_ObjectHideFlags: 0
@@ -4856,7 +5090,61 @@ MonoBehaviour:
   description: Unleash an attack that does 300% damage
   requiredLevel: 0
   requiredSkills: []
-  uuid: 9c807261-a80d-498e-ad00-acd7b8e21a13
+--- !u!1 &1748451361
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1748451362}
+  - 114: {fileID: 1748451363}
+  m_Layer: 5
+  m_Name: Snapshot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1748451362
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1748451361}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1929023827}
+  - {fileID: 380476321}
+  m_Father: {fileID: 442209088}
+  m_RootOrder: 3
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 275.5, y: 253.110001}
+  m_SizeDelta: {x: 109, y: 51}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &1748451363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1748451361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1297475563, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 2
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
 --- !u!1 &1754579960
 GameObject:
   m_ObjectHideFlags: 0
@@ -4903,7 +5191,6 @@ MonoBehaviour:
     them for gold.
   requiredLevel: 0
   requiredSkills: []
-  uuid: 0f9460f7-5c2b-403a-ab7b-68dc8aa231cb
 --- !u!1 &1760510145
 GameObject:
   m_ObjectHideFlags: 0
@@ -4950,7 +5237,6 @@ MonoBehaviour:
   requiredLevel: 10
   requiredSkills:
   - {fileID: 1654075807}
-  uuid: 7e89e038-6ff0-444f-9c41-99ebda33991e
 --- !u!1 &1796627236
 GameObject:
   m_ObjectHideFlags: 0
@@ -5107,7 +5393,6 @@ MonoBehaviour:
   description: Dual weilding attacks now deal 200% damage
   requiredLevel: 10
   requiredSkills: []
-  uuid: eb5df3e3-fa59-4ed5-ad53-e598b9d81274
 --- !u!1 &1887687697
 GameObject:
   m_ObjectHideFlags: 0
@@ -5153,7 +5438,121 @@ MonoBehaviour:
   description: Your magic attacks do 2x damage.
   requiredLevel: 0
   requiredSkills: []
-  uuid: 88f147ee-25da-49ae-9a3e-1a7c7499af47
+--- !u!1 &1929023826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1929023827}
+  - 222: {fileID: 1929023830}
+  - 114: {fileID: 1929023829}
+  - 114: {fileID: 1929023828}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1929023827
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1929023826}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 621356301}
+  m_Father: {fileID: 1748451362}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &1929023828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1929023826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}
+    m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
+    m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
+    m_ColorMultiplier: 1
+    m_FadeDuration: .100000001
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1929023829}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 442209093}
+        m_MethodName: SaveSnapshot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1929023829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1929023826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1929023830
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1929023826}
 --- !u!1 &1932055083
 GameObject:
   m_ObjectHideFlags: 0
@@ -5369,7 +5768,6 @@ MonoBehaviour:
   description: Deal your armor plus 300% to an enemy. Stuns them for 3 - 5 seconds.
   requiredLevel: 0
   requiredSkills: []
-  uuid: 8cde4b85-c9dc-4534-bfbf-869ecb07f893
 --- !u!224 &1968322736 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22476934, guid: 8e7565d93062d41ccb65d00221fc9fd2,
@@ -5420,7 +5818,6 @@ MonoBehaviour:
   description: AOE based fire attack
   requiredLevel: 0
   requiredSkills: []
-  uuid: 6384e746-9f1a-4603-a1dd-b3c7eb0cb6ca
 --- !u!1 &1995200534
 GameObject:
   m_ObjectHideFlags: 0
@@ -5466,7 +5863,6 @@ MonoBehaviour:
   description: Transfer 10% of shield to base armor.
   requiredLevel: 0
   requiredSkills: []
-  uuid: 3bf75188-9db5-4d36-8f20-7db0e2df00b6
 --- !u!1 &2060187522
 GameObject:
   m_ObjectHideFlags: 0
@@ -5842,7 +6238,6 @@ MonoBehaviour:
   description: Enemies not aware of you take 500% damage
   requiredLevel: 0
   requiredSkills: []
-  uuid: bf613e34-c41b-4c5e-8542-2bf3e81d843e
 --- !u!1 &2138534191
 GameObject:
   m_ObjectHideFlags: 0
