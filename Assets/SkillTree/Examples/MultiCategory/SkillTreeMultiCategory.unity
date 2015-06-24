@@ -87,6 +87,103 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &10372310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 10372311}
+  - 114: {fileID: 10372312}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &10372311
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 10372310}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 227688931}
+  m_Father: {fileID: 881197892}
+  m_RootOrder: 8
+--- !u!114 &10372312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 10372310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Heal
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 372.816895
+    y: 255
+    width: 220
+    height: 150
+  childSkills:
+  - {fileID: 2060187524}
+--- !u!1 &32616984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 32616985}
+  - 114: {fileID: 32616986}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &32616985
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 32616984}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1505896581}
+  m_RootOrder: 0
+--- !u!114 &32616986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 32616984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Increase restoration by 2x.
+  requiredLevel: 0
+  requiredSkills: []
+  uuid: d3bb8d9f-97ab-4ec5-a918-64f665de64fa
 --- !u!1 &73677435
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +307,53 @@ MonoBehaviour:
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+--- !u!1 &75165585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 75165586}
+  - 114: {fileID: 75165587}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &75165586
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 75165585}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1675981777}
+  m_RootOrder: 2
+--- !u!114 &75165587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 75165585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Using a really big sword gives you a 30% damage boost.
+  requiredLevel: 10
+  requiredSkills:
+  - {fileID: 1688196762}
+  uuid: cfb08645-f499-47b5-b4fa-b8ec94eac484
 --- !u!1 &90736797
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,6 +458,52 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 90736797}
+--- !u!1 &142719664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 142719665}
+  - 114: {fileID: 142719666}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &142719665
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 142719664}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 329883098}
+  m_RootOrder: 0
+--- !u!114 &142719666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 142719664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Add a shield that blocks damage equal to 25% of max health.
+  requiredLevel: 0
+  requiredSkills: []
+  uuid: 5489d2e1-ea24-4c6e-a8ec-a88ac0f966c4
 --- !u!1 &147900914
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,6 +627,102 @@ MonoBehaviour:
   m_Spacing: {x: 20, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!1 &227688930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 227688931}
+  - 114: {fileID: 227688932}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &227688931
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 227688930}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 10372311}
+  m_RootOrder: 0
+--- !u!114 &227688932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 227688930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Restore health by 50% of max health.
+  requiredLevel: 0
+  requiredSkills: []
+  uuid: ac06f29e-9f23-4ef2-82b3-99831a6ec8fb
+--- !u!1 &230957920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 230957921}
+  - 114: {fileID: 230957922}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &230957921
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 230957920}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1162560769}
+  m_Father: {fileID: 881197892}
+  m_RootOrder: 7
+--- !u!114 &230957922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 230957920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Blizzard
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 123.013916
+    y: 471
+    width: 220
+    height: 150
+  childSkills: []
 --- !u!1 &240544788
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,6 +848,56 @@ MonoBehaviour:
   m_Spacing: {x: 20, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!1 &277663403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 277663404}
+  - 114: {fileID: 277663405}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &277663404
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 277663403}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 366150927}
+  m_Father: {fileID: 416822873}
+  m_RootOrder: 6
+--- !u!114 &277663405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 277663403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Decoy
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 372.760498
+    y: 413
+    width: 220
+    height: 150
+  childSkills: []
 --- !u!1 &292964042
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,6 +1002,57 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 292964042}
+--- !u!1 &329883097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 329883098}
+  - 114: {fileID: 329883099}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &329883098
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 329883097}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 142719665}
+  m_Father: {fileID: 881197892}
+  m_RootOrder: 9
+--- !u!114 &329883099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 329883097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Shield
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 611.816895
+    y: 257
+    width: 220
+    height: 150
+  childSkills:
+  - {fileID: 2060187524}
 --- !u!1 &332282422
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,15 +1114,67 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 332282422}
---- !u!1 &337721323
+--- !u!1 &344364950
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 337721324}
-  - 114: {fileID: 337721325}
+  - 4: {fileID: 344364951}
+  - 114: {fileID: 344364952}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &344364951
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 344364950}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 729449881}
+  m_Father: {fileID: 881197892}
+  m_RootOrder: 0
+--- !u!114 &344364952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 344364950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Destruction
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: -22
+    y: 58
+    width: 220
+    height: 150
+  childSkills:
+  - {fileID: 524590429}
+  - {fileID: 675333265}
+--- !u!1 &366150926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 366150927}
+  - 114: {fileID: 366150928}
   m_Layer: 0
   m_Name: Skill
   m_TagString: Untagged
@@ -743,24 +1182,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &337721324
+--- !u!4 &366150927
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 337721323}
+  m_GameObject: {fileID: 366150926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1474341097}
-  m_RootOrder: 2
---- !u!114 &337721325
+  m_Father: {fileID: 277663404}
+  m_RootOrder: 0
+--- !u!114 &366150928
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 337721323}
+  m_GameObject: {fileID: 366150926}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
@@ -769,10 +1208,62 @@ MonoBehaviour:
   unlocked: 0
   displayName: Skill
   uniqueName: 
-  description: 
-  requiredLevel: 0
+  description: When hit once after 5 minutes, you will spawn a decoy that becomes
+    the target of all damage.
+  requiredLevel: 10
   requiredSkills: []
-  uuid: aee9547d-3096-453f-8013-b7b51f216df8
+  uuid: d86478ef-c80a-4c44-8cf5-5c5a0e2f9a54
+--- !u!1 &416822872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 416822873}
+  - 114: {fileID: 416822874}
+  m_Layer: 0
+  m_Name: Thief
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &416822873
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 416822872}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1347121437}
+  - {fileID: 1467410035}
+  - {fileID: 1312828396}
+  - {fileID: 1089258457}
+  - {fileID: 1641194690}
+  - {fileID: 1851214463}
+  - {fileID: 277663404}
+  - {fileID: 1528209232}
+  m_Father: {fileID: 1195464872}
+  m_RootOrder: 2
+--- !u!114 &416822874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 416822872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fabdf25587e2474294c1f6640b73874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Thief
+  uniqueName: 
+  description: 
+  skillLv: 3
 --- !u!1 &442209087
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,17 +1486,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: Skill C
+  displayName: Whirlwind
   uniqueName: 
-  description: 
+  notes: 
   windowRect:
     serializedVersion: 2
-    x: 391
-    y: 259
+    x: 121
+    y: 260
     width: 220
     height: 150
   childSkills:
-  - {fileID: 484835776}
+  - {fileID: 749188066}
 --- !u!1 &484835774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,16 +1537,115 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: Skill D
+  displayName: Taunt
   uniqueName: 
-  description: 
+  notes: 
   windowRect:
     serializedVersion: 2
-    x: 225
-    y: 475.006348
+    x: 389
+    y: 259.006348
     width: 220
     height: 150
-  childSkills: []
+  childSkills:
+  - {fileID: 749188066}
+--- !u!1 &494551935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 494551936}
+  - 114: {fileID: 494551937}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &494551936
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 494551935}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1312828396}
+  m_RootOrder: 0
+--- !u!114 &494551937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 494551935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Dual wielding attacks ignore 25% or target's armor.
+  requiredLevel: 5
+  requiredSkills: []
+  uuid: 7080b442-0ed2-4793-a9f5-5938a09c6d9d
+--- !u!1 &524590427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 524590428}
+  - 114: {fileID: 524590429}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &524590428
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 524590427}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1078934582}
+  m_Father: {fileID: 881197892}
+  m_RootOrder: 5
+--- !u!114 &524590429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 524590427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Magic Missile
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: -132.986084
+    y: 266
+    width: 220
+    height: 150
+  childSkills:
+  - {fileID: 1007428155}
+  - {fileID: 230957922}
 --- !u!1 &580004062
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,11 +1721,56 @@ MonoBehaviour:
   unlocked: 0
   displayName: Skill
   uniqueName: 
-  description: Are you so desperate to fight criminals that you lock yourself in to
-    take them on one at a time ?
+  description: Long sword usage gets a 10% damage boost.
   requiredLevel: 0
   requiredSkills: []
   uuid: ead5cb50-bb36-4a34-ae71-a28fa36ad91d
+--- !u!1 &588180203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 588180204}
+  - 114: {fileID: 588180205}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &588180204
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 588180203}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2138534192}
+  m_RootOrder: 1
+--- !u!114 &588180205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 588180203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Your magic attacks do 3x damage.
+  requiredLevel: 5
+  requiredSkills: []
+  uuid: 8d9e1252-d9b5-43ea-90c2-9ad0304832b3
 --- !u!1 &593481924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,7 +1930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fabdf25587e2474294c1f6640b73874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: My Category
+  displayName: Warrior
   uniqueName: 
   description: 
   skillLv: 5
@@ -1313,8 +1948,64 @@ Transform:
   - {fileID: 1474341097}
   - {fileID: 447247827}
   - {fileID: 484835775}
+  - {fileID: 1675981777}
+  - {fileID: 1708338391}
+  - {fileID: 761313360}
+  - {fileID: 749188065}
   m_Father: {fileID: 1195464872}
   m_RootOrder: 0
+--- !u!1 &675333263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 675333264}
+  - 114: {fileID: 675333265}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &675333264
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 675333263}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1991927589}
+  m_Father: {fileID: 881197892}
+  m_RootOrder: 4
+--- !u!114 &675333265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 675333263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Fireball
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 123.619629
+    y: 267
+    width: 220
+    height: 150
+  childSkills:
+  - {fileID: 1007428155}
+  - {fileID: 230957922}
 --- !u!1 &698245349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,6 +2033,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 587999114}
+  - {fileID: 1580056853}
+  - {fileID: 1760510146}
   m_Father: {fileID: 604047853}
   m_RootOrder: 0
 --- !u!114 &698245351
@@ -1355,18 +2048,260 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: Skill A
+  displayName: Long Sword
   uniqueName: 
-  description: 
+  notes: 
   windowRect:
     serializedVersion: 2
-    x: 268
-    y: 38
+    x: 411
+    y: -150
     width: 220
     height: 150
   childSkills:
   - {fileID: 1474341098}
-  - {fileID: 447247828}
+  - {fileID: 1708338392}
+--- !u!1 &729449880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 729449881}
+  - 114: {fileID: 729449882}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &729449881
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 729449880}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 344364951}
+  m_RootOrder: 0
+--- !u!114 &729449882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 729449880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Increase destruction by 2x.
+  requiredLevel: 0
+  requiredSkills: []
+  uuid: f7b725c0-fa2f-4da5-be0d-86f85899d36c
+--- !u!1 &749188064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 749188065}
+  - 114: {fileID: 749188066}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &749188065
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 749188064}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1614963197}
+  m_Father: {fileID: 604047853}
+  m_RootOrder: 7
+--- !u!114 &749188066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 749188064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Ripost
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 255
+    y: 483
+    width: 220
+    height: 150
+  childSkills: []
+--- !u!1 &755523041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 755523042}
+  - 114: {fileID: 755523043}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &755523042
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 755523041}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 756137896}
+  m_RootOrder: 0
+--- !u!114 &755523043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 755523041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Increase your magic regen by 200%.
+  requiredLevel: 5
+  requiredSkills: []
+  uuid: 641c5be1-cd3f-4827-be66-7aaa48fcc8ad
+--- !u!1 &756137895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 756137896}
+  - 114: {fileID: 756137897}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &756137896
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 756137895}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 755523042}
+  m_Father: {fileID: 881197892}
+  m_RootOrder: 3
+--- !u!114 &756137897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 756137895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Meditate
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 850.549316
+    y: 254
+    width: 220
+    height: 150
+  childSkills: []
+--- !u!1 &761313359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 761313360}
+  - 114: {fileID: 761313361}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &761313360
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 761313359}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1954195723}
+  m_Father: {fileID: 604047853}
+  m_RootOrder: 6
+--- !u!114 &761313361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 761313359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Shield Bash
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 694
+    y: 261
+    width: 220
+    height: 150
+  childSkills: []
 --- !u!1 &811908400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,7 +2467,18 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 344364951}
+  - {fileID: 1505896581}
+  - {fileID: 2138534192}
+  - {fileID: 756137896}
+  - {fileID: 675333264}
+  - {fileID: 524590428}
+  - {fileID: 1007428154}
+  - {fileID: 230957921}
+  - {fileID: 10372311}
+  - {fileID: 329883098}
+  - {fileID: 2060187523}
   m_Father: {fileID: 1195464872}
   m_RootOrder: 1
 --- !u!114 &881197893
@@ -1546,10 +2492,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fabdf25587e2474294c1f6640b73874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: Category
+  displayName: Mage
   uniqueName: 
   description: 
-  skillLv: 0
+  skillLv: 10
 --- !u!1 &886178084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1728,6 +2674,52 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: df0a974fc91094a669c35836fc633eaa, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &977302734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 977302735}
+  - 114: {fileID: 977302736}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &977302735
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 977302734}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1467410035}
+  m_RootOrder: 0
+--- !u!114 &977302736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 977302734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Increased chance to not be noticed.
+  requiredLevel: 0
+  requiredSkills: []
+  uuid: 9ba4f6e6-9505-4b8b-bd14-766faeead9ce
 --- !u!1 &977690040
 GameObject:
   m_ObjectHideFlags: 0
@@ -1794,6 +2786,102 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 977690040}
+--- !u!1 &979525236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 979525237}
+  - 114: {fileID: 979525238}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &979525237
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 979525236}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1007428154}
+  m_RootOrder: 0
+--- !u!114 &979525238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 979525236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Random high damage AOE strikes throughout the area.
+  requiredLevel: 10
+  requiredSkills: []
+  uuid: caca5d36-da8d-461e-8e6b-c1b6d8e04754
+--- !u!1 &1007428153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1007428154}
+  - 114: {fileID: 1007428155}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1007428154
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1007428153}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 979525237}
+  m_Father: {fileID: 881197892}
+  m_RootOrder: 6
+--- !u!114 &1007428155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1007428153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Fire Storm
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: -128.986084
+    y: 473
+    width: 220
+    height: 150
+  childSkills: []
 --- !u!1 &1020401324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1860,6 +2948,241 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1020401324}
+--- !u!1 &1022884474
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1022884475}
+  - 114: {fileID: 1022884476}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1022884475
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1022884474}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1675981777}
+  m_RootOrder: 0
+--- !u!114 &1022884476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1022884474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Using a really big sword gives you a 10% damage boost.
+  requiredLevel: 0
+  requiredSkills: []
+  uuid: 1a987f1d-3dbe-4568-96af-8f26100ccc0e
+--- !u!1 &1078934581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1078934582}
+  - 114: {fileID: 1078934583}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1078934582
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1078934581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 524590428}
+  m_RootOrder: 0
+--- !u!114 &1078934583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1078934581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Fire 5 normal attacks at once.
+  requiredLevel: 0
+  requiredSkills: []
+  uuid: de9cbd78-3d82-4b10-aee2-d2bd61eadf43
+--- !u!1 &1089258456
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1089258457}
+  - 114: {fileID: 1089258458}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1089258457
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1089258456}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1675398248}
+  m_Father: {fileID: 416822873}
+  m_RootOrder: 3
+--- !u!114 &1089258458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1089258456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Traps
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 1090.7605
+    y: 207
+    width: 220
+    height: 150
+  childSkills:
+  - {fileID: 1851214464}
+--- !u!1 &1162560768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1162560769}
+  - 114: {fileID: 1162560770}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1162560769
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1162560768}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 230957921}
+  m_RootOrder: 0
+--- !u!114 &1162560770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1162560768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Global AOE damage over time to all enemies.
+  requiredLevel: 10
+  requiredSkills: []
+  uuid: 5134c8e0-85f0-4e41-9b48-0121050ff841
+--- !u!1 &1189115322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1189115324}
+  - 114: {fileID: 1189115323}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1189115323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1189115322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Transfer 20% of shield to base armor.
+  requiredLevel: 5
+  requiredSkills: []
+  uuid: 0107355d-b43f-4ed7-9d21-8fdcf16260fd
+--- !u!4 &1189115324
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1189115322}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1708338391}
+  m_RootOrder: 1
 --- !u!1 &1195464870
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,7 +3212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Skill Tree
   description: 
-  currentCategory: {fileID: 604047852}
+  currentCategory: {fileID: 416822874}
   skillPoints: 10
 --- !u!4 &1195464872
 Transform:
@@ -1903,6 +3226,7 @@ Transform:
   m_Children:
   - {fileID: 604047853}
   - {fileID: 881197892}
+  - {fileID: 416822873}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!1 &1214308539
@@ -2009,6 +3333,103 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1214308539}
+--- !u!1 &1235745062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1235745063}
+  - 114: {fileID: 1235745064}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1235745063
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1235745062}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1675981777}
+  m_RootOrder: 1
+--- !u!114 &1235745064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1235745062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Using a really big sword gives you a 20% damage boost.
+  requiredLevel: 5
+  requiredSkills: []
+  uuid: 4644e94a-8229-4892-81be-faa57f372976
+--- !u!1 &1312828395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1312828396}
+  - 114: {fileID: 1312828397}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1312828396
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1312828395}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 494551936}
+  m_Father: {fileID: 416822873}
+  m_RootOrder: 2
+--- !u!114 &1312828397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1312828395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Aim To Kill
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 370.760498
+    y: 222
+    width: 220
+    height: 150
+  childSkills:
+  - {fileID: 277663405}
 --- !u!1 &1315184613
 GameObject:
   m_ObjectHideFlags: 0
@@ -2079,6 +3500,58 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1315184613}
+--- !u!1 &1347121436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1347121437}
+  - 114: {fileID: 1347121438}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1347121437
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1347121436}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1510171351}
+  - {fileID: 1868642290}
+  m_Father: {fileID: 416822873}
+  m_RootOrder: 0
+--- !u!114 &1347121438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1347121436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Dual Wielding
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 370.760498
+    y: 33
+    width: 220
+    height: 150
+  childSkills:
+  - {fileID: 1312828397}
 --- !u!1 &1371613500
 GameObject:
   m_ObjectHideFlags: 0
@@ -2179,6 +3652,52 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -20}
   m_SizeDelta: {x: 0, y: -41}
   m_Pivot: {x: .5, y: .5}
+--- !u!1 &1392805644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1392805645}
+  - 114: {fileID: 1392805646}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1392805645
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1392805644}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2060187523}
+  m_RootOrder: 0
+--- !u!114 &1392805646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1392805644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Wake up a character with 25% health in the middle of a battle.
+  requiredLevel: 10
+  requiredSkills: []
+  uuid: d538bdb0-2d85-42a9-8b5e-c7d939473ba7
 --- !u!1 &1448965058
 GameObject:
   m_ObjectHideFlags: 0
@@ -2211,6 +3730,57 @@ RectTransform:
   m_AnchoredPosition: {x: -6.10351562e-05, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
+--- !u!1 &1467410034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1467410035}
+  - 114: {fileID: 1467410036}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1467410035
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1467410034}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 977302735}
+  m_Father: {fileID: 416822873}
+  m_RootOrder: 1
+--- !u!114 &1467410036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1467410034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Sneak
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 1087.7605
+    y: 29
+    width: 220
+    height: 150
+  childSkills:
+  - {fileID: 1089258458}
 --- !u!1 &1474341096
 GameObject:
   m_ObjectHideFlags: 0
@@ -2238,8 +3808,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1727220436}
-  - {fileID: 1850072871}
-  - {fileID: 337721324}
   m_Father: {fileID: 604047853}
   m_RootOrder: 1
 --- !u!114 &1474341098
@@ -2253,17 +3821,167 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: Skill B
+  displayName: Power Strike
   uniqueName: 
-  description: 
+  notes: 
   windowRect:
     serializedVersion: 2
-    x: 88
-    y: 258
+    x: 268
+    y: 54
     width: 220
     height: 150
   childSkills:
+  - {fileID: 447247828}
   - {fileID: 484835776}
+--- !u!1 &1505896580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1505896581}
+  - 114: {fileID: 1505896582}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1505896581
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1505896580}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 32616985}
+  m_Father: {fileID: 881197892}
+  m_RootOrder: 1
+--- !u!114 &1505896582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1505896580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Restoration
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 495
+    y: 47
+    width: 220
+    height: 150
+  childSkills:
+  - {fileID: 10372312}
+  - {fileID: 329883099}
+--- !u!1 &1510171350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1510171351}
+  - 114: {fileID: 1510171352}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1510171351
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1510171350}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1347121437}
+  m_RootOrder: 0
+--- !u!114 &1510171352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1510171350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Dual wielding penalty removed if weilding shortswords.
+  requiredLevel: 0
+  requiredSkills: []
+  uuid: b967879b-c94e-4895-b679-a32cb619e317
+--- !u!1 &1528209231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1528209232}
+  - 114: {fileID: 1528209233}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1528209232
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1528209231}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2131740435}
+  m_Father: {fileID: 416822873}
+  m_RootOrder: 7
+--- !u!114 &1528209233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1528209231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Backstab
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 814.760498
+    y: 211
+    width: 220
+    height: 150
+  childSkills:
+  - {fileID: 1851214464}
 --- !u!1001 &1535221303
 Prefab:
   m_ObjectHideFlags: 0
@@ -2407,6 +4125,52 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1545289019}
+--- !u!1 &1546555390
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1546555391}
+  - 114: {fileID: 1546555392}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1546555391
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1546555390}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1851214463}
+  m_RootOrder: 0
+--- !u!114 &1546555392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1546555390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: 20% reduction of all costs in stores.
+  requiredLevel: 0
+  requiredSkills: []
+  uuid: 7aa4a467-d3e0-4c35-a1ae-92da415d17e5
 --- !u!1 &1548661338
 GameObject:
   m_ObjectHideFlags: 0
@@ -2473,6 +4237,195 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1548661338}
+--- !u!1 &1580056852
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1580056853}
+  - 114: {fileID: 1580056854}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1580056853
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1580056852}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 698245350}
+  m_RootOrder: 1
+--- !u!114 &1580056854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1580056852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Long sword usage gets a 20% damage boost.
+  requiredLevel: 5
+  requiredSkills: []
+  uuid: 37cf8a35-2cf7-46ee-b233-aee3e2430536
+--- !u!1 &1604079261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1604079262}
+  - 114: {fileID: 1604079263}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1604079262
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1604079261}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1708338391}
+  m_RootOrder: 2
+--- !u!114 &1604079263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1604079261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Transfer 30% of shield to base armor.
+  requiredLevel: 10
+  requiredSkills: []
+  uuid: b207109c-3bc2-4657-a6b5-e449ffd288eb
+--- !u!1 &1614963196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1614963197}
+  - 114: {fileID: 1614963198}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1614963197
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1614963196}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 749188065}
+  m_RootOrder: 0
+--- !u!114 &1614963198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1614963196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: 
+  requiredLevel: 10
+  requiredSkills: []
+  uuid: 82100a6e-3732-47f6-8350-eeb8dbf47617
+--- !u!1 &1641194689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1641194690}
+  - 114: {fileID: 1641194691}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1641194690
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1641194689}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1754579961}
+  m_Father: {fileID: 416822873}
+  m_RootOrder: 4
+--- !u!114 &1641194691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1641194689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Pick Pocket
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 811.760498
+    y: 28
+    width: 220
+    height: 150
+  childSkills:
+  - {fileID: 1528209233}
 --- !u!1 &1654075805
 GameObject:
   m_ObjectHideFlags: 0
@@ -2517,7 +4470,7 @@ MonoBehaviour:
   uniqueName: 
   description: I seek the means to fight injustice. To turn fear against those who
     prey on the fearful.
-  requiredLevel: 0
+  requiredLevel: 5
   requiredSkills: []
   uuid: 9e68d900-8432-4394-9842-6240af42a7a7
 --- !u!1 &1656858500
@@ -2555,6 +4508,105 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 253.112503}
   m_SizeDelta: {x: 0, y: -506.225006}
   m_Pivot: {x: .5, y: .5}
+--- !u!1 &1675398247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1675398248}
+  - 114: {fileID: 1675398249}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1675398248
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1675398247}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1089258457}
+  m_RootOrder: 0
+--- !u!114 &1675398249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1675398247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: You may now disarm and take traps.
+  requiredLevel: 0
+  requiredSkills: []
+  uuid: 2f203059-def1-450e-ae80-1a1ef6259340
+--- !u!1 &1675981776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1675981777}
+  - 114: {fileID: 1675981778}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1675981777
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1675981776}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1022884475}
+  - {fileID: 1235745063}
+  - {fileID: 75165586}
+  m_Father: {fileID: 604047853}
+  m_RootOrder: 4
+--- !u!114 &1675981778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1675981776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Greatsword
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 122
+    y: -151
+    width: 220
+    height: 150
+  childSkills:
+  - {fileID: 1474341098}
 --- !u!1 &1688196760
 GameObject:
   m_ObjectHideFlags: 0
@@ -2597,10 +4649,9 @@ MonoBehaviour:
   unlocked: 0
   displayName: Skill
   uniqueName: 
-  description: And why do we fall? So we can learn to pick ourselves up.
+  description: AOE damage attack.
   requiredLevel: 5
-  requiredSkills:
-  - {fileID: 1727220437}
+  requiredSkills: []
   uuid: 6350d3cf-6bf5-4d7f-bda4-4a203cd6646a
 --- !u!1 &1705536196
 GameObject:
@@ -2706,6 +4757,59 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1705536196}
+--- !u!1 &1708338390
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1708338391}
+  - 114: {fileID: 1708338392}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1708338391
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1708338390}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1995200535}
+  - {fileID: 1189115324}
+  - {fileID: 1604079262}
+  m_Father: {fileID: 604047853}
+  m_RootOrder: 5
+--- !u!114 &1708338392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1708338390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Shield
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 693
+    y: 46.9841309
+    width: 220
+    height: 150
+  childSkills:
+  - {fileID: 761313361}
 --- !u!1 &1727220435
 GameObject:
   m_ObjectHideFlags: 0
@@ -2748,10 +4852,104 @@ MonoBehaviour:
   unlocked: 0
   displayName: Skill
   uniqueName: 
-  description: I'm Batman
-  requiredLevel: 5
+  description: Unleash an attack that does 300% damage
+  requiredLevel: 0
   requiredSkills: []
   uuid: 9c807261-a80d-498e-ad00-acd7b8e21a13
+--- !u!1 &1754579960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1754579961}
+  - 114: {fileID: 1754579962}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1754579961
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1754579960}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1641194690}
+  m_RootOrder: 0
+--- !u!114 &1754579962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1754579960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: When approaching NPCs for the first time, you will automatically loot
+    them for gold.
+  requiredLevel: 0
+  requiredSkills: []
+  uuid: 0f9460f7-5c2b-403a-ab7b-68dc8aa231cb
+--- !u!1 &1760510145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1760510146}
+  - 114: {fileID: 1760510147}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1760510146
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1760510145}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 698245350}
+  m_RootOrder: 2
+--- !u!114 &1760510147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1760510145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Long sword usage gets a 30% damage boost.
+  requiredLevel: 10
+  requiredSkills:
+  - {fileID: 1654075807}
+  uuid: 7e89e038-6ff0-444f-9c41-99ebda33991e
 --- !u!1 &1796627236
 GameObject:
   m_ObjectHideFlags: 0
@@ -2813,15 +5011,65 @@ RectTransform:
   m_PrefabParentObject: {fileID: 22497364, guid: df0a974fc91094a669c35836fc633eaa,
     type: 2}
   m_PrefabInternal: {fileID: 924618087}
---- !u!1 &1850072870
+--- !u!1 &1851214462
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 1850072871}
-  - 114: {fileID: 1850072872}
+  - 4: {fileID: 1851214463}
+  - 114: {fileID: 1851214464}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1851214463
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1851214462}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1546555391}
+  m_Father: {fileID: 416822873}
+  m_RootOrder: 5
+--- !u!114 &1851214464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1851214462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Haggle
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 957.760498
+    y: 394
+    width: 220
+    height: 150
+  childSkills: []
+--- !u!1 &1868642289
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1868642290}
+  - 114: {fileID: 1868642291}
   m_Layer: 0
   m_Name: Skill
   m_TagString: Untagged
@@ -2829,24 +5077,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1850072871
+--- !u!4 &1868642290
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1850072870}
+  m_GameObject: {fileID: 1868642289}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1474341097}
+  m_Father: {fileID: 1347121437}
   m_RootOrder: 1
---- !u!114 &1850072872
+--- !u!114 &1868642291
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1850072870}
+  m_GameObject: {fileID: 1868642289}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
@@ -2855,11 +5103,56 @@ MonoBehaviour:
   unlocked: 0
   displayName: Skill
   uniqueName: 
-  description: 
+  description: Dual weilding attacks now deal 200% damage
+  requiredLevel: 10
+  requiredSkills: []
+  uuid: eb5df3e3-fa59-4ed5-ad53-e598b9d81274
+--- !u!1 &1887687697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1887687698}
+  - 114: {fileID: 1887687699}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1887687698
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1887687697}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2138534192}
+  m_RootOrder: 0
+--- !u!114 &1887687699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1887687697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Your magic attacks do 2x damage.
   requiredLevel: 0
-  requiredSkills:
-  - {fileID: 1688196762}
-  uuid: 9053e67f-22c2-4fc1-843c-769415b5f9d7
+  requiredSkills: []
+  uuid: 88f147ee-25da-49ae-9a3e-1a7c7499af47
 --- !u!1 &1932055083
 GameObject:
   m_ObjectHideFlags: 0
@@ -3030,11 +5323,199 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1945581450}
+--- !u!1 &1954195722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1954195723}
+  - 114: {fileID: 1954195724}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1954195723
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1954195722}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 761313360}
+  m_RootOrder: 0
+--- !u!114 &1954195724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1954195722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Deal your armor plus 300% to an enemy. Stuns them for 3 - 5 seconds.
+  requiredLevel: 0
+  requiredSkills: []
+  uuid: 8cde4b85-c9dc-4534-bfbf-869ecb07f893
 --- !u!224 &1968322736 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22476934, guid: 8e7565d93062d41ccb65d00221fc9fd2,
     type: 2}
   m_PrefabInternal: {fileID: 1535221303}
+--- !u!1 &1991927588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1991927589}
+  - 114: {fileID: 1991927590}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1991927589
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991927588}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 675333264}
+  m_RootOrder: 0
+--- !u!114 &1991927590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1991927588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: AOE based fire attack
+  requiredLevel: 0
+  requiredSkills: []
+  uuid: 6384e746-9f1a-4603-a1dd-b3c7eb0cb6ca
+--- !u!1 &1995200534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1995200535}
+  - 114: {fileID: 1995200536}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1995200535
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1995200534}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1708338391}
+  m_RootOrder: 0
+--- !u!114 &1995200536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1995200534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Transfer 10% of shield to base armor.
+  requiredLevel: 0
+  requiredSkills: []
+  uuid: 3bf75188-9db5-4d36-8f20-7db0e2df00b6
+--- !u!1 &2060187522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2060187523}
+  - 114: {fileID: 2060187524}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2060187523
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2060187522}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1392805645}
+  m_Father: {fileID: 881197892}
+  m_RootOrder: 10
+--- !u!114 &2060187524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2060187522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Revive
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 487.816895
+    y: 473
+    width: 220
+    height: 150
+  childSkills: []
 --- !u!1 &2067483445
 GameObject:
   m_ObjectHideFlags: 0
@@ -3315,3 +5796,101 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2129271963}
+--- !u!1 &2131740434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2131740435}
+  - 114: {fileID: 2131740436}
+  m_Layer: 0
+  m_Name: Skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2131740435
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2131740434}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1528209232}
+  m_RootOrder: 0
+--- !u!114 &2131740436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2131740434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c716121f5d64477992ca7b973e9af62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
+  displayName: Skill
+  uniqueName: 
+  description: Enemies not aware of you take 500% damage
+  requiredLevel: 0
+  requiredSkills: []
+  uuid: bf613e34-c41b-4c5e-8542-2bf3e81d843e
+--- !u!1 &2138534191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2138534192}
+  - 114: {fileID: 2138534193}
+  m_Layer: 0
+  m_Name: SkillCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2138534192
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2138534191}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1887687698}
+  - {fileID: 588180204}
+  m_Father: {fileID: 881197892}
+  m_RootOrder: 2
+--- !u!114 &2138534193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2138534191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Focus
+  uniqueName: 
+  notes: 
+  windowRect:
+    serializedVersion: 2
+    x: 850.774658
+    y: 52
+    width: 220
+    height: 150
+  childSkills:
+  - {fileID: 756137897}
