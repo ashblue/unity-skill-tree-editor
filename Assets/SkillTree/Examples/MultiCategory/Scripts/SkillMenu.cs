@@ -81,7 +81,9 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 			List<List<SkillCollectionBase>> rows = new List<List<SkillCollectionBase>>();
 			List<SkillCollectionBase> rootNodes = category.GetRootSkillCollections();
 			rows.Add(rootNodes);
-			RecursiveRowAdd(rows);
+
+			Dictionary<SkillCollectionBase, bool> colHistory = new Dictionary<SkillCollectionBase, bool>();
+			RecursiveRowAdd(rows, colHistory);
 
 			// Output proper rows and attach data
 			foreach (List<SkillCollectionBase> row in rows) {
@@ -178,21 +180,22 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 			go.transform.position = start;
 		}
 
-		void RecursiveRowAdd (List<List<SkillCollectionBase>> rows) {
+		void RecursiveRowAdd (List<List<SkillCollectionBase>> rows, Dictionary<SkillCollectionBase, bool> history) {
 			List<SkillCollectionBase> row = new List<SkillCollectionBase>();
 			foreach (SkillCollectionBase collection in rows[rows.Count - 1]) {
 				foreach (SkillCollectionBase child in collection.childSkills) {
 					// @TODO We need to remove any duplicate entries (keep a record of every node added for ref)
 					// As an entry might leak through as a deeper child node later down the tree
-					if (!row.Contains(child)) {
+					if (!row.Contains(child) && !history.ContainsKey(child)) {
 						row.Add(child);
+						history[child] = true;
 					}
 				}
 			}
 
 			if (row.Count > 0) {
 				rows.Add(row);
-				RecursiveRowAdd(rows);
+				RecursiveRowAdd(rows, history);
 			}
 		}
 
@@ -242,8 +245,6 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 
 		void Repaint () {
 			UpdateSkillPoints();
-
-			// @TODO Update tree node display status
 			UpdateNodes();
 		}
 	}
