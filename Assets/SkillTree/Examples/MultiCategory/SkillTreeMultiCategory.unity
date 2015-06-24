@@ -1230,7 +1230,7 @@ MonoBehaviour:
   displayName: My Category
   uniqueName: 
   description: 
-  skillLv: 0
+  skillLv: 5
 --- !u!4 &604047853
 Transform:
   m_ObjectHideFlags: 0
@@ -1822,7 +1822,7 @@ MonoBehaviour:
   title: Skill Tree
   description: 
   currentCategory: {fileID: 604047852}
-  skillPoints: 2
+  skillPoints: 10
 --- !u!4 &1195464872
 Transform:
   m_ObjectHideFlags: 0

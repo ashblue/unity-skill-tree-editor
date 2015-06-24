@@ -55,6 +55,7 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 
 				// Dump in a tmp variable to force capture the variable by the event
 				SkillCategoryBase tmpCat = category; 
+				go.GetComponent<Button>().onClick.RemoveAllListeners();
 				go.GetComponent<Button>().onClick.AddListener(() => {
 					ShowCategory(tmpCat);
 				});
@@ -111,14 +112,14 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 				node.SetStatus(NodeStatus.Locked, colorLock);
 
 				if (node.skillCollection.Skill.unlocked) {
-					node.SetStatus(NodeStatus.Locked, colorUnlock);
+					node.SetStatus(NodeStatus.Unlocked, colorUnlock);
 				
 				} else if (skillTree.skillPoints > 0 && node.skillCollection.Skill.IsRequirements()) {
 
 					// Verify one parent node has at least one skill unlocked
 					if (node.parents.Count > 0) {
 						foreach (SkillNode parent in node.parents) {
-							if (parent.skillCollection.SkillIndex > 0) {
+							if (parent.skillCollection.GetSkill(0).unlocked) {
 								node.SetStatus(NodeStatus.Purchasable, colorPurchase);
 								break;
 							}
@@ -194,15 +195,32 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 			}
 		}
 
-		public void ShowNodeDetails (SkillCollectionBase skillCollection) {
+		public void ShowNodeDetails (SkillNode node) {
+			SkillCollectionBase skillCollection = node.skillCollection;
+			NodeStatus status = node.GetStatus();
+
 			sidebarTitle.text = string.Format("{0}: Lv {1}", skillCollection.displayName, skillCollection.SkillIndex + 1);
 			sidebarBody.text = skillCollection.Skill.description;
 
 			string requirements = skillCollection.Skill.GetRequirements();
 			if (string.IsNullOrEmpty(requirements)) {
-				sidebarRequirements.text = "";
+				sidebarRequirements.gameObject.SetActive(false);
 			} else {
 				sidebarRequirements.text = "<b>Requirements:</b> \n" + skillCollection.Skill.GetRequirements();
+				sidebarRequirements.gameObject.SetActive(true);
+			}
+
+			if (status == NodeStatus.Purchasable) {
+				sidebarPurchase.gameObject.SetActive(true);
+				sidebarPurchase.onClick.RemoveAllListeners();
+				sidebarPurchase.onClick.AddListener(() => {
+					skillCollection.Purchase();
+					UpdateNodes();
+					ShowNodeDetails(node);
+					UpdateSkillPoints();
+				});
+			} else {
+				sidebarPurchase.gameObject.SetActive(false);
 			}
 
 			sidebarContainer.gameObject.SetActive(true);
@@ -212,8 +230,12 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 			sidebarContainer.gameObject.SetActive(false);
 		}
 
-		void Repaint () {
+		void UpdateSkillPoints () {
 			skillOutput.text = "Skill Points: " + skillTree.skillPoints;
+		}
+
+		void Repaint () {
+			UpdateSkillPoints();
 
 			// @TODO Update tree node display status
 			UpdateNodes();

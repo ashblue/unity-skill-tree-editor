@@ -21,7 +21,7 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 		}
 
 		public void ShowDetails () {
-			menu.ShowNodeDetails(skillCollection);
+			menu.ShowNodeDetails(this);
 		}
 
 		public void SetStatus (NodeStatus status, Color color) {

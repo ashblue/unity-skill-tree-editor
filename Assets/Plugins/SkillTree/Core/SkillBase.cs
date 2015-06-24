@@ -45,12 +45,14 @@ namespace Adnc.SkillTree {
 		virtual public bool IsRequirements () {
 			SkillCategoryBase category = transform.parent.parent.GetComponent<SkillCategoryBase>();
 
-			if (category.skillLv < requiredLevel) 
+			if (category.skillLv < requiredLevel) {
 				return false;
+			}
 
 			foreach (SkillBase skill in requiredSkills) {
-				if (!skill.unlocked) 
+				if (!skill.unlocked) {
 					return false;
+				}
 			}
 
 			return true;
