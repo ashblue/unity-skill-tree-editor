@@ -34,6 +34,7 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 		[SerializeField] Text sidebarTitle;
 		[SerializeField] Text sidebarBody;
 		[SerializeField] Text sidebarRequirements;
+		[SerializeField] Text sidebarPurchasedMessage;
 		[SerializeField] Button sidebarPurchase;
 
 		void Start () {
@@ -211,6 +212,7 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 			}
 
 			if (status == NodeStatus.Purchasable) {
+				sidebarPurchasedMessage.gameObject.SetActive(false);
 				sidebarPurchase.gameObject.SetActive(true);
 				sidebarPurchase.onClick.RemoveAllListeners();
 				sidebarPurchase.onClick.AddListener(() => {
@@ -219,7 +221,11 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 					ShowNodeDetails(node);
 					UpdateSkillPoints();
 				});
+			} else if (status == NodeStatus.Unlocked) {
+				sidebarPurchasedMessage.gameObject.SetActive(true);
+				sidebarPurchase.gameObject.SetActive(false);
 			} else {
+				sidebarPurchasedMessage.gameObject.SetActive(false);
 				sidebarPurchase.gameObject.SetActive(false);
 			}
 
