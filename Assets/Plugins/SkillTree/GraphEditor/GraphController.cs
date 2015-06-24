@@ -29,8 +29,10 @@ namespace Adnc.SkillTree {
 			if (sidebar == null) sidebar = new GraphSidebar();
 
 			if (camera == null) camera = new GraphCamera();
-			camera.Reset();
+		}
 
+		void OnFocus () {
+			if (camera != null) camera.Reset();
 			UpdateTarget(Selection.activeGameObject);
 		}
 
