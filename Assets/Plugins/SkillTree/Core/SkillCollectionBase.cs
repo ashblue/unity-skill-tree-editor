@@ -4,7 +4,10 @@ using System.Collections.Generic;
 
 namespace Adnc.SkillTree {
 	abstract public class SkillCollectionBase : MonoBehaviour {
+		[Tooltip("Name the user will see when the node is printed")]
 		public string displayName = "Skill Collection";
+
+		[Tooltip("Used for data lookup purposes")]
 		public string uniqueName;
 
 		[TextArea(3, 5)]

@@ -7,7 +7,10 @@ namespace Adnc.SkillTree {
 		[Tooltip("Has this skill been unlocked by the player?")]
 		public bool unlocked;
 
-		public string displayName = "Skill"; // @TODO Consider removing
+		[Tooltip("Used for internal purposes only usually")]
+		public string displayName = "Skill";
+
+		[Tooltip("Used for data lookup")]
 		public string uniqueName;
 		
 		[TextArea(3, 5)]

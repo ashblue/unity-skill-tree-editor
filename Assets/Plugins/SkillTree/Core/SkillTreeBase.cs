@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace Adnc.SkillTree {
 	abstract public class SkillTreeBase : MonoBehaviour {
-		public GraphSidebar[] test;
-
+		[Tooltip("Name of this skill tree displayed to the user")]
 		public string title = "Skill Tree";
+
 		[TextArea(3, 5)]
 		public string description;
 
 		// Used by the skill tree window to discover the currently active category for editing
 		[HideInInspector] public SkillCategoryBase currentCategory;
 
-		// Override these base classes with custom classes that inherit from the base
+		// Override these classes with custom classes that inherit from the base
 		abstract public System.Type SkillCategory { get; }
 		abstract public System.Type SkillCollection { get; }
 		abstract public System.Type Skill { get; }
