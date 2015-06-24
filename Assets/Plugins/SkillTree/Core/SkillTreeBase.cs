@@ -20,77 +20,101 @@ namespace Adnc.SkillTree {
 		[Tooltip("How many skill points are available")]
 		public int skillPoints = 0; // Number of available skill points
 
+		Dictionary<string, SkillCategoryBase> categoryLib = new Dictionary<string, SkillCategoryBase>();
+		Dictionary<string, SkillCollectionBase> skillCollectionLib = new Dictionary<string, SkillCollectionBase>();
+		Dictionary<string, SkillBase> skillLib = new Dictionary<string, SkillBase>();
+		
 		void Awake () {
-			// @TODO Pre-cache all unique IDs for speed purposes
-			// @TODO Remove loop methods where possible, not effecient enough
+			foreach (SkillCategoryBase cat in GetCategories()) {
+				if (!string.IsNullOrEmpty(cat.id)) categoryLib[cat.id] = cat;
+			}
 
-			// Need to get a list of all categories (each with a uuid)
-			// dictionary of all category, group, and skill uuids
+			foreach (SkillCollectionBase col in GetSkillCollections()) {
+				if (!string.IsNullOrEmpty(col.id)) skillCollectionLib[col.id] = col;
+			}
 
-			// Return a list of all skill groups from a uuid
-			// Return a list of all skills from a uuid
-
-			// Check requirements from a skill against current stats
-			// Retrieve next unlocked skill from a skill tree
-			// Spend point to purchase a skill
-		}
-
-		public void SetCategoryLv (string categoryId, int lv) {
-			SkillCategoryBase category = GetCategory(categoryId);
-			if (category != null) {
-				category.skillLv = lv;
+			foreach (SkillBase skill in GetSkills()) {
+				if (!string.IsNullOrEmpty(skill.id)) skillLib[skill.id] = skill;
 			}
 		}
 
+		/// <summary>
+		/// Retrieve all active categories. Warning, expensive
+		/// </summary>
+		/// <returns>The categories.</returns>
 		public SkillCategoryBase[] GetCategories () {
 			return GetComponentsInChildren<SkillCategoryBase>();
 		}
 
+		/// <summary>
+		/// Returns all skill collecitons. Warning, expensive
+		/// </summary>
+		/// <returns>The skill collections.</returns>
+		public SkillCollectionBase[] GetSkillCollections () {
+			return GetComponentsInChildren<SkillCollectionBase>();
+		}
+
+		/// <summary>
+		/// Returns all skils. Warning expensive
+		/// </summary>
+		/// <returns>The skills.</returns>
+		public SkillBase[] GetSkills () {
+			return GetComponentsInChildren<SkillBase>();
+		}
+
+		/// <summary>
+		/// Returns a category from the user assigned ID
+		/// </summary>
+		/// <returns>The category.</returns>
+		/// <param name="categoryId">Category identifier.</param>
 		public SkillCategoryBase GetCategory (string categoryId) {
-			SkillCategoryBase category = null;
-			foreach (Transform child in transform) {
-				SkillCategoryBase cat = child.GetComponent<SkillCategoryBase>();
-				if (cat != null && cat.uniqueName == categoryId) {
-					category = cat;
-					break;
-				}
-			}
-
-			return category;
+			return categoryLib[categoryId];
 		}
 
-		public SkillCollectionBase GetCollection (string categoryId, string collectionId) {
-			SkillCollectionBase collection = null;
-			SkillCategoryBase category = GetCategory(categoryId);
-
-			if (category != null) {
-				foreach (Transform child in category.transform) {
-					SkillCollectionBase col = child.GetComponent<SkillCollectionBase>();
-					if (col != null && col.uniqueName == collectionId) {
-						collection = col;
-						break;
-					}
-				}
-			}
-			
-			return collection;
+		/// <summary>
+		/// Returns a collection from the user assigned ID
+		/// </summary>
+		/// <returns>The collection.</returns>
+		/// <param name="collectionId">Collection identifier.</param>
+		public SkillCollectionBase GetCollection (string collectionId) {
+			return skillCollectionLib[collectionId];
 		}
 
-		public SkillBase GetSkill (string categoryId, string collectionId, string skillId) {
-			SkillCollectionBase collection = GetCollection(categoryId, collectionId);
-			SkillBase skill = null;
+		/// <summary>
+		/// Returns a skill from the user assigned ID
+		/// </summary>
+		/// <returns>The skill.</returns>
+		/// <param name="skillId">Skill identifier.</param>
+		public SkillBase GetSkill (string skillId) {
+			return skillLib[skillId];
+		}
 
-			if (collection != null) {
-				foreach (Transform child in collection.transform) {
-					SkillBase s = child.GetComponent<SkillBase>();
-					if (s != null && s.uniqueName == skillId) {
-						skill = s;
-						break;
-					}
-				}
-			}
-			
-			return skill;
+		/// <summary>
+		/// Return the current skill from a collection
+		/// </summary>
+		/// <returns>The skill from category.</returns>
+		/// <param name="collectionId">Collection identifier.</param>
+		public SkillBase GetSkillFromCategory (string collectionId) {
+			return GetCollection(collectionId).Skill;
+		}
+
+		/// <summary>
+		/// Declare the current level of a specific category
+		/// </summary>
+		/// <param name="categoryId">Category identifier.</param>
+		/// <param name="lv">Lv.</param>
+		public void SetCategoryLv (string categoryId, int lv) {
+			SkillCategoryBase cat = GetCategory(categoryId);
+			cat.skillLv = lv;
+		}
+
+		/// <summary>
+		/// Check if a specific skill has been unlocked
+		/// </summary>
+		/// <returns><c>true</c> if this instance is unlocked the specified skillId; otherwise, <c>false</c>.</returns>
+		/// <param name="skillId">Skill identifier.</param>
+		public bool IsUnlocked (string skillId) {
+			return GetSkill(skillId).unlocked;
 		}
 
 		// @TODO Should spit back a giant array of data so the user can save it however they want

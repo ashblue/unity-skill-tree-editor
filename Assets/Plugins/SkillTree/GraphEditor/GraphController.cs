@@ -32,8 +32,10 @@ namespace Adnc.SkillTree {
 		}
 
 		void OnFocus () {
-			if (camera != null) camera.Reset();
-			UpdateTarget(Selection.activeGameObject);
+			if (camera != null) {
+				camera.Reset();
+				UpdateTarget(Selection.activeGameObject);
+			}
 		}
 
 		[MenuItem("Window/Skill Tree")]

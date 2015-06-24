@@ -11,7 +11,7 @@ namespace Adnc.SkillTree {
 		public string displayName = "Skill";
 
 		[Tooltip("Used for data lookup")]
-		public string uniqueName;
+		public string id;
 		
 		[TextArea(3, 5)]
 		public string description;
