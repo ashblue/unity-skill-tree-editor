@@ -195,7 +195,7 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 		}
 
 		public void ShowNodeDetails (SkillCollectionBase skillCollection) {
-			sidebarTitle.text = skillCollection.displayName;
+			sidebarTitle.text = string.Format("{0}: Lv {1}", skillCollection.displayName, skillCollection.SkillIndex + 1);
 			sidebarBody.text = skillCollection.Skill.description;
 
 			string requirements = skillCollection.Skill.GetRequirements();
