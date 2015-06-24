@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Adnc.SkillTree.Example.MultiCategory {
 	public class SkillMenu : MonoBehaviour {
-		public static SkillMenu current;
+		public static SkillMenu current; // @TODO We probably can't have a static reference since it will cause issues
 
 		Dictionary<SkillCollectionBase, SkillNode> nodeRef;
 		List<SkillNode> skillNodes;
@@ -22,6 +22,9 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 		[SerializeField] Transform nodeContainer;
 		[SerializeField] GameObject nodeRowPrefab;
 		[SerializeField] GameObject nodePrefab;
+		[SerializeField] Color colorUnlock;
+		[SerializeField] Color colorPurchase;
+		[SerializeField] Color colorLock;
 
 		[Header("Node Lines")]
 		[SerializeField] Transform lineContainer;
@@ -65,8 +68,6 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 			if (skillCategories.Length > 0) {
 				ShowCategory(skillCategories[0]);
 			}
-
-			Repaint();
 		}
 
 		void ShowCategory (SkillCategoryBase category) {
@@ -109,13 +110,45 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 			StartCoroutine(ConnectNodes());
 		}
 
-		void UpdateRequirements () {
+		// @TODO Instead loop through and update the status of all nodes with an enum, then visually update
+		void UpdateNodes () {
 			foreach (SkillNode node in skillNodes) {
+				Button btn = node.GetComponent<Button>();
+				ColorBlock color = btn.colors;
+
 				if (node.skillCollection.Skill.unlocked) {
-					node.GetComponent<Button>().interactable = true;
+
+					color.normalColor = colorUnlock;
+					color.highlightedColor = colorUnlock;
+				
+				} else if (skillTree.skillPoints > 0 && node.skillCollection.Skill.IsRequirements()) {
+
+					color.normalColor = colorLock;
+					color.highlightedColor = colorLock;
+
+					// Verify one parent node has at least one skill unlocked
+					if (node.parents.Count > 0) {
+						foreach (SkillNode parent in node.parents) {
+							if (parent.skillCollection.SkillIndex > 0) {
+								Debug.Log(parent);
+								color.normalColor = colorPurchase;
+								color.highlightedColor = colorPurchase;
+								break;
+							}
+						}
+					} else {
+						color.normalColor = colorPurchase;
+						color.highlightedColor = colorPurchase;
+					}
+
+				} else {
+
+					color.normalColor = colorLock;
+					color.highlightedColor = colorLock;
+
 				}
 
-				node.GetComponent<Button>().interactable = skillTree.skillPoints > 0 && node.skillCollection.Skill.IsRequirements();
+				btn.colors = color;
 			}
 		}
 
@@ -128,12 +161,16 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 				yield return null;
 			}
 
-			// Procedurally draw lines between each node
+			// Generate draw lines between each node and populate parent / child relationships
 			foreach (SkillNode node in skillNodes) {
 				foreach (SkillCollectionBase child in node.skillCollection.childSkills) {
+					node.children.Add(nodeRef[child]);
+					nodeRef[child].parents.Add(node);
 					DrawLine(lineContainer, node.transform.position, nodeRef[child].transform.position);
 				}
 			}
+
+			Repaint();
 		}
 
 		void DrawLine (Transform container, Vector3 start, Vector3 end) {
@@ -195,6 +232,7 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 			skillOutput.text = "Skill Points: " + skillTree.skillPoints;
 
 			// @TODO Update tree node display status
+			UpdateNodes();
 		}
 
 		void OnDestroy () {
