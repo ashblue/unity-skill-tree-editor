@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Heal
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Increase restoration by 2x.
   requiredLevel: 0
   requiredSkills: []
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Using a really big sword gives you a 30% damage boost.
   requiredLevel: 10
   requiredSkills:
@@ -499,7 +499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Add a shield that blocks damage equal to 25% of max health.
   requiredLevel: 0
   requiredSkills: []
@@ -668,7 +668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Restore health by 50% of max health.
   requiredLevel: 0
   requiredSkills: []
@@ -714,7 +714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Blizzard
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
@@ -889,12 +889,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Decoy
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
-    x: 372.760498
-    y: 413
+    x: 42.760498
+    y: 462
     width: 220
     height: 150
   childSkills: []
@@ -1043,7 +1043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Shield
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
@@ -1155,7 +1155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Destruction
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
@@ -1207,7 +1207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: When hit once after 5 minutes, you will spawn a decoy that becomes
     the target of all damage.
   requiredLevel: 10
@@ -1261,7 +1261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Thief
-  uniqueName: 
+  id: 
   description: 
   skillLv: 3
 --- !u!1 &442209087
@@ -1487,7 +1487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Whirlwind
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
@@ -1538,7 +1538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Taunt
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
@@ -1589,7 +1589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Dual wielding attacks ignore 25% or target's armor.
   requiredLevel: 5
   requiredSkills: []
@@ -1635,7 +1635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Magic Missile
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
@@ -1720,7 +1720,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Long sword usage gets a 10% damage boost.
   requiredLevel: 0
   requiredSkills: []
@@ -1766,7 +1766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Your magic attacks do 3x damage.
   requiredLevel: 5
   requiredSkills: []
@@ -1931,7 +1931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Warrior
-  uniqueName: 
+  id: 
   description: 
   skillLv: 5
 --- !u!4 &604047853
@@ -1995,7 +1995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Fireball
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
@@ -2049,7 +2049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Long Sword
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
@@ -2101,7 +2101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Increase destruction by 2x.
   requiredLevel: 0
   requiredSkills: []
@@ -2147,7 +2147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Ripost
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
@@ -2197,7 +2197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Increase your magic regen by 200%.
   requiredLevel: 5
   requiredSkills: []
@@ -2243,7 +2243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Meditate
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
@@ -2293,7 +2293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Shield Bash
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
@@ -2493,7 +2493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Mage
-  uniqueName: 
+  id: 
   description: 
   skillLv: 10
 --- !u!1 &886178084
@@ -2715,7 +2715,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Increased chance to not be noticed.
   requiredLevel: 0
   requiredSkills: []
@@ -2827,7 +2827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Random high damage AOE strikes throughout the area.
   requiredLevel: 10
   requiredSkills: []
@@ -2873,7 +2873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Fire Storm
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
@@ -2989,7 +2989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Using a really big sword gives you a 10% damage boost.
   requiredLevel: 0
   requiredSkills: []
@@ -3035,7 +3035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Fire 5 normal attacks at once.
   requiredLevel: 0
   requiredSkills: []
@@ -3081,12 +3081,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Traps
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
-    x: 1090.7605
-    y: 207
+    x: 669.760498
+    y: 247
     width: 220
     height: 150
   childSkills:
@@ -3132,7 +3132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Global AOE damage over time to all enemies.
   requiredLevel: 10
   requiredSkills: []
@@ -3166,7 +3166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Transfer 20% of shield to base armor.
   requiredLevel: 5
   requiredSkills: []
@@ -3212,7 +3212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Skill Tree
   description: 
-  currentCategory: {fileID: 416822874}
+  currentCategory: {fileID: 604047852}
   skillPoints: 10
 --- !u!4 &1195464872
 Transform:
@@ -3374,7 +3374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Using a really big sword gives you a 20% damage boost.
   requiredLevel: 5
   requiredSkills: []
@@ -3420,12 +3420,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Aim To Kill
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
-    x: 370.760498
-    y: 222
+    x: 44.760498
+    y: 256
     width: 220
     height: 150
   childSkills:
@@ -3542,12 +3542,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Dual Wielding
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
-    x: 370.760498
-    y: 33
+    x: 50.760498
+    y: 50
     width: 220
     height: 150
   childSkills:
@@ -3693,7 +3693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Wake up a character with 25% health in the middle of a battle.
   requiredLevel: 10
   requiredSkills: []
@@ -3771,12 +3771,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Sneak
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
-    x: 1087.7605
-    y: 29
+    x: 672.760498
+    y: 39
     width: 220
     height: 150
   childSkills:
@@ -3822,7 +3822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Power Strike
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
@@ -3874,7 +3874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Restoration
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
@@ -3926,7 +3926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Dual wielding penalty removed if weilding shortswords.
   requiredLevel: 0
   requiredSkills: []
@@ -3972,12 +3972,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Backstab
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
-    x: 814.760498
-    y: 211
+    x: 363.760498
+    y: 247
     width: 220
     height: 150
   childSkills:
@@ -4166,7 +4166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: 20% reduction of all costs in stores.
   requiredLevel: 0
   requiredSkills: []
@@ -4278,7 +4278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Long sword usage gets a 20% damage boost.
   requiredLevel: 5
   requiredSkills: []
@@ -4324,7 +4324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Transfer 30% of shield to base armor.
   requiredLevel: 10
   requiredSkills: []
@@ -4370,8 +4370,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
-  description: 
+  id: 
+  description: Deal 10x damage in a single blow and increase all damage to the target
+    by 2x.
   requiredLevel: 10
   requiredSkills: []
   uuid: 82100a6e-3732-47f6-8350-eeb8dbf47617
@@ -4416,12 +4417,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Pick Pocket
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
-    x: 811.760498
-    y: 28
+    x: 365.760498
+    y: 45
     width: 220
     height: 150
   childSkills:
@@ -4467,7 +4468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: I seek the means to fight injustice. To turn fear against those who
     prey on the fearful.
   requiredLevel: 5
@@ -4549,7 +4550,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: You may now disarm and take traps.
   requiredLevel: 0
   requiredSkills: []
@@ -4597,7 +4598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Greatsword
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
@@ -4648,7 +4649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: AOE damage attack.
   requiredLevel: 5
   requiredSkills: []
@@ -4800,7 +4801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Shield
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
@@ -4851,7 +4852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Unleash an attack that does 300% damage
   requiredLevel: 0
   requiredSkills: []
@@ -4897,7 +4898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: When approaching NPCs for the first time, you will automatically loot
     them for gold.
   requiredLevel: 0
@@ -4944,7 +4945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Long sword usage gets a 30% damage boost.
   requiredLevel: 10
   requiredSkills:
@@ -5052,12 +5053,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Haggle
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
-    x: 957.760498
-    y: 394
+    x: 496.760498
+    y: 466
     width: 220
     height: 150
   childSkills: []
@@ -5102,7 +5103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Dual weilding attacks now deal 200% damage
   requiredLevel: 10
   requiredSkills: []
@@ -5148,7 +5149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Your magic attacks do 2x damage.
   requiredLevel: 0
   requiredSkills: []
@@ -5364,7 +5365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Deal your armor plus 300% to an enemy. Stuns them for 3 - 5 seconds.
   requiredLevel: 0
   requiredSkills: []
@@ -5415,7 +5416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: AOE based fire attack
   requiredLevel: 0
   requiredSkills: []
@@ -5461,7 +5462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Transfer 10% of shield to base armor.
   requiredLevel: 0
   requiredSkills: []
@@ -5507,7 +5508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Revive
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
@@ -5837,7 +5838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   displayName: Skill
-  uniqueName: 
+  id: 
   description: Enemies not aware of you take 500% damage
   requiredLevel: 0
   requiredSkills: []
@@ -5884,7 +5885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Focus
-  uniqueName: 
+  id: 
   notes: 
   windowRect:
     serializedVersion: 2
