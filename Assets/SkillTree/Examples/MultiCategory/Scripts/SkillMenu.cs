@@ -110,45 +110,27 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 			StartCoroutine(ConnectNodes());
 		}
 
-		// @TODO Instead loop through and update the status of all nodes with an enum, then visually update
 		void UpdateNodes () {
 			foreach (SkillNode node in skillNodes) {
-				Button btn = node.GetComponent<Button>();
-				ColorBlock color = btn.colors;
+				node.SetStatus(NodeStatus.Locked, colorLock);
 
 				if (node.skillCollection.Skill.unlocked) {
-
-					color.normalColor = colorUnlock;
-					color.highlightedColor = colorUnlock;
+					node.SetStatus(NodeStatus.Locked, colorUnlock);
 				
 				} else if (skillTree.skillPoints > 0 && node.skillCollection.Skill.IsRequirements()) {
-
-					color.normalColor = colorLock;
-					color.highlightedColor = colorLock;
 
 					// Verify one parent node has at least one skill unlocked
 					if (node.parents.Count > 0) {
 						foreach (SkillNode parent in node.parents) {
 							if (parent.skillCollection.SkillIndex > 0) {
-								Debug.Log(parent);
-								color.normalColor = colorPurchase;
-								color.highlightedColor = colorPurchase;
+								node.SetStatus(NodeStatus.Purchasable, colorPurchase);
 								break;
 							}
 						}
 					} else {
-						color.normalColor = colorPurchase;
-						color.highlightedColor = colorPurchase;
+						node.SetStatus(NodeStatus.Purchasable, colorPurchase);
 					}
-
-				} else {
-
-					color.normalColor = colorLock;
-					color.highlightedColor = colorLock;
-
 				}
-
-				btn.colors = color;
 			}
 		}
 
@@ -161,7 +143,7 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 				yield return null;
 			}
 
-			// Generate draw lines between each node and populate parent / child relationships
+			// Generate lines between each node and populate parent / child relationships
 			foreach (SkillNode node in skillNodes) {
 				foreach (SkillCollectionBase child in node.skillCollection.childSkills) {
 					node.children.Add(nodeRef[child]);
