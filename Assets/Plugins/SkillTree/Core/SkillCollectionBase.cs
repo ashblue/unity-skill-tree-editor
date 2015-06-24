@@ -8,7 +8,7 @@ namespace Adnc.SkillTree {
 		public string uniqueName;
 
 		[TextArea(3, 5)]
-		public string description;
+		public string notes;
 		
 		[Header("Window Debug Data")]
 		public Rect windowRect;
