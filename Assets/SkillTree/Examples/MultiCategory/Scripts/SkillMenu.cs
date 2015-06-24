@@ -143,6 +143,10 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 				yield return null;
 			}
 
+			foreach (Transform line in lineContainer) {
+				Destroy(line.gameObject);
+			}
+
 			// Generate lines between each node and populate parent / child relationships
 			foreach (SkillNode node in skillNodes) {
 				foreach (SkillCollectionBase child in node.skillCollection.childSkills) {
