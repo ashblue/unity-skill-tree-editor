@@ -180,12 +180,15 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 			go.transform.position = start;
 		}
 
+		/// <summary>
+		/// Recursively adds rows.
+		/// </summary>
+		/// <param name="rows">Rows.</param>
+		/// <param name="history">History of all added items so we don't accidentally add two of the same thing</param>
 		void RecursiveRowAdd (List<List<SkillCollectionBase>> rows, Dictionary<SkillCollectionBase, bool> history) {
 			List<SkillCollectionBase> row = new List<SkillCollectionBase>();
 			foreach (SkillCollectionBase collection in rows[rows.Count - 1]) {
 				foreach (SkillCollectionBase child in collection.childSkills) {
-					// @TODO We need to remove any duplicate entries (keep a record of every node added for ref)
-					// As an entry might leak through as a deeper child node later down the tree
 					if (!row.Contains(child) && !history.ContainsKey(child)) {
 						row.Add(child);
 						history[child] = true;
