@@ -1,5 +1,8 @@
-# unity-skill-tree-editor
-Unity custom graph editor for editing a skill trees.
+# Unity Skill Tree Pro
+
+Alpha Version 0.1
+
+Unity custom graph editor for editing skill trees.
 
 Live demo at https://dl.dropboxusercontent.com/u/26071528/skill%20tree%20example/index.html
 
