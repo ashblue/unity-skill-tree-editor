@@ -21,6 +21,9 @@ namespace Adnc.SkillTree {
 		int selectIndex = -1; // Currently selected window
 		SkillCollectionBase selectNode; // Actively selected node for a transition
 
+		SkillCollectionBase snapNode; // We need to refresh this node and force snap it
+		public bool forceSnapping = true;
+
 		void OnEnable () {
 			titleContent.text = "Skill Tree";
 
@@ -139,6 +142,7 @@ namespace Adnc.SkillTree {
 								if (collect[i].windowRect.Contains(mousePosGlobal)) {
 									selectIndex = i;
 									clickedNode = true;
+									snapNode = collect[i];
 									break;
 								}
 							}
@@ -154,6 +158,9 @@ namespace Adnc.SkillTree {
 									camera.BeginMove(mousePos);
 								}
 							}
+						} else if (e.type == EventType.MouseUp && snapNode != null) {
+							if (forceSnapping) SnapNodeToGrid(snapNode);
+							snapNode = null;
 						}
 					}
 				}
@@ -196,6 +203,19 @@ namespace Adnc.SkillTree {
 			// Poll and update the viewport if the camera has moved
 			if (camera.PollCamera(mousePos)) {
 				Repaint();
+			}
+		}
+
+		public void SnapNodeToGrid (SkillCollectionBase node) {
+			Vector2 snapRatio = target.gridCellSize;
+			node.windowRect.x = Mathf.Round(node.windowRect.x / snapRatio.x) * snapRatio.x;
+			node.windowRect.y = Mathf.Round(node.windowRect.y / snapRatio.y) * snapRatio.y;
+			// Get the currently active SkillTreeBase and 
+		}
+
+		public void SnapAllNodesToGrid () {
+			foreach (SkillCollectionBase col in collect) {
+				SnapNodeToGrid(col);
 			}
 		}
 

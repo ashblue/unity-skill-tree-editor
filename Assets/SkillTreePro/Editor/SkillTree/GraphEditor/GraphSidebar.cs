@@ -59,9 +59,20 @@ namespace Adnc.SkillTree {
 					go.AddComponent(target.SkillCategory);
 					go.transform.SetParent(target.transform);
 				}
+
+				y += 25f;
+
+				if (GUI.Button(new Rect(0f, y, innerWidth, 20f), "Snap All Nodes")) {
+					GraphController.current.SnapAllNodesToGrid();
+				}
+
+				y += 25f;
+
+				GraphController.current.forceSnapping = GUI.Toggle(new Rect(0f, y, innerWidth, 20f), GraphController.current.forceSnapping, "Force Snapping");
 			}
-			
-			GUI.EndGroup(); // Padding
+
+			GUI.EndGroup();
+
 			GUI.EndGroup(); // Container
 		}
 		

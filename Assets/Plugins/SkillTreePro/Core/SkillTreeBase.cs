@@ -20,6 +20,11 @@ namespace Adnc.SkillTree {
 		[Tooltip("How many skill points are available")]
 		public int skillPoints = 0; // Number of available skill points
 
+		[Header("Window Debug Data")]
+
+		[Tooltip("How large is a grid cell? Will be used to build a visual array that turns into the version a user sees.")]
+		public Vector2 gridCellSize = new Vector2(250f, 200f);
+
 		Dictionary<string, SkillCategoryBase> categoryLib = new Dictionary<string, SkillCategoryBase>();
 		Dictionary<string, SkillCollectionBase> skillCollectionLib = new Dictionary<string, SkillCollectionBase>();
 		Dictionary<string, SkillBase> skillLib = new Dictionary<string, SkillBase>();
