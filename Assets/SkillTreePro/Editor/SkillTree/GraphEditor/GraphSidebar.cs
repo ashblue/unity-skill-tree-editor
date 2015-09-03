@@ -38,6 +38,7 @@ namespace Adnc.SkillTree {
 					if (GUI.Button(new Rect(24f, 0f, innerWidth - 82f, 20f), cat.displayName)) {
 						target.currentCategory = cat;
 						Selection.activeGameObject = cat.gameObject;
+						GraphController.current.camera.Reset();
 					}
 
 					if (GUI.Button(new Rect(innerWidth - 56f, 0f, 27f, 20f), "UP")) {

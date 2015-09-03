@@ -6,9 +6,10 @@ using System.Collections.Generic;
 
 namespace Adnc.SkillTree {
 	public class GraphController : EditorWindow {
+		public static GraphController current;
 		SkillTreeBase target;
 		GraphSidebar sidebar;
-		GraphCamera camera;
+		public GraphCamera camera;
 
 		GUIStyle textStyle; // Style used for title in upper left
 		Vector2 mousePos; // Local screen mouse position
@@ -29,13 +30,8 @@ namespace Adnc.SkillTree {
 			if (sidebar == null) sidebar = new GraphSidebar();
 
 			if (camera == null) camera = new GraphCamera();
-		}
 
-		void OnFocus () {
-			if (camera != null) {
-				camera.Reset();
-				UpdateTarget(Selection.activeGameObject);
-			}
+			current = this;
 		}
 
 		[MenuItem("Window/Skill Tree")]
