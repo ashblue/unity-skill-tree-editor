@@ -18,11 +18,15 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 
 		[Header("Nodes")]
 		[SerializeField] Transform nodeContainer;
+		[SerializeField] RectTransform nodeInnerContainer;
 		[SerializeField] GameObject nodeRowPrefab;
 		[SerializeField] GameObject nodePrefab;
 		[SerializeField] Color colorUnlock;
 		[SerializeField] Color colorPurchase;
 		[SerializeField] Color colorLock;
+
+		[Tooltip("How large of a space each node takes up")]
+		[SerializeField] Vector2 cellSize;
 
 		[Header("Node Lines")]
 		[SerializeField] Transform lineContainer;
@@ -38,14 +42,13 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 		[SerializeField] Button sidebarPurchase;
 
 		void Start () {
-			SkillCategoryBase[] skillCategories = skillTree.GetCategories();
-
 			// Clear out test categories
 			foreach (Transform child in categoryContainer) {
 				Destroy(child.gameObject);
 			}
 
 			// Populate categories
+			SkillCategoryBase[] skillCategories = skillTree.GetCategories();
 			foreach (SkillCategoryBase category in skillCategories) {
 				GameObject go = Instantiate(categoryButtonPrefab);
 				go.transform.SetParent(categoryContainer);
@@ -73,41 +76,47 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 			categoryName.text = string.Format("{0}: Level {1}", category.displayName, category.skillLv);
 			ClearDetails();
 
+			CreateGrid(category, cellSize);
+
+			StartCoroutine(ConnectNodes());
+		}
+
+		void CreateGrid (SkillCategoryBase category, Vector2 cellSize) {
+			// Clean up pre-existing data
 			foreach (Transform child in nodeContainer) {
 				Destroy(child.gameObject);
 			}
-
-			// Generate node row data
-			List<List<SkillCollectionBase>> rows = new List<List<SkillCollectionBase>>();
-			List<SkillCollectionBase> rootNodes = category.GetRootSkillCollections();
-			rows.Add(rootNodes);
-
-			Dictionary<SkillCollectionBase, bool> colHistory = new Dictionary<SkillCollectionBase, bool>();
-			RecursiveRowAdd(rows, colHistory);
-
-			// Output proper rows and attach data
-			foreach (List<SkillCollectionBase> row in rows) {
-				GameObject nodeRow = Instantiate(nodeRowPrefab);
-				nodeRow.transform.SetParent(nodeContainer);
-				nodeRow.transform.localScale = Vector3.one;
-				
-				foreach (SkillCollectionBase rowItem in row) {
-					GameObject node = Instantiate(nodePrefab);
-					node.transform.SetParent(nodeRow.transform);
-					node.transform.localScale = Vector3.one;
-
-					SkillNode skillNode = node.GetComponent<SkillNode>();
-					skillNode.menu = this;
-					skillNode.skillCollection = rowItem;
-					skillNodes.Add(skillNode);
-
-					nodeRef[rowItem] = skillNode;
-
-					node.GetComponentInChildren<Text>().text = rowItem.displayName;
-				}
+			
+			foreach (Transform child in lineContainer) {
+				Destroy(child.gameObject);
 			}
 
-			StartCoroutine(ConnectNodes());
+			SkillCollectionGrid grid = category.GetComponentInParent<SkillTreeBase>().GetGrid(category);
+
+			// Generate container with width and height based on cellSize
+			nodeInnerContainer.sizeDelta = new Vector2(grid.Width * cellSize.x, grid.Height * cellSize.y);
+
+			// Adjust the container position based on padding, resulting in perfectly aligned grid items
+			RectTransform nodeRect = nodePrefab.GetComponent<RectTransform>();
+			Vector2 cellPadding = new Vector2((cellSize.x - nodeRect.sizeDelta.x) / 2f, (cellSize.y - nodeRect.sizeDelta.y) / 2f);
+
+			nodeRef = new Dictionary<SkillCollectionBase, SkillNode>();
+
+			// Place all grid items
+			foreach (SkillCollectionGridItem gridItem in grid.GetAllCollections()) {
+				GameObject node = Instantiate(nodePrefab);
+				node.transform.SetParent(nodeContainer);
+				node.transform.localScale = Vector3.one;
+				node.GetComponentInChildren<Text>().text = gridItem.collection.displayName;
+				node.GetComponent<RectTransform>().anchoredPosition = new Vector2((gridItem.x * cellSize.x) + cellPadding.x, (gridItem.y * cellSize.y * -1f) - cellPadding.y);
+
+				SkillNode skillNode = node.GetComponent<SkillNode>();
+				skillNode.menu = this;
+				skillNode.skillCollection = gridItem.collection;
+				skillNodes.Add(skillNode);
+
+				nodeRef.Add(gridItem.collection, skillNode);
+			}
 		}
 
 		void UpdateNodes () {
@@ -115,44 +124,24 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 				node.SetStatus(NodeStatus.Locked, colorLock);
 
 				if (node.skillCollection.Skill.unlocked) {
-					node.SetStatus(NodeStatus.Unlocked, colorUnlock);
-				
+					node.SetStatus(NodeStatus.Unlocked, colorUnlock); // Fully purchased
 				} else if (skillTree.skillPoints > 0 && node.skillCollection.Skill.IsRequirements()) {
-
-					// Verify one parent node has at least one skill unlocked
-					if (node.parents.Count > 0) {
-						foreach (SkillNode parent in node.parents) {
-							if (parent.skillCollection.GetSkill(0).unlocked) {
-								node.SetStatus(NodeStatus.Purchasable, colorPurchase);
-								break;
-							}
-						}
-					} else {
-						node.SetStatus(NodeStatus.Purchasable, colorPurchase);
-					}
+					node.SetStatus(NodeStatus.Purchasable, colorPurchase); // Avaialable for purchase
 				}
 			}
 		}
 
 		// Done after a frame skip so they nodes are sorted properly into position
 		IEnumerator ConnectNodes () {
-			bool skipFrame = true;
+			// We have to skip a frame so the Unity GUI has a chance to properly recalculate all the positioning
+			yield return null;
 
-			if (skipFrame) {
-				skipFrame = false;
-				yield return null;
-			}
-
-			foreach (Transform line in lineContainer) {
-				Destroy(line.gameObject);
-			}
-
-			// Generate lines between each node and populate parent / child relationships
-			foreach (SkillNode node in skillNodes) {
+			foreach (SkillNode node in nodeContainer.GetComponentsInChildren<SkillNode>()) {
 				foreach (SkillCollectionBase child in node.skillCollection.childSkills) {
-					node.children.Add(nodeRef[child]);
-					nodeRef[child].parents.Add(node);
-					DrawLine(lineContainer, node.transform.position, nodeRef[child].transform.position, lineColor);
+					// @NOTE We must translate a center point on the node into a transform position for accurary of the line
+					Vector3 lineStart = node.transform.GetChild(0).position;
+					Vector3 lineEnd = nodeRef[child].transform.GetChild(0).position;
+					DrawLine(lineContainer, lineStart, lineEnd, lineColor);
 				}
 			}
 
@@ -161,12 +150,11 @@ namespace Adnc.SkillTree.Example.MultiCategory {
 
 		void DrawLine (Transform container, Vector3 start, Vector3 end, Color color) {
 			GameObject go = Instantiate(linePrefab);
-			go.transform.localScale = Vector3.one;
-
 			go.GetComponent<Image>().color = color;
 
 			// Adjust the layering so it appears underneath
 			go.transform.SetParent(container);
+			go.transform.localScale = Vector3.one;
 			go.transform.SetSiblingIndex(0);
 
 			// Adjust height to proper sizing

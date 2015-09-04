@@ -23,6 +23,30 @@ namespace Adnc.SkillTree {
 		[Tooltip("List of additional requirements beyond unlocking the previous skill entry and skill collection")]
 		public SkillBase[] requiredSkills;
 
+		SkillCategoryBase _category;
+		public SkillCategoryBase Category { 
+			get { 
+				if (_category == null) _category = transform.parent.parent.GetComponent<SkillCategoryBase>();
+				return _category;
+			} 
+		}
+
+		SkillCollectionBase _collection;
+		public SkillCollectionBase Collection { 
+			get { 
+				if (_collection == null) _collection = GetComponentInParent<SkillCollectionBase>(); 
+				return _collection;
+			} 
+		}
+
+		SkillTreeBase _tree;
+		public SkillTreeBase Tree { 
+			get { 
+				if (_tree == null) _tree = Category.GetComponentInParent<SkillTreeBase>(); 
+				return _tree;
+			} 
+		}
+
 		string uuid;
 		public string Uuid {
 			get {
@@ -62,9 +86,11 @@ namespace Adnc.SkillTree {
 		/// </summary>
 		/// <returns><c>true</c> if this instance is requirements; otherwise, <c>false</c>.</returns>
 		virtual public bool IsRequirements () {
-			SkillCategoryBase category = transform.parent.parent.GetComponent<SkillCategoryBase>();
+			if (!Tree.IsParentUnlocked(Collection)) {
+				return false;
+			}
 
-			if (category.skillLv < requiredLevel) {
+			if (Category.skillLv < requiredLevel) {
 				return false;
 			}
 

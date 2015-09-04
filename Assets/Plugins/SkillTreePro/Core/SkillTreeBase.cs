@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Adnc.SkillTree {
@@ -25,6 +26,9 @@ namespace Adnc.SkillTree {
 		[Tooltip("How large is a grid cell? Will be used to build a visual array that turns into the version a user sees.")]
 		public Vector2 gridCellSize = new Vector2(250f, 200f);
 
+		// Records of the children's parents for collecitons
+		public Dictionary<SkillCollectionBase, List<SkillCollectionBase>> childParents;
+
 		Dictionary<string, SkillCategoryBase> categoryLib = new Dictionary<string, SkillCategoryBase>();
 		Dictionary<string, SkillCollectionBase> skillCollectionLib = new Dictionary<string, SkillCollectionBase>();
 		Dictionary<string, SkillBase> skillLib = new Dictionary<string, SkillBase>();
@@ -48,6 +52,8 @@ namespace Adnc.SkillTree {
 				if (!string.IsNullOrEmpty(skill.id)) skillLib[skill.id] = skill;
 				skillUuidLib[skill.Uuid] = skill;
 			}
+
+			childParents = GetParentData();
 		}
 
 		/// <summary>
@@ -129,8 +135,8 @@ namespace Adnc.SkillTree {
 			return GetSkill(skillId).unlocked;
 		}
 
-		public virtual SkillCollectionGrid GetGrid () {
-			SkillCollectionBase[] collect = GetSkillCollections();
+		public SkillCollectionGrid GetGrid (SkillCategoryBase category) {
+			SkillCollectionBase[] collect = category.GetComponentsInChildren<SkillCollectionBase>();
 			Vector2 min = new Vector2(Mathf.Infinity, Mathf.Infinity);
 			Vector2 max = new Vector2(Mathf.NegativeInfinity, Mathf.NegativeInfinity);
 
@@ -143,16 +149,58 @@ namespace Adnc.SkillTree {
 			}
 
 			int x, y;
-			int width = Mathf.RoundToInt(Mathf.Abs(min.x - max.x) / gridCellSize.x);
-			int height = Mathf.RoundToInt(Mathf.Abs(min.y - max.y) / gridCellSize.y);
+			int width = Mathf.CeilToInt(Mathf.Abs(min.x - max.x) / gridCellSize.x) + 1;
+			int height = Mathf.CeilToInt(Mathf.Abs(min.y - max.y) / gridCellSize.y) + 1;
 			SkillCollectionBase[,] grid = new SkillCollectionBase[width, height];
 			foreach (SkillCollectionBase col in collect) {
-				x = Mathf.RoundToInt(col.windowRect.x - min.x);
-				y = Mathf.RoundToInt(col.windowRect.y - min.y);
+				x = Mathf.RoundToInt((col.windowRect.x - min.x) / gridCellSize.x);
+				y = Mathf.RoundToInt((col.windowRect.y - min.y) / gridCellSize.y);
 				grid[x, y] = col;
 			}
 
 			return new SkillCollectionGrid(grid);
+		}
+
+		/// <summary>
+		/// Determines if a parent collection is properly unlocked
+		/// </summary>
+		/// <returns><c>true</c> if this instance is parent unlocked the specified collection; otherwise, <c>false</c>.</returns>
+		/// <param name="collection">Collection.</param>
+		public virtual bool IsParentUnlocked (SkillCollectionBase collection) {
+			// Check to see if it has no parent
+			if (!childParents.ContainsKey(collection)) {
+				return true;
+			}
+
+			// Check all parents to see if any are unlocked
+			foreach (SkillCollectionBase parent in childParents[collection]) {
+				if (parent.GetSkill(0).unlocked) return true;
+			}
+
+			// No matches
+			return false;
+		}
+
+		/// <summary>
+		/// Loops through all collections to determine parent elements. Warning, quite expensive.
+		/// </summary>
+		/// <returns>The parent data.</returns>
+		Dictionary<SkillCollectionBase, List<SkillCollectionBase>> GetParentData () {
+			Dictionary<SkillCollectionBase, List<SkillCollectionBase>> childParents = new Dictionary<SkillCollectionBase, List<SkillCollectionBase>>();
+
+			foreach (SkillCategoryBase category in GetComponentsInChildren<SkillCategoryBase>()) {
+				foreach (SkillCollectionBase parent in category.GetComponentsInChildren<SkillCollectionBase>()) {
+					foreach (SkillCollectionBase child in parent.childSkills) {
+						if (!childParents.ContainsKey(child)) {
+							childParents[child] = new List<SkillCollectionBase>();
+						}
+						
+						childParents[child].Add(parent);
+					}
+				}
+			}
+
+			return childParents;
 		}
 
 		/// <summary>
