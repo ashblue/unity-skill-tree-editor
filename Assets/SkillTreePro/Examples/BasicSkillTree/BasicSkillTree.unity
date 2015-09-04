@@ -182,7 +182,6 @@ MonoBehaviour:
   id: 
   description: Increase restoration by 2x.
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &73677435
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,8 +349,6 @@ MonoBehaviour:
   id: 
   description: Using a really big sword gives you a 30% damage boost.
   requiredLevel: 10
-  requiredSkills:
-  - {fileID: 1688196762}
 --- !u!1 &90736797
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +497,6 @@ MonoBehaviour:
   id: 
   description: Add a shield that blocks damage equal to 25% of max health.
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &147900914
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,7 +664,6 @@ MonoBehaviour:
   id: 
   description: Restore health by 50% of max health.
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &230957920
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,7 +824,6 @@ MonoBehaviour:
   id: 
   description: 
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &265683186
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,7 +1246,6 @@ MonoBehaviour:
   description: When hit once after 5 minutes, you will spawn a decoy that becomes
     the target of all damage.
   requiredLevel: 10
-  requiredSkills: []
 --- !u!1 &380476320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,7 +1755,6 @@ MonoBehaviour:
   id: 
   description: Dual wielding attacks ignore 25% or target's armor.
   requiredLevel: 5
-  requiredSkills: []
 --- !u!1 &524590427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1857,7 +1849,7 @@ GameObject:
   - 4: {fileID: 587999114}
   - 114: {fileID: 587999115}
   m_Layer: 0
-  m_Name: Skill
+  m_Name: 10Boost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1887,11 +1879,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlocked: 0
-  displayName: Skill
+  displayName: 10% Boost
   id: 
   description: Long sword usage gets a 10% damage boost.
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &588180203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1936,7 +1927,6 @@ MonoBehaviour:
   id: 
   description: Your magic attacks do 3x damage.
   requiredLevel: 5
-  requiredSkills: []
 --- !u!1 &593481924
 GameObject:
   m_ObjectHideFlags: 0
@@ -2182,7 +2172,7 @@ GameObject:
   - 4: {fileID: 604047853}
   - 114: {fileID: 604047852}
   m_Layer: 0
-  m_Name: Category
+  m_Name: Warrior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2333,7 +2323,6 @@ MonoBehaviour:
   id: 
   description: 
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &675333263
 GameObject:
   m_ObjectHideFlags: 0
@@ -2399,7 +2388,7 @@ GameObject:
   - 4: {fileID: 698245350}
   - 114: {fileID: 698245351}
   m_Layer: 0
-  m_Name: SkillCollection
+  m_Name: LongSwordTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2431,7 +2420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e49e03af01a544ef852ec2b6c116d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: Long Sword
+  displayName: Long Sword Test
   id: 
   notes: 
   windowRect:
@@ -2487,7 +2476,6 @@ MonoBehaviour:
   id: 
   description: Increase destruction by 2x.
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &749188064
 GameObject:
   m_ObjectHideFlags: 0
@@ -2582,7 +2570,6 @@ MonoBehaviour:
   id: 
   description: Increase your magic regen by 200%.
   requiredLevel: 5
-  requiredSkills: []
 --- !u!1 &756137895
 GameObject:
   m_ObjectHideFlags: 0
@@ -3010,19 +2997,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22497364, guid: df0a974fc91094a669c35836fc633eaa, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 78.6666641
       objectReference: {fileID: 0}
     - target: {fileID: 22497364, guid: df0a974fc91094a669c35836fc633eaa, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 22497364, guid: df0a974fc91094a669c35836fc633eaa, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 157.333328
       objectReference: {fileID: 0}
     - target: {fileID: 22497364, guid: df0a974fc91094a669c35836fc633eaa, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 22497364, guid: df0a974fc91094a669c35836fc633eaa, type: 2}
       propertyPath: m_AnchorMin.x
@@ -3030,7 +3017,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22497364, guid: df0a974fc91094a669c35836fc633eaa, type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22497364, guid: df0a974fc91094a669c35836fc633eaa, type: 2}
       propertyPath: m_AnchorMax.x
@@ -3038,7 +3025,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22497364, guid: df0a974fc91094a669c35836fc633eaa, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22497364, guid: df0a974fc91094a669c35836fc633eaa, type: 2}
       propertyPath: m_Pivot.x
@@ -3099,7 +3086,6 @@ MonoBehaviour:
   id: 
   description: Increased chance to not be noticed.
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &977690040
 GameObject:
   m_ObjectHideFlags: 0
@@ -3210,7 +3196,6 @@ MonoBehaviour:
   id: 
   description: Random high damage AOE strikes throughout the area.
   requiredLevel: 10
-  requiredSkills: []
 --- !u!1001 &984053822
 Prefab:
   m_ObjectHideFlags: 0
@@ -3470,7 +3455,6 @@ MonoBehaviour:
   id: 
   description: Using a really big sword gives you a 10% damage boost.
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &1078934581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3515,7 +3499,6 @@ MonoBehaviour:
   id: 
   description: Fire 5 normal attacks at once.
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &1089258456
 GameObject:
   m_ObjectHideFlags: 0
@@ -3611,7 +3594,6 @@ MonoBehaviour:
   id: 
   description: Global AOE damage over time to all enemies.
   requiredLevel: 10
-  requiredSkills: []
 --- !u!1 &1189115322
 GameObject:
   m_ObjectHideFlags: 0
@@ -3644,7 +3626,6 @@ MonoBehaviour:
   id: 
   description: Transfer 20% of shield to base armor.
   requiredLevel: 5
-  requiredSkills: []
 --- !u!4 &1189115324
 Transform:
   m_ObjectHideFlags: 0
@@ -3667,7 +3648,7 @@ GameObject:
   - 4: {fileID: 1195464872}
   - 114: {fileID: 1195464871}
   m_Layer: 0
-  m_Name: SkillTreeData
+  m_Name: SkillTreeExample
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3684,9 +3665,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85f3ada8d2914694a45864a34a9a55c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Skill Tree
+  displayName: Skill Tree Example
   description: 
-  currentCategory: {fileID: 416822874}
+  currentCategory: {fileID: 604047852}
   skillPoints: 10
   gridCellSize: {x: 250, y: 200}
 --- !u!4 &1195464872
@@ -3852,7 +3833,6 @@ MonoBehaviour:
   id: 
   description: Using a really big sword gives you a 20% damage boost.
   requiredLevel: 5
-  requiredSkills: []
 --- !u!1 &1259845518
 GameObject:
   m_ObjectHideFlags: 0
@@ -3897,7 +3877,6 @@ MonoBehaviour:
   id: 
   description: 
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &1312828395
 GameObject:
   m_ObjectHideFlags: 0
@@ -4252,7 +4231,6 @@ MonoBehaviour:
   id: 
   description: Wake up a character with 25% health in the middle of a battle.
   requiredLevel: 10
-  requiredSkills: []
 --- !u!1 &1448965058
 GameObject:
   m_ObjectHideFlags: 0
@@ -4484,7 +4462,6 @@ MonoBehaviour:
   id: 
   description: Dual wielding penalty removed if weilding shortswords.
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &1515425739
 GameObject:
   m_ObjectHideFlags: 0
@@ -4821,7 +4798,6 @@ MonoBehaviour:
   id: 
   description: 20% reduction of all costs in stores.
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &1548661338
 GameObject:
   m_ObjectHideFlags: 0
@@ -5035,7 +5011,6 @@ MonoBehaviour:
   id: 
   description: Long sword usage gets a 20% damage boost.
   requiredLevel: 5
-  requiredSkills: []
 --- !u!1 &1581961248
 GameObject:
   m_ObjectHideFlags: 0
@@ -5080,7 +5055,6 @@ MonoBehaviour:
   id: 
   description: 
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &1604079261
 GameObject:
   m_ObjectHideFlags: 0
@@ -5125,7 +5099,6 @@ MonoBehaviour:
   id: 
   description: Transfer 30% of shield to base armor.
   requiredLevel: 10
-  requiredSkills: []
 --- !u!1 &1614963196
 GameObject:
   m_ObjectHideFlags: 0
@@ -5171,7 +5144,6 @@ MonoBehaviour:
   description: Deal 10x damage in a single blow and increase all damage to the target
     by 2x.
   requiredLevel: 10
-  requiredSkills: []
 --- !u!1 &1641194689
 GameObject:
   m_ObjectHideFlags: 0
@@ -5268,7 +5240,6 @@ MonoBehaviour:
   description: I seek the means to fight injustice. To turn fear against those who
     prey on the fearful.
   requiredLevel: 5
-  requiredSkills: []
 --- !u!1 &1656858500
 GameObject:
   m_ObjectHideFlags: 0
@@ -5348,7 +5319,6 @@ MonoBehaviour:
   id: 
   description: You may now disarm and take traps.
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &1675981776
 GameObject:
   m_ObjectHideFlags: 0
@@ -5446,7 +5416,6 @@ MonoBehaviour:
   id: 
   description: AOE damage attack.
   requiredLevel: 5
-  requiredSkills: []
 --- !u!1 &1705536196
 GameObject:
   m_ObjectHideFlags: 0
@@ -5648,7 +5617,6 @@ MonoBehaviour:
   id: 
   description: Unleash an attack that does 300% damage
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &1748451361
 GameObject:
   m_ObjectHideFlags: 0
@@ -5749,7 +5717,6 @@ MonoBehaviour:
   description: When approaching NPCs for the first time, you will automatically loot
     them for gold.
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &1760510145
 GameObject:
   m_ObjectHideFlags: 0
@@ -5794,8 +5761,6 @@ MonoBehaviour:
   id: 
   description: Long sword usage gets a 30% damage boost.
   requiredLevel: 10
-  requiredSkills:
-  - {fileID: 1654075807}
 --- !u!1 &1796627236
 GameObject:
   m_ObjectHideFlags: 0
@@ -5951,7 +5916,6 @@ MonoBehaviour:
   id: 
   description: Dual weilding attacks now deal 200% damage
   requiredLevel: 10
-  requiredSkills: []
 --- !u!1 &1887687697
 GameObject:
   m_ObjectHideFlags: 0
@@ -5996,7 +5960,6 @@ MonoBehaviour:
   id: 
   description: Your magic attacks do 2x damage.
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &1924645687
 GameObject:
   m_ObjectHideFlags: 0
@@ -6360,7 +6323,6 @@ MonoBehaviour:
   id: 
   description: Deal your armor plus 300% to an enemy. Stuns them for 3 - 5 seconds.
   requiredLevel: 0
-  requiredSkills: []
 --- !u!224 &1968322736 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 22476934, guid: 8e7565d93062d41ccb65d00221fc9fd2,
@@ -6513,7 +6475,6 @@ MonoBehaviour:
   id: 
   description: AOE based fire attack
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &1995200534
 GameObject:
   m_ObjectHideFlags: 0
@@ -6558,7 +6519,6 @@ MonoBehaviour:
   id: 
   description: Transfer 10% of shield to base armor.
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &2060187522
 GameObject:
   m_ObjectHideFlags: 0
@@ -6933,7 +6893,6 @@ MonoBehaviour:
   id: 
   description: Enemies not aware of you take 500% damage
   requiredLevel: 0
-  requiredSkills: []
 --- !u!1 &2138534191
 GameObject:
   m_ObjectHideFlags: 0
