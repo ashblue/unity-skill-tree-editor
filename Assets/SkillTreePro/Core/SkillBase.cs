@@ -8,7 +8,7 @@ namespace Adnc.SkillTree {
 		public bool unlocked;
 
 		[Tooltip("Used for internal purposes only usually")]
-		public string displayName = "Skill";
+		[DisplayName("Skill")] public string displayName = "Skill";
 
 		[Tooltip("Used for data lookup")]
 		public string id;

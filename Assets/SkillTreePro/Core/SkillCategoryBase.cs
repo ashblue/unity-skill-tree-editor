@@ -5,8 +5,7 @@ using System.Collections.Generic;
 
 namespace Adnc.SkillTree {
 	abstract public class SkillCategoryBase : MonoBehaviour {
-		[Tooltip("Name the user will see")]
-		public string displayName = "Category";
+		[DisplayName("Category")] public string displayName = "Category";
 
 		[Tooltip("Used for data retrieval purposes")]
 		public string id;
