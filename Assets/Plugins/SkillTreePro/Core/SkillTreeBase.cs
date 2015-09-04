@@ -129,6 +129,32 @@ namespace Adnc.SkillTree {
 			return GetSkill(skillId).unlocked;
 		}
 
+		public virtual SkillCollectionGrid GetGrid () {
+			SkillCollectionBase[] collect = GetSkillCollections();
+			Vector2 min = new Vector2(Mathf.Infinity, Mathf.Infinity);
+			Vector2 max = new Vector2(Mathf.NegativeInfinity, Mathf.NegativeInfinity);
+
+			// Find the min x, min y, max x, and max y
+			foreach (SkillCollectionBase col in collect) {
+				if (col.windowRect.x < min.x) min.x = col.windowRect.x;
+				if (col.windowRect.x > max.x) max.x = col.windowRect.x;
+				if (col.windowRect.y < min.y) min.y = col.windowRect.y;
+				if (col.windowRect.y > max.y) max.y = col.windowRect.y;
+			}
+
+			int x, y;
+			int width = Mathf.RoundToInt(Mathf.Abs(min.x - max.x) / gridCellSize.x);
+			int height = Mathf.RoundToInt(Mathf.Abs(min.y - max.y) / gridCellSize.y);
+			SkillCollectionBase[,] grid = new SkillCollectionBase[width, height];
+			foreach (SkillCollectionBase col in collect) {
+				x = Mathf.RoundToInt(col.windowRect.x - min.x);
+				y = Mathf.RoundToInt(col.windowRect.y - min.y);
+				grid[x, y] = col;
+			}
+
+			return new SkillCollectionGrid(grid);
+		}
+
 		/// <summary>
 		/// Returns a snapshot of this skill tree's current state. It is recommended that you save this data to a file
 		/// in a way it can be easily restored to the same structure.
