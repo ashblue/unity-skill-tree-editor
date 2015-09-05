@@ -20,6 +20,9 @@ namespace Adnc.SkillTree {
 		[Tooltip("Required tree level to unlock this skill. Leave at 0 to ignore this.")]
 		public int requiredLevel;
 
+		[Tooltip("List of additional requirements beyond unlocking the previous skill entry and skill collection")]
+		public SkillBase[] extraRequirements;
+
 		SkillCategoryBase _category;
 		public SkillCategoryBase Category { 
 			get { 
@@ -70,6 +73,11 @@ namespace Adnc.SkillTree {
 			if (requiredLevel > 0) 
 				requirements += string.Format("* {0} Skill Lv {1} \n", category.displayName, requiredLevel);
 
+			foreach (SkillBase skill in extraRequirements) {
+				SkillCollectionBase collection = skill.transform.parent.GetComponent<SkillCollectionBase>();
+				requirements += string.Format("* {0} Lv {1} \n", collection.displayName, skill.transform.GetSiblingIndex() + 1);
+			}
+
 			return requirements;
 		}
 
@@ -84,6 +92,12 @@ namespace Adnc.SkillTree {
 
 			if (Category.skillLv < requiredLevel) {
 				return false;
+			}
+
+			foreach (SkillBase skill in extraRequirements) {
+				if (!skill.unlocked) {
+					return false;
+				}
 			}
 
 			return true;
