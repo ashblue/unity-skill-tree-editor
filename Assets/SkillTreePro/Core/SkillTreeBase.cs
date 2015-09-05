@@ -36,7 +36,7 @@ namespace Adnc.SkillTree {
 		Dictionary<string, SkillCollectionBase> collectionUuidLib = new Dictionary<string, SkillCollectionBase>();
 		Dictionary<string, SkillBase> skillUuidLib = new Dictionary<string, SkillBase>();
 		
-		void Awake () {
+		public virtual void Awake () {
 			foreach (SkillCategoryBase cat in GetCategories()) {
 				if (!string.IsNullOrEmpty(cat.id)) categoryLib[cat.id] = cat;
 				categoryUuidLib[cat.Uuid] = cat;
