@@ -13,38 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Untitled
   description: 
-  categories:
-  - displayName: 
-    id: 
-    sortIndex: 0
-    defaultSkillLv: 0
-    uuid: 
-    collections:
-    - node:
-        rect:
-          serializedVersion: 2
-          x: 0
-          y: 0
-          width: 0
-          height: 0
-      displayName: 
-      id: 
-      skillIndex: 0
-      uuid: 
-      description: 
-      notes: 
-    - node:
-        rect:
-          serializedVersion: 2
-          x: 0
-          y: 0
-          width: 0
-          height: 0
-      displayName: 
-      id: 
-      skillIndex: 0
-      uuid: 
-      description: 
-      notes: 
-    description: 
-    notes: 
+  categories: []

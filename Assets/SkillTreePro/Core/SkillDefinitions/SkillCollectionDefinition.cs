@@ -20,6 +20,9 @@ namespace Adnc.SkillTreePro {
 			get { return true; }
 		}
 
+		[Tooltip("Hide from skill tree print view")]
+		public bool hidden;
+
 		public NodeData node = new NodeData();
 
 		[Tooltip("Determines what skill is currently active and returns it")]
@@ -32,6 +35,8 @@ namespace Adnc.SkillTreePro {
 		public List<string> skills = new List<string>();
 
 		public SkillCollectionDefinition (SkillCategoryDefinition cat) {
+			if (cat == null) return;
+
 			SkillDefinition def = new SkillDefinition(cat);
 			skills.Add(def.uuid);
 

@@ -13,5 +13,9 @@ namespace Adnc.SkillTreePro {
 		public SkillCollectionStartDefinition start = new SkillCollectionStartDefinition(null);
 		public List<SkillCollectionDefinition> skillCollections = new List<SkillCollectionDefinition>();
 		public List<SkillDefinition> skillDefinitions = new List<SkillDefinition>();
+
+//		public SkillCategoryDefinition () {
+//			start = ;
+//		}
 	}
 }

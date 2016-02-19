@@ -8,7 +8,8 @@ namespace Adnc.SkillTreePro {
 	public class StatsDataDrawer : Editor {
 		public override void OnInspectorGUI () {
 			if (GUILayout.Button("Edit Skill Tree")) {
-				Debug.Log("Call skill tree editor and inject asset path for loading");
+				Wm.Db = serializedObject.targetObject as SkillTreeDatabase;
+				Wm.ShowSkillTreeEditor();
 			}
 
 			serializedObject.ApplyModifiedProperties();
