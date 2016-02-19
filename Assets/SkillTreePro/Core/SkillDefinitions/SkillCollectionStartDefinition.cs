@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Adnc.SkillTreePro {
 	[System.Serializable]
-	public class SkillCollectionStarDefinition : SkillCollectionDefinition {
+	public class SkillCollectionStartDefinition : SkillCollectionDefinition {
 		public override bool AllowParents {
 			get {
 				return false;
@@ -14,6 +14,10 @@ namespace Adnc.SkillTreePro {
 			get {
 				return false;
 			}
+		}
+
+		public SkillCollectionStartDefinition (SkillCategoryDefinition cat) : base (cat) {
+			// Do nothing so we override the base constructor
 		}
 	}
 }

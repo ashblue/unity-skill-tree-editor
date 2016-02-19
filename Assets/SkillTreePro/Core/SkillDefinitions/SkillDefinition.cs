@@ -9,5 +9,9 @@ namespace Adnc.SkillTreePro {
 
 		[Tooltip("Required tree level to unlock this skill. Leave at 0 to ignore this.")]
 		public int requiredLevel;
+
+		public SkillDefinition (SkillCategoryDefinition cat) {
+			cat.skillDefinitions.Add(this);
+		}
 	}
 }

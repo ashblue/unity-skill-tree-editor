@@ -20,22 +20,22 @@ namespace Adnc.SkillTreePro {
 			get { return true; }
 		}
 
-		public NodeData node;
+		public NodeData node = new NodeData();
 
 		[Tooltip("Determines what skill is currently active and returns it")]
 		public int skillIndex = 0;
 
 		[Tooltip("Connected collections")]
-		public List<SkillCollectionDefinition> childSkills = new List<SkillCollectionDefinition>();
+		public List<string> childCollections = new List<string>();
 
 		[Tooltip("Tiers of skills")]
-		public List<SkillDefinition> skills = new List<SkillDefinition>() {
-			new SkillDefinition()
-		};
+		public List<string> skills = new List<string>();
 
-		public SkillCollectionDefinition () {
-			// @TODO Probably pass in rectangle location data
-			node = new NodeData();
+		public SkillCollectionDefinition (SkillCategoryDefinition cat) {
+			SkillDefinition def = new SkillDefinition(cat);
+			skills.Add(def.uuid);
+
+			cat.skillCollections.Add(this);
 		}
 	}
 }
