@@ -1,0 +1,41 @@
+﻿using UnityEngine;
+using System.Collections.Generic;
+
+namespace Adnc.SkillTreePro {
+	[System.Serializable]
+	public class SkillCollectionDefinition : SkillDefinitionBase {
+		/// <summary>
+		/// Determines if an editing interace is shown in the sidebar
+		/// </summary>
+		/// <value><c>true</c> if editable; otherwise, <c>false</c>.</value>
+		virtual public bool Editable {
+			get { return true; }
+		}
+
+		/// <summary>
+		/// Gets a value indicating whether this <see cref="Adnc.SkillTreePro.SkillCollectionDefinition"/> allows parent nodes.
+		/// </summary>
+		/// <value><c>true</c> if allow parents; otherwise, <c>false</c>.</value>
+		virtual public bool AllowParents {
+			get { return true; }
+		}
+
+		public NodeData node;
+
+		[Tooltip("Determines what skill is currently active and returns it")]
+		public int skillIndex = 0;
+
+		[Tooltip("Connected collections")]
+		public List<SkillCollectionDefinition> childSkills = new List<SkillCollectionDefinition>();
+
+		[Tooltip("Tiers of skills")]
+		public List<SkillDefinition> skills = new List<SkillDefinition>() {
+			new SkillDefinition()
+		};
+
+		public SkillCollectionDefinition () {
+			// @TODO Probably pass in rectangle location data
+			node = new NodeData();
+		}
+	}
+}
