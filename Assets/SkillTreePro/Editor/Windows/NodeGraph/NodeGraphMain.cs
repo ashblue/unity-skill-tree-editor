@@ -9,8 +9,10 @@ namespace Adnc.SkillTreePro {
 		GraphCamera camera = new GraphCamera();
 		SkillCollectionDefinition selectedNode;
 
+		Event e;
 		Vector2 mousePos;
 		Vector2 mousePosGlobal;
+		Vector2 nodeClickOffset;
 
 		SkillCategoryDefinition lastDef;
 
@@ -37,16 +39,15 @@ namespace Adnc.SkillTreePro {
 		}
 
 		void Content () {
-			Event e = Event.current;
-			mousePosGlobal = camera.GetMouseGlobal(mousePos);
-
 			Wm.Win.BeginWindows();
 			if (Wm.DbCat != null) {
 				SkillCollectionStartDefinition start = Wm.DbCat.start;
 				start.node.RectPos = GUI.Window(-1, start.node.RectPos, DrawNode, start.displayName);
 
+
 				if (selectedNode == null && e.button == 0 && e.type == EventType.mouseDown && start.node.RectPos.Contains(mousePosGlobal)) {
 					selectedNode = Wm.DbCat.start;
+					nodeClickOffset = selectedNode.node.RectPos.position - mousePosGlobal;
 				}
 			}
 			Wm.Win.EndWindows();
@@ -61,7 +62,7 @@ namespace Adnc.SkillTreePro {
 
 			if (selectedNode != null) {
 				if (e.button == 0) {
-					selectedNode.node.RectPos = new Rect(mousePosGlobal.x, mousePosGlobal.y, 0, 0);
+					selectedNode.node.RectPos = new Rect(mousePosGlobal.x + nodeClickOffset.x, mousePosGlobal.y + nodeClickOffset.y, 0, 0);
 					Wm.Win.Repaint();
 				}
 			} else {
@@ -76,8 +77,10 @@ namespace Adnc.SkillTreePro {
 		}
 
 		void WrapperBegin () {
-			mousePos = Event.current.mousePosition;
+			e = Event.current;
+			mousePos = e.mousePosition;
 			camera.offset = GUI.BeginScrollView(pos, camera.offset, new Rect(camera.viewportSize / -2f, camera.viewportSize / -2f, camera.viewportSize, camera.viewportSize));
+			mousePosGlobal = camera.GetMouseGlobal(mousePos);
 		}
 
 		void WrapperEnd () {
@@ -96,7 +99,7 @@ namespace Adnc.SkillTreePro {
 		}
 
 		void DrawNode (int id) {
-			Event e = Event.current;
+//			Event e = Event.current;
 
 			// Check if this node was clicked
 		}
