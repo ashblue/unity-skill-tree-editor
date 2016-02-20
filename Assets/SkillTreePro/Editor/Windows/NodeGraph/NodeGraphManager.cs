@@ -16,7 +16,7 @@ namespace Adnc.SkillTreePro {
 
 			set {
 				_db = value;
-				_activeCat = null;
+				DbCat = null;
 
 				if (_db != null) {
 					EditorPrefs.SetFloat(DATABASE_ID_KEY, _db.GetInstanceID());
@@ -24,14 +24,24 @@ namespace Adnc.SkillTreePro {
 			}
 		}
 
-		public static SkillCategoryDefinition _activeCat;
-		public static SkillCategoryDefinition DbCat {
+		public static NodeGraphWindow _win;
+		public static NodeGraphWindow Win {
 			get {
-				return _activeCat;
+				return _win;
 			}
 
 			set {
-				_activeCat = value;
+				_win = value;
+			}
+		}
+
+		public static SkillCategoryDefinition DbCat {
+			get {
+				return Wm.Db._eCat;
+			}
+
+			set {
+				Wm.Db._eCat = value;
 			}
 		}
 

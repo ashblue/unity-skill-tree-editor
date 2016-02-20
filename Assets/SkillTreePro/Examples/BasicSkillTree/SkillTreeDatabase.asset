@@ -12,5 +12,110 @@ MonoBehaviour:
   m_Name: SkillTreeDatabase
   m_EditorClassIdentifier: 
   title: Untitled
+  _eCat:
+    uuid: 38d0168f-ce77-4e58-b3b0-69c536503163
+    id: 
+    displayName: Untitled
+    description: 
+    notes: 
+    sortIndex: 0
+    defaultSkillLv: 0
+    start:
+      uuid: f6781670-932a-48c7-9d43-c7a8de839f45
+      id: 
+      displayName: Untitled
+      description: 
+      notes: 
+      hidden: 0
+      node:
+        _rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 100
+          height: 100
+      skillIndex: 0
+      childCollections: []
+      skills: []
+    skillCollections: []
+    skillDefinitions: []
   description: 
-  categories: []
+  categories:
+  - uuid: 38d0168f-ce77-4e58-b3b0-69c536503163
+    id: 
+    displayName: Untitled
+    description: 
+    notes: 
+    sortIndex: 0
+    defaultSkillLv: 0
+    start:
+      uuid: f6781670-932a-48c7-9d43-c7a8de839f45
+      id: 
+      displayName: Untitled
+      description: 
+      notes: 
+      hidden: 0
+      node:
+        _rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 100
+          height: 100
+      skillIndex: 0
+      childCollections: []
+      skills: []
+    skillCollections: []
+    skillDefinitions: []
+  - uuid: f2b89733-9323-4148-98c0-0256a466e4f9
+    id: 
+    displayName: Untitled
+    description: 
+    notes: 
+    sortIndex: 0
+    defaultSkillLv: 0
+    start:
+      uuid: 22e60fe2-fdfa-437e-aaef-eb6c61456a43
+      id: 
+      displayName: Untitled
+      description: 
+      notes: 
+      hidden: 0
+      node:
+        _rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 100
+          height: 100
+      skillIndex: 0
+      childCollections: []
+      skills: []
+    skillCollections: []
+    skillDefinitions: []
+  - uuid: 6c8c0a63-fd80-4585-a978-86bf9e6f59f4
+    id: 
+    displayName: Untitled
+    description: 
+    notes: 
+    sortIndex: 0
+    defaultSkillLv: 0
+    start:
+      uuid: ce202311-a357-43b9-bdf5-9542b01088d7
+      id: 
+      displayName: Start
+      description: 
+      notes: 
+      hidden: 0
+      node:
+        _rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 100
+          height: 100
+      skillIndex: 0
+      childCollections: []
+      skills: []
+    skillCollections: []
+    skillDefinitions: []

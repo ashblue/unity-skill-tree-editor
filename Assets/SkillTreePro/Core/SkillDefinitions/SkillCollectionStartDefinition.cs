@@ -17,7 +17,7 @@ namespace Adnc.SkillTreePro {
 		}
 
 		public SkillCollectionStartDefinition (SkillCategoryDefinition cat) : base (cat) {
-			// Do nothing so we override the base constructor
+			node.RectPos = new Rect(0, 0, 0, 0);
 		}
 	}
 }
