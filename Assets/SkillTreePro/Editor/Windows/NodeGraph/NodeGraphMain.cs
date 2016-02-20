@@ -26,6 +26,8 @@ namespace Adnc.SkillTreePro {
 		}
 
 		public void Update (Rect pos) {
+			if (Wm.DbCat == null) return;
+
 			this.pos = pos;
 
 			if (lastDef != Wm.DbCat) {
@@ -106,7 +108,7 @@ namespace Adnc.SkillTreePro {
 		}
 
 		void DrawTitle () {
-			string title = string.Format("{0}: {1}", Wm.Db.name, Wm.DbCat.displayName);
+			string title = string.Format("{0}: {1}", Wm.Db.title, Wm.DbCat.displayName);
 			GUI.Label(new Rect(10, 10, 100, 20), title, new GUIStyle {fontSize = 20});
 		}
 	}

@@ -37,11 +37,16 @@ namespace Adnc.SkillTreePro {
 
 		public static SkillCategoryDefinition DbCat {
 			get {
-				return Wm.Db._eCat;
+				return Wm.Db.ActiveCategory;
 			}
 
 			set {
-				Wm.Db._eCat = value;
+				if (value == null) {
+					Wm.Db._activeCategoryIndex = -1;
+				} else {
+					Wm.Db._activeCategoryIndex = Wm.Db.categories.FindIndex(a => a == value);
+				}
+
 			}
 		}
 

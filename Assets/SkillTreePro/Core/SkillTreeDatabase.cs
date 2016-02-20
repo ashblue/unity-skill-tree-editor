@@ -8,7 +8,16 @@ namespace Adnc.SkillTreePro {
 		/// <summary>
 		/// Currently selected category for editing
 		/// </summary>
-		public SkillCategoryDefinition _eCat;
+		[HideInInspector] public int _activeCategoryIndex = -1;
+		public SkillCategoryDefinition ActiveCategory {
+			get {
+				if (_activeCategoryIndex >= 0) {
+					return categories[_activeCategoryIndex];
+				}
+
+				return null;
+			}
+		}
 
 		[TextArea(3, 5)]
 		public string description;
