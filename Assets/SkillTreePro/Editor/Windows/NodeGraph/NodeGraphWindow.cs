@@ -17,8 +17,8 @@ namespace Adnc.SkillTreePro {
 				return;
 			}
 
-			main.Update(new Rect(0f, 0f, position.width - sidebarWidth, position.height));
 			sidebar.Update(new Rect(position.width - sidebarWidth, 0, sidebarWidth, position.height));
+			main.Update(new Rect(0f, 0f, position.width - sidebarWidth, position.height));
 		}
 	}
 }

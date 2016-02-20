@@ -31,7 +31,13 @@ namespace Adnc.SkillTreePro {
 		}
 
 		void Inspector () {
-			EditorGUILayout.LabelField("Node inspector content goes here");
+			if (Wm.DbCol == null) {
+				EditorGUILayout.LabelField("Please select a skill collection to edit.");
+				return;
+			}
+
+			EditorGUILayout.LabelField(Wm.DbCol.DisplayName, EditorStyles.boldLabel);
+			EditorGUILayout.LabelField(Wm.DbCol.Description, EditorStyles.helpBox);
 		}
 
 		void Categories () {
