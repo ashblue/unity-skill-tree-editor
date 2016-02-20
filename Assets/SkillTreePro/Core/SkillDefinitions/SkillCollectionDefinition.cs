@@ -34,6 +34,11 @@ namespace Adnc.SkillTreePro {
 		[Tooltip("Tiers of skills")]
 		public List<string> skills = new List<string>();
 
+		/// <summary>
+		/// Determines if this object is in drag mode in the editor
+		/// </summary>
+		[System.NonSerialized] public bool _drag;
+
 		public SkillCollectionDefinition (SkillCategoryDefinition cat) {
 			if (cat == null) return;
 

@@ -46,8 +46,17 @@ namespace Adnc.SkillTreePro {
 				SkillCollectionStartDefinition start = Wm.DbCat.start;
 				start.node.RectPos = GUI.Window(-1, start.node.RectPos, DrawNode, start.DisplayName);
 
+				if (selectedNode == null && start.node.RectPos.Contains(mousePosGlobal) && e.type == EventType.mouseDown) {
+					if (e.button == 0) {
+						Wm.DbCol = Wm.DbCat.start;
+						selectedNode = Wm.DbCat.start;
+						selectedNode._drag = true;
+						nodeClickOffset = selectedNode.node.RectPos.position - mousePosGlobal;
+					} else if (e.button == 1) {
+						Wm.DbCol = Wm.DbCat.start;
+						selectedNode = Wm.DbCat.start;
+					}
 
-				if (selectedNode == null && e.button == 0 && e.type == EventType.mouseDown && start.node.RectPos.Contains(mousePosGlobal)) {
 					Wm.DbCol = Wm.DbCat.start;
 					selectedNode = Wm.DbCat.start;
 					nodeClickOffset = selectedNode.node.RectPos.position - mousePosGlobal;
@@ -61,21 +70,52 @@ namespace Adnc.SkillTreePro {
 		}
 
 		void MouseActive () {
-			Event e = Event.current;
-
 			if (selectedNode != null) {
-				if (e.button == 0) {
+				if (e.button == 0 && selectedNode._drag) {
 					selectedNode.node.RectPos = new Rect(mousePosGlobal.x + nodeClickOffset.x, mousePosGlobal.y + nodeClickOffset.y, 0, 0);
 					Wm.Win.Repaint();
+				} else if (e.button == 1 && e.type == EventType.mouseDown) {
+					GenericMenu menu = new GenericMenu();
+
+					if (selectedNode.Editable) {
+						menu.AddItem(new GUIContent("Delete Skill Group"), false, DeleteSkillGroup);
+					}
+
+					menu.AddItem(new GUIContent("Add Child Transition"), false, null);
+
+					menu.ShowAsContext();
+					e.Use();
 				}
 			} else {
-				if (e.button == 1) {
-
+				if (e.button == 1 && e.type == EventType.mouseDown) {
+					GenericMenu menu = new GenericMenu();
+					menu.AddItem(new GUIContent("Add Skill Group/Skill Group Item"), false, null);
+					menu.ShowAsContext();
+					e.Use();
 				} else if (e.button == 0) {
 					if (e.type == EventType.mouseDown) {
 						camera.BeginMove(mousePos);
 					}
 				}
+			}
+		}
+
+		void DeleteSkillGroup () {
+			if (EditorUtility.DisplayDialog("Delete Skill Collection?", 
+				"Are you sure you want to delete this skill collection? It will delete this collection plus all skills it contains.",
+				"Delete Skill Collection", 
+				"Cancel")) {
+
+				// @TODO Clean up 
+//				SkillCollectionBase[] collect = target.currentCategory.GetComponentsInChildren<SkillCollectionBase>();
+//				SkillCollectionBase t = collect[selectIndex];
+
+				// Clean out all references to our skill collection
+//				foreach (SkillCollectionBase node in collect) {
+//					node.childSkills.Remove(t);
+//				}
+
+				Wm.DbCat.DestroyCollection(Wm.DbCol);
 			}
 		}
 
@@ -92,7 +132,11 @@ namespace Adnc.SkillTreePro {
 
 			// Always stop the camera on mouse up (even if not in the window)
 			if (Event.current.rawType == EventType.MouseUp) {
-				selectedNode = null;
+				if (selectedNode != null) {
+					selectedNode._drag = false;
+					selectedNode = null;
+				}
+
 				camera.EndMove();
 			}
 

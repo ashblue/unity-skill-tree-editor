@@ -14,8 +14,22 @@ namespace Adnc.SkillTreePro {
 		public List<SkillCollectionDefinition> skillCollections = new List<SkillCollectionDefinition>();
 		public List<SkillDefinition> skillDefinitions = new List<SkillDefinition>();
 
-//		public SkillCategoryDefinition () {
-//			start = ;
-//		}
+		public SkillDefinition GetSkill (string uuid) {
+			return skillDefinitions.Find(s => s.uuid == uuid);
+		}
+
+		/// <summary>
+		/// Wipe all skill references then clean up the collection
+		/// </summary>
+		/// <param name="col">Collection</param>
+		public void DestroyCollection (SkillCollectionDefinition col) {
+			col.skills.ForEach(uuid => DestorySkill(col, GetSkill(uuid)));
+			skillCollections.Remove(col);
+		}
+			
+		public void DestorySkill (SkillCollectionDefinition col, SkillDefinition skill) {
+			col.skills.RemoveAll(uuid => uuid == skill.uuid);
+			skillDefinitions.Remove(skill);
+		}
 	}
 }
