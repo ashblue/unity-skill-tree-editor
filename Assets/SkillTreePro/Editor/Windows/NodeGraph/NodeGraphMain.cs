@@ -44,10 +44,11 @@ namespace Adnc.SkillTreePro {
 			Wm.Win.BeginWindows();
 			if (Wm.DbCat != null) {
 				SkillCollectionStartDefinition start = Wm.DbCat.start;
-				start.node.RectPos = GUI.Window(-1, start.node.RectPos, DrawNode, start.displayName);
+				start.node.RectPos = GUI.Window(-1, start.node.RectPos, DrawNode, start.DisplayName);
 
 
 				if (selectedNode == null && e.button == 0 && e.type == EventType.mouseDown && start.node.RectPos.Contains(mousePosGlobal)) {
+					Wm.DbCol = Wm.DbCat.start;
 					selectedNode = Wm.DbCat.start;
 					nodeClickOffset = selectedNode.node.RectPos.position - mousePosGlobal;
 				}
@@ -108,7 +109,7 @@ namespace Adnc.SkillTreePro {
 		}
 
 		void DrawTitle () {
-			string title = string.Format("{0}: {1}", Wm.Db.title, Wm.DbCat.displayName);
+			string title = string.Format("{0}: {1}", Wm.Db.title, Wm.DbCat.DisplayName);
 			GUI.Label(new Rect(10, 10, 100, 20), title, new GUIStyle {fontSize = 20});
 		}
 	}

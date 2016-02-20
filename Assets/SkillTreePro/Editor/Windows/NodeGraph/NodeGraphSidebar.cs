@@ -44,9 +44,9 @@ namespace Adnc.SkillTreePro {
 				EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
 				if (Wm.DbCat == cat) {
-					cat.displayName = EditorGUILayout.TextField(cat.displayName);
+					cat.DisplayName = EditorGUILayout.TextField(cat.DisplayName);
 				} else {
-					EditorGUILayout.LabelField(cat.displayName);
+					EditorGUILayout.LabelField(cat.DisplayName);
 				}
 
 				EditorGUILayout.BeginHorizontal();

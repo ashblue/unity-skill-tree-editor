@@ -41,12 +41,19 @@ namespace Adnc.SkillTreePro {
 			}
 
 			set {
-				if (value == null) {
-					Wm.Db._activeCategoryIndex = -1;
-				} else {
-					Wm.Db._activeCategoryIndex = Wm.Db.categories.FindIndex(a => a == value);
-				}
+				DbCol = null;
+				Wm.Db.ActiveCategory = value;
+			}
+		}
 
+		public static SkillCollectionDefinition _dbCol;
+		public static SkillCollectionDefinition DbCol {
+			get {
+				return _dbCol;
+			}
+
+			set {
+				_dbCol = value;
 			}
 		}
 

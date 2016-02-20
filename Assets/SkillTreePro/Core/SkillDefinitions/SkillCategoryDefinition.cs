@@ -10,9 +10,7 @@ namespace Adnc.SkillTreePro {
 		[Tooltip("What is the starting skill level in this category?")]
 		public int defaultSkillLv = 0;
 
-		public SkillCollectionStartDefinition start = new SkillCollectionStartDefinition(null) {
-			displayName = "Start"
-		};
+		public SkillCollectionStartDefinition start = new SkillCollectionStartDefinition(null);
 		public List<SkillCollectionDefinition> skillCollections = new List<SkillCollectionDefinition>();
 		public List<SkillDefinition> skillDefinitions = new List<SkillDefinition>();
 

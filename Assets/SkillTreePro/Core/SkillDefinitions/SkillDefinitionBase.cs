@@ -11,9 +11,27 @@ namespace Adnc.SkillTreePro {
 		public string id;
 
 		[Tooltip("Name the user will see when the node is printed")]
-		public string displayName = "Untitled";
+		[SerializeField] string displayName = "Untitled";
+		virtual public string DisplayName {
+			get {
+				return displayName;
+			}
 
-		public string description;
+			set {
+				displayName = value;
+			}
+		}
+
+		[SerializeField] string description;
+		virtual public string Description {
+			get {
+				return description;
+			}
+
+			set {
+				description = value;
+			}
+		}
 
 		public string notes;
 

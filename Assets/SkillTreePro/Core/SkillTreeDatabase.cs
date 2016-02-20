@@ -5,9 +5,6 @@ namespace Adnc.SkillTreePro {
 	public class SkillTreeDatabase : ScriptableObject {
 		public string title = "Untitled";
 
-		/// <summary>
-		/// Currently selected category for editing
-		/// </summary>
 		[HideInInspector] public int _activeCategoryIndex = -1;
 		public SkillCategoryDefinition ActiveCategory {
 			get {
@@ -16,6 +13,14 @@ namespace Adnc.SkillTreePro {
 				}
 
 				return null;
+			}
+
+			set {
+				if (value == null) {
+					_activeCategoryIndex = -1;
+				} else {
+					_activeCategoryIndex = categories.FindIndex(a => a == value);
+				}
 			}
 		}
 
