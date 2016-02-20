@@ -78,6 +78,7 @@ namespace Adnc.SkillTreePro {
 
 		void WrapperBegin () {
 			e = Event.current;
+			DrawTitle();
 			mousePos = e.mousePosition;
 			camera.offset = GUI.BeginScrollView(pos, camera.offset, new Rect(camera.viewportSize / -2f, camera.viewportSize / -2f, camera.viewportSize, camera.viewportSize));
 			mousePosGlobal = camera.GetMouseGlobal(mousePos);
@@ -102,6 +103,11 @@ namespace Adnc.SkillTreePro {
 //			Event e = Event.current;
 
 			// Check if this node was clicked
+		}
+
+		void DrawTitle () {
+			string title = string.Format("{0}: {1}", Wm.Db.name, Wm.DbCat.displayName);
+			GUI.Label(new Rect(10, 10, 100, 20), title, new GUIStyle {fontSize = 20});
 		}
 	}
 }
