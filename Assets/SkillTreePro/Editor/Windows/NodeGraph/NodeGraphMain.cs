@@ -75,7 +75,6 @@ namespace Adnc.SkillTreePro {
 		void Transition () {
 			// Draw a transistion if in transistion mode
 			if (isTransition && selectedNode != null) {
-				Vector2 globalOffset = camera.GetOffsetGlobal();
 				Rect beginRect = selectedNode.node.RectPos;
 				Rect mouseRect = new Rect(mousePosGlobal.x, mousePosGlobal.y, 10f, 10f);
 
@@ -138,7 +137,16 @@ namespace Adnc.SkillTreePro {
 						menu.AddItem(new GUIContent("Delete Skill Group"), false, DeleteSkillGroup);
 					}
 
+					menu.AddSeparator("");
 					menu.AddItem(new GUIContent("Add Child Transition"), false, BeginSkillGroupTransition);
+					selectedNode.childCollections
+						.ForEach(c => menu.AddItem(
+							new GUIContent(string.Format("Delete Child Transition/{0}", c.DisplayName)),
+							false,
+							DeleteSkillGroupTransition,
+							c.uuid
+						));
+
 
 					menu.ShowAsContext();
 					e.Use();
@@ -235,6 +243,7 @@ namespace Adnc.SkillTreePro {
 		void DeleteSkillGroupTransition (object obj) {
 			string uuid = obj as string;
 			selectedNode.childCollections.RemoveAll(c => c.uuid == uuid);
+			EditorUtility.SetDirty(Wm.Db);
 		}
 
 		void EndSkillGroupTransition () {
