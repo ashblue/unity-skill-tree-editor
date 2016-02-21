@@ -126,7 +126,7 @@ namespace Adnc.SkillTreePro {
 //					node.childSkills.Remove(t);
 //				}
 
-//			Wm.DbCat.DestroyCollection(Wm.DbCol);
+			Wm.DestroyCollection(Wm.DbCat, Wm.DbCol);
 		}
 
 		void WrapperBegin () {

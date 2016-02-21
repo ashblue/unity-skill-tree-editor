@@ -2,6 +2,15 @@
 using System.Collections;
 
 namespace Adnc.SkillTreePro {
+	/// <summary>
+	/// Skill definition text in a collapsable display
+	/// </summary>
+	[System.Serializable]
+	public class SkillDefinitionText {
+		[TextArea] public string description;
+		[TextArea] public string notes;
+	}
+
 	[System.Serializable]
 	public abstract class SkillDefinitionBase : ScriptableObject {
 		[HideInInspector] public string uuid = System.Guid.NewGuid().ToString();
@@ -21,8 +30,7 @@ namespace Adnc.SkillTreePro {
 			}
 		}
 
-		[TextArea] public string description;
-		[TextArea] public string notes;
+		public SkillDefinitionText text;
 
 		public virtual void Setup () {
 			hideFlags = HideFlags.HideInHierarchy;

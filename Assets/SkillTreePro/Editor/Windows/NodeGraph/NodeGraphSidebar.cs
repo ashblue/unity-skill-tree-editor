@@ -80,6 +80,7 @@ namespace Adnc.SkillTreePro {
 				AssetDatabase.AddObjectToAsset(scd, Wm.Db);
 
 				SkillCollectionStartDefinition scsd = ScriptableObject.CreateInstance("SkillCollectionStartDefinition") as SkillCollectionStartDefinition;
+				scsd._displayName = "Start";
 				scsd.Setup(Wm.DbCat);
 				AssetDatabase.AddObjectToAsset(scsd, Wm.Db);
 
