@@ -26,13 +26,25 @@ namespace Adnc.SkillTreePro {
 			}
 		}
 
-		public List<string> GetSkillGroupTypes () {
-			System.Type[] types = Assembly.GetAssembly(typeof(SkillCollectionDefinitionBase))
+		public List<string> GetSkillGroupTypes (bool includeHidden = false) {
+			List<System.Type> types = Assembly.GetAssembly(typeof(SkillCollectionDefinitionBase))
 				.GetTypes()
 				.Where(t => t.IsSubclassOf(typeof(SkillCollectionDefinitionBase)))
-				.ToArray();
+				.ToList();
+
+			List<System.Type> removed = new List<System.Type>();
+			if (!includeHidden) {
+				foreach (System.Type type in types) {
+					FieldInfo prop = type.GetField("hideInAddMenu");
+					if (prop == null) continue;
+
+					object hidden = prop.GetValue(null);
+					if (hidden.Equals(true)) removed.Add(type);
+				}
+			}
+			removed.ForEach(r => types.Remove(r));
 				
-			return System.Array.ConvertAll(types, x => x.ToString()).ToList();
+			return types.ConvertAll(x => x.ToString()).ToList();
 		}
 
 		[TextArea(3, 5)]

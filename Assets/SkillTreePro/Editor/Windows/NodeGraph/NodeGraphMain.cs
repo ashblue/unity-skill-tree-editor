@@ -52,7 +52,10 @@ namespace Adnc.SkillTreePro {
 						selectedNode = Wm.DbCat.start;
 						selectedNode._drag = true;
 						nodeClickOffset = selectedNode.node.RectPos.position - mousePosGlobal;
-						Selection.activeObject = selectedNode;
+
+						if (selectedNode.Editable) {
+							Selection.activeObject = selectedNode;
+						}
 					} else if (e.button == 1) {
 						Wm.DbCol = Wm.DbCat.start;
 						selectedNode = Wm.DbCat.start;

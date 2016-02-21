@@ -23,6 +23,9 @@ namespace Adnc.SkillTreePro {
 		[Tooltip("Hide from skill node and all children from printed view")]
 		public bool hidden;
 
+		/// Setting this to true will prevent a user from creating this skill collection through the interface
+		// public static bool hideInAddMenu;
+
 		[HideInInspector] public NodeData node = new NodeData();
 		[HideInInspector] public int skillIndex = 0;
 		[HideInInspector] public List<string> childCollections = new List<string>();

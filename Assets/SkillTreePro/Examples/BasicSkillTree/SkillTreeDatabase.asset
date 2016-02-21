@@ -12,12 +12,32 @@ MonoBehaviour:
   m_Name: SkillTreeDatabase
   m_EditorClassIdentifier: 
   title: Untitled
-  _activeCategoryIndex: -1
+  _activeCategoryIndex: 0
   description: 
   categories:
-  - {fileID: 11483734}
-  - {fileID: 11453368}
---- !u!114 &11423570
+  - {fileID: 11414344}
+--- !u!114 &11414344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0058fa6c379e343df905fa8a6df775d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uuid: 34df4e3e-41c0-4816-a6e6-5b11bfd0e32b
+  id: 
+  _displayName: Untitled
+  description: 
+  notes: 
+  sortIndex: 0
+  defaultSkillLv: 0
+  start: {fileID: 11458160}
+  skillCollections: []
+  skillDefinitions: []
+--- !u!114 &11458160
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -28,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf108f224c42b408b80a7b1b799a4bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uuid: 11fe13fe-d536-42e1-ab80-3b07983665e9
+  uuid: 7f8e5a4b-f7ea-41b2-9d31-4e4d09babc79
   id: 
   _displayName: Untitled
   description: 
@@ -37,81 +57,11 @@ MonoBehaviour:
   node:
     _rect:
       serializedVersion: 2
-      x: 0
-      y: 0
+      x: 45
+      y: 359
       width: 100
       height: 100
   skillIndex: 0
   childCollections: []
   skills: []
   test: 0
---- !u!114 &11453368
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0058fa6c379e343df905fa8a6df775d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uuid: e2a6ab60-ae83-4e0d-a794-0652d802fc8d
-  id: 
-  _displayName: Untitled
-  description: 
-  notes: 
-  sortIndex: 0
-  defaultSkillLv: 0
-  start: {fileID: 11469406}
-  skillCollections: []
-  skillDefinitions: []
---- !u!114 &11469406
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf108f224c42b408b80a7b1b799a4bc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uuid: d3365b7c-5efd-43e8-ab87-b10fb6a62536
-  id: 
-  _displayName: Untitled
-  description: 
-  notes: 
-  hidden: 0
-  node:
-    _rect:
-      serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
-  skillIndex: 0
-  childCollections: []
-  skills: []
-  test: 0
---- !u!114 &11483734
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0058fa6c379e343df905fa8a6df775d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uuid: f1944017-0e9a-4153-84c2-7d66e3271a8b
-  id: 
-  _displayName: A
-  description: 
-  notes: 
-  sortIndex: 0
-  defaultSkillLv: 0
-  start: {fileID: 11423570}
-  skillCollections: []
-  skillDefinitions: []
