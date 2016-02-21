@@ -46,8 +46,8 @@ namespace Adnc.SkillTreePro {
 			}
 		}
 
-		public static SkillCollectionDefinition _dbCol;
-		public static SkillCollectionDefinition DbCol {
+		public static SkillCollectionDefinitionBase _dbCol;
+		public static SkillCollectionDefinitionBase DbCol {
 			get {
 				return _dbCol;
 			}

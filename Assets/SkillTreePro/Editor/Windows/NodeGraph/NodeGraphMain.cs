@@ -7,7 +7,7 @@ namespace Adnc.SkillTreePro {
 		const int padding = 10;
 		Rect pos;
 		GraphCamera camera = new GraphCamera();
-		SkillCollectionDefinition selectedNode;
+		SkillCollectionDefinitionBase selectedNode;
 
 		Event e;
 		Vector2 mousePos;
@@ -52,6 +52,7 @@ namespace Adnc.SkillTreePro {
 						selectedNode = Wm.DbCat.start;
 						selectedNode._drag = true;
 						nodeClickOffset = selectedNode.node.RectPos.position - mousePosGlobal;
+						Selection.activeObject = selectedNode;
 					} else if (e.button == 1) {
 						Wm.DbCol = Wm.DbCat.start;
 						selectedNode = Wm.DbCat.start;
@@ -89,7 +90,8 @@ namespace Adnc.SkillTreePro {
 			} else {
 				if (e.button == 1 && e.type == EventType.mouseDown) {
 					GenericMenu menu = new GenericMenu();
-					menu.AddItem(new GUIContent("Add Skill Group/Skill Group Item"), false, null);
+					Wm.Db.GetSkillGroupTypes()
+						.ForEach(t => menu.AddItem(new GUIContent(string.Format("Add Skill Group/{0}", t)), false, null));
 					menu.ShowAsContext();
 					e.Use();
 				} else if (e.button == 0) {

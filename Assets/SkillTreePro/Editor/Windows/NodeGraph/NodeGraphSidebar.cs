@@ -7,7 +7,6 @@ namespace Adnc.SkillTreePro {
 		Rect pos;
 		Color backgroundColor = Color.white;
 		const int padding = 10;
-		string contentWindow = "Categories";
 
 		public void Update (Rect pos) {
 			this.pos = pos;
@@ -18,16 +17,7 @@ namespace Adnc.SkillTreePro {
 		}
 
 		void Content () {
-			EditorGUILayout.BeginHorizontal();
-			if (GUILayout.Button("Inspector")) contentWindow = "Inspector";
-			if (GUILayout.Button("Categories")) contentWindow = "Categories";
-			EditorGUILayout.EndHorizontal();
-
-			if (contentWindow == "Categories") {
-				Categories();
-			} else if (contentWindow == "Inspector") {
-				Inspector();
-			}
+			Categories();
 		}
 
 		void Inspector () {
@@ -35,9 +25,6 @@ namespace Adnc.SkillTreePro {
 				EditorGUILayout.LabelField("Please select a skill collection to edit.");
 				return;
 			}
-
-			EditorGUILayout.LabelField(Wm.DbCol.DisplayName, EditorStyles.boldLabel);
-			EditorGUILayout.LabelField(Wm.DbCol.Description, EditorStyles.helpBox);
 		}
 
 		void Categories () {
@@ -50,7 +37,7 @@ namespace Adnc.SkillTreePro {
 				EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
 				if (Wm.DbCat == cat) {
-					cat.DisplayName = EditorGUILayout.TextField(cat.DisplayName);
+					cat._displayName = EditorGUILayout.TextField(cat._displayName);
 				} else {
 					EditorGUILayout.LabelField(cat.DisplayName);
 				}
@@ -76,7 +63,7 @@ namespace Adnc.SkillTreePro {
 			}
 
 			if (deleteIndex > -1) {
-				Wm.Db.categories.RemoveAt(deleteIndex);
+				Wm.Db.DestroyCategory(deleteIndex);
 			} else if (upIndex > -1) {
 				MoveCategory(upIndex, true);
 			} else if (downIndex > -1) {
@@ -84,7 +71,18 @@ namespace Adnc.SkillTreePro {
 			}
 
 			if (GUILayout.Button("Add Category")) {
-				Wm.Db.categories.Add(new SkillCategoryDefinition());
+				SkillCategoryDefinition scd = ScriptableObject.CreateInstance("SkillCategoryDefinition") as SkillCategoryDefinition;
+				scd.Setup();
+				AssetDatabase.AddObjectToAsset(scd, Wm.Db);
+
+				SkillCollectionStartDefinition scsd = ScriptableObject.CreateInstance("SkillCollectionStartDefinition") as SkillCollectionStartDefinition;
+				scsd.Setup(Wm.DbCat);
+				AssetDatabase.AddObjectToAsset(scsd, Wm.Db);
+
+				scd.start = scsd;
+				Wm.Db.categories.Add(scd);
+
+				AssetDatabase.SaveAssets();
 			}
 		}
 

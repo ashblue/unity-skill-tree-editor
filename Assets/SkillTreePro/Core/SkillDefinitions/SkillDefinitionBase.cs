@@ -3,40 +3,29 @@ using System.Collections;
 
 namespace Adnc.SkillTreePro {
 	[System.Serializable]
-	public abstract class SkillDefinitionBase {
-		[Tooltip("UUID generated at creation")]
-		public string uuid;
+	public abstract class SkillDefinitionBase : ScriptableObject {
+		[HideInInspector] public string uuid = System.Guid.NewGuid().ToString();
 
 		[Tooltip("Used for data lookup purposes")]
 		public string id;
 
 		[Tooltip("Name the user will see when the node is printed")]
-		[SerializeField] string displayName = "Untitled";
+		public string _displayName = "Untitled";
 		virtual public string DisplayName {
 			get {
-				return displayName;
+				return _displayName;
 			}
 
 			set {
-				displayName = value;
+				_displayName = value;
 			}
 		}
 
-		[SerializeField] string description;
-		virtual public string Description {
-			get {
-				return description;
-			}
+		[TextArea] public string description;
+		[TextArea] public string notes;
 
-			set {
-				description = value;
-			}
-		}
-
-		public string notes;
-
-		public SkillDefinitionBase () {
-			uuid = System.Guid.NewGuid().ToString();
+		public virtual void Setup () {
+			hideFlags = HideFlags.HideInHierarchy;
 		}
 	}
 }

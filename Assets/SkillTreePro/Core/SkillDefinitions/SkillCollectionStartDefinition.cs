@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Adnc.SkillTreePro {
 	[System.Serializable]
-	public class SkillCollectionStartDefinition : SkillCollectionDefinition {
+	public class SkillCollectionStartDefinition : SkillCollectionDefinitionBase {
 		public override bool AllowParents {
 			get {
 				return false;
@@ -22,15 +22,11 @@ namespace Adnc.SkillTreePro {
 			}
 		}
 
-		public override string Description {
-			get {
-				return "All nodes must originate from this start node or they will not be included.";
-			}
+		public override void Setup (SkillCategoryDefinition cat) {
+			Setup();
 		}
 
-		public SkillCollectionStartDefinition (SkillCategoryDefinition cat) : base (cat) {
-			node.RectPos = new Rect(0, 0, 0, 0);
-		}
+		public bool test;
 	}
 }
 	

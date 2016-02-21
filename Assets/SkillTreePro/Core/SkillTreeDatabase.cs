@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Linq;
 
 namespace Adnc.SkillTreePro {
 	public class SkillTreeDatabase : ScriptableObject {
@@ -22,6 +24,19 @@ namespace Adnc.SkillTreePro {
 					_activeCategoryIndex = categories.FindIndex(a => a == value);
 				}
 			}
+		}
+
+		public void DestroyCategory (int index) {
+			categories.RemoveAt(index);
+		}
+
+		public List<string> GetSkillGroupTypes () {
+			System.Type[] types = Assembly.GetAssembly(typeof(SkillCollectionDefinitionBase))
+				.GetTypes()
+				.Where(t => t.IsSubclassOf(typeof(SkillCollectionDefinitionBase)))
+				.ToArray();
+				
+			return System.Array.ConvertAll(types, x => x.ToString()).ToList();
 		}
 
 		[TextArea(3, 5)]
