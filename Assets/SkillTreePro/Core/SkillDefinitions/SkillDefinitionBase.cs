@@ -2,38 +2,17 @@
 using System.Collections;
 
 namespace Adnc.SkillTreePro {
-	/// <summary>
-	/// Skill definition text in a collapsable display
-	/// </summary>
 	[System.Serializable]
-	public class SkillDefinitionText {
-		[TextArea] public string description;
-		[TextArea] public string notes;
-	}
+	public class SkillDefinitionBase : DefinitionBase {
+		[Tooltip("Is this skill unlocked by default?")]
+		public bool unlocked;
 
-	[System.Serializable]
-	public abstract class SkillDefinitionBase : ScriptableObject {
-		[HideInInspector] public string uuid = System.Guid.NewGuid().ToString();
+		[Tooltip("Required tree level to unlock this skill. Leave at 0 to ignore this.")]
+		public int requiredLevel;
 
-		[Tooltip("Used for data lookup purposes")]
-		public string id;
-
-		[Tooltip("Name the user will see when the node is printed")]
-		public string _displayName = "Untitled";
-		virtual public string DisplayName {
-			get {
-				return _displayName;
-			}
-
-			set {
-				_displayName = value;
-			}
-		}
-
-		public SkillDefinitionText text;
-
-		public virtual void Setup () {
-			hideFlags = HideFlags.HideInHierarchy;
-		}
+//		public override Setup (SkillCategoryDefinition cat) {
+//			base.Setup();
+//			cat.skillDefinitions.Add(this);
+//		}
 	}
 }

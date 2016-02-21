@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Adnc.SkillTreePro {
 	[System.Serializable]
-	public abstract class SkillCollectionDefinitionBase : SkillDefinitionBase {
+	public abstract class SkillCollectionDefinitionBase : DefinitionBase {
 		/// <summary>
 		/// Determines if an editing interace is shown in the sidebar
 		/// </summary>
@@ -33,8 +33,8 @@ namespace Adnc.SkillTreePro {
 
 		[HideInInspector] public NodeData node = new NodeData();
 		[HideInInspector] public int skillIndex = 0;
-		[HideInInspector] public List<string> childCollections = new List<string>();
-		[HideInInspector] public List<string> skills = new List<string>();
+		[HideInInspector] public List<SkillCollectionDefinitionBase> childCollections = new List<SkillCollectionDefinitionBase>();
+		[HideInInspector] public List<SkillDefinitionBase> skills = new List<SkillDefinitionBase>();
 
 		/// <summary>
 		/// Determines if this object is in drag mode in the editor

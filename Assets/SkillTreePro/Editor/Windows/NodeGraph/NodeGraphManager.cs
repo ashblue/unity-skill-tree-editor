@@ -76,7 +76,7 @@ namespace Adnc.SkillTreePro {
 			cat.skillCollections.Remove(col);
 
 			foreach (SkillCollectionDefinitionBase c in cat.skillCollections) {
-				c.childCollections.Remove(col.uuid);
+				c.childCollections.Remove(col);
 			}
 
 			Object.DestroyImmediate(col, true);

@@ -15,6 +15,7 @@ namespace Adnc.SkillTreePro {
 		Vector2 nodeClickOffset;
 
 		SkillCategoryDefinitionBase lastDef;
+		bool isTransition;
 
 		bool MouseInBounds {
 			get {
@@ -49,12 +50,58 @@ namespace Adnc.SkillTreePro {
 			Wm.Win.EndWindows();
 
 			if (MouseInBounds) {
-				MouseActive();
+				if (!isTransition) {
+					MouseActive();
+				} else {
+					Transition();
+				}
+			}
+		}
+
+		SkillCollectionDefinitionBase GetCollectionByMouse () {
+			for (int i = 0, l = Wm.DbCat.skillCollections.Count; i < l; i++) {
+				SkillCollectionDefinitionBase col = Wm.DbCat.skillCollections[i];
+				if (col.node.RectPos.Contains(mousePosGlobal)) {
+					return col;
+				}
+			}
+
+			return null;
+		}
+
+		/// <summary>
+		/// Handles process of connecting parent to child nodes
+		/// </summary>
+		void Transition () {
+			// Draw a transistion if in transistion mode
+			if (isTransition && selectedNode != null) {
+				Vector2 globalOffset = camera.GetOffsetGlobal();
+				Rect beginRect = selectedNode.node.RectPos;
+				Rect mouseRect = new Rect(mousePosGlobal.x, mousePosGlobal.y, 10f, 10f);
+
+				DrawNodeCurve(beginRect, mouseRect);
+
+				Wm.Win.Repaint();
+			}
+
+			if (e.type == EventType.mouseDown) {
+				SkillCollectionDefinitionBase col = GetCollectionByMouse();
+				if (col == null || col == selectedNode || !col.AllowParents) {
+					EndSkillGroupTransition();
+					return;
+				}
+
+				if (e.button == 0) {
+					selectedNode.childCollections.Remove(col);
+					selectedNode.childCollections.Add(col);
+					EndSkillGroupTransition();
+				}
 			}
 		}
 
 		void DisplayNode (SkillCollectionDefinitionBase col) {
 			col.node.RectPos = GUI.Window(col.GetInstanceID(), col.node.RectPos, DrawNode, col.DisplayName);
+			col.childCollections.ForEach(cc => DrawLineBottomToTop(col.node.RectPos, cc.node.RectPos));
 
 			if (selectedNode == null && col.node.RectPos.Contains(mousePosGlobal) && e.type == EventType.mouseDown) {
 				if (e.button == 0) {
@@ -91,7 +138,7 @@ namespace Adnc.SkillTreePro {
 						menu.AddItem(new GUIContent("Delete Skill Group"), false, DeleteSkillGroup);
 					}
 
-					menu.AddItem(new GUIContent("Add Child Transition"), false, null);
+					menu.AddItem(new GUIContent("Add Child Transition"), false, BeginSkillGroupTransition);
 
 					menu.ShowAsContext();
 					e.Use();
@@ -141,7 +188,7 @@ namespace Adnc.SkillTreePro {
 			GUI.EndScrollView();
 
 			// Always stop the camera on mouse up (even if not in the window)
-			if (Event.current.rawType == EventType.MouseUp) {
+			if (Event.current.rawType == EventType.MouseUp && !isTransition) {
 				if (selectedNode != null) {
 					selectedNode._drag = false;
 					selectedNode = null;
@@ -179,6 +226,43 @@ namespace Adnc.SkillTreePro {
 		void DrawTitle () {
 			string title = string.Format("{0}: {1}", Wm.Db.title, Wm.DbCat.DisplayName);
 			GUI.Label(new Rect(10, 10, 100, 20), title, new GUIStyle {fontSize = 20});
+		}
+
+		void BeginSkillGroupTransition () {
+			isTransition = true;
+		}
+
+		void DeleteSkillGroupTransition (object obj) {
+			string uuid = obj as string;
+			selectedNode.childCollections.RemoveAll(c => c.uuid == uuid);
+		}
+
+		void EndSkillGroupTransition () {
+			EditorUtility.SetDirty(Wm.Db);
+			isTransition = false;
+			selectedNode = null;
+		}
+
+		public static void DrawLineBottomToTop (Rect start, Rect end) {
+			Vector3 startPos = new Vector3(start.x + (start.width / 2f), start.y + start.height, 0f);
+			Vector3 endPos = new Vector3(end.x + (end.width / 2f), end.y, 0f);
+			Vector3 startTan = startPos + Vector3.up * 50f;
+			Vector3 endTan = endPos - Vector3.up * 50f;
+			Handles.DrawBezier(startPos, endPos, startTan, endTan, Color.black, null, 3f);
+		}
+
+		public static void DrawNodeCurve (Rect start, Rect end) {
+			Vector3 startPos = new Vector3(start.x + start.width / 2, start.y + start.height / 2, 0);
+			Vector3 endPos = new Vector3(end.x + end.width / 2, end.y + end.height / 2, 0);
+			Vector3 startTan = startPos + Vector3.down * 50;
+			Vector3 endTan = endPos + Vector3.up * 50;
+			Color shadowCol = new Color(0, 0, 0, 0.06f);
+
+			for (int i = 0; i < 3; i++) {
+				Handles.DrawBezier(startPos, endPos, startTan, endTan, shadowCol, null, (i + 1) * 5);
+			}
+
+			Handles.DrawBezier(startPos, endPos, startTan, endTan, Color.black, null, 1);
 		}
 	}
 }

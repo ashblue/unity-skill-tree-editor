@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Adnc.SkillTreePro {
 	[System.Serializable]
-	public abstract class SkillCategoryDefinitionBase : SkillDefinitionBase {
+	public abstract class SkillCategoryDefinitionBase : DefinitionBase {
 		[Header("Category Details")]
 
 		[Tooltip("Hide this category from printed view?")]
@@ -17,23 +17,23 @@ namespace Adnc.SkillTreePro {
 
 		[HideInInspector] public SkillCollectionStartDefinition start;
 		[HideInInspector] public List<SkillCollectionDefinitionBase> skillCollections = new List<SkillCollectionDefinitionBase>();
-		[HideInInspector] public List<SkillDefinition> skillDefinitions = new List<SkillDefinition>();
+		[HideInInspector] public List<SkillDefinitionBase> skillDefinitions = new List<SkillDefinitionBase>();
 
-		public SkillDefinition GetSkill (string uuid) {
-			return skillDefinitions.Find(s => s.uuid == uuid);
-		}
+//		public SkillDefinition GetSkill (string uuid) {
+//			return skillDefinitions.Find(s => s.uuid == uuid);
+//		}
 
 		/// <summary>
 		/// Wipe all skill references then clean up the collection
 		/// </summary>
 		/// <param name="col">Collection</param>
 		public void DestroyCollection (SkillCollectionDefinitionBase col) {
-			col.skills.ForEach(uuid => DestorySkill(col, GetSkill(uuid)));
+			col.skills.ForEach(s => DestorySkill(col, s));
 			skillCollections.Remove(col);
 		}
 
-		public void DestorySkill (SkillCollectionDefinitionBase col, SkillDefinition skill) {
-			col.skills.RemoveAll(uuid => uuid == skill.uuid);
+		public void DestorySkill (SkillCollectionDefinitionBase col, SkillDefinitionBase skill) {
+			col.skills.Remove(skill);
 			skillDefinitions.Remove(skill);
 		}
 	}
