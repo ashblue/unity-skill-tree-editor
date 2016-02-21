@@ -41,9 +41,6 @@ namespace Adnc.SkillTreePro {
 
 			if (cat == null) return;
 
-			SkillDefinition def = new SkillDefinition(cat);
-			skills.Add(def.uuid);
-
 			cat.skillCollections.Add(this);
 		}
 	}

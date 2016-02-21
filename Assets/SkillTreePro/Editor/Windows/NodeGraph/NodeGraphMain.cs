@@ -43,33 +43,39 @@ namespace Adnc.SkillTreePro {
 		void Content () {
 			Wm.Win.BeginWindows();
 			if (Wm.DbCat != null) {
-				SkillCollectionStartDefinition start = Wm.DbCat.start;
-				start.node.RectPos = GUI.Window(-1, start.node.RectPos, DrawNode, start.DisplayName);
-
-				if (selectedNode == null && start.node.RectPos.Contains(mousePosGlobal) && e.type == EventType.mouseDown) {
-					if (e.button == 0) {
-						Wm.DbCol = Wm.DbCat.start;
-						selectedNode = Wm.DbCat.start;
-						selectedNode._drag = true;
-						nodeClickOffset = selectedNode.node.RectPos.position - mousePosGlobal;
-
-						if (selectedNode.Editable) {
-							Selection.activeObject = selectedNode;
-						}
-					} else if (e.button == 1) {
-						Wm.DbCol = Wm.DbCat.start;
-						selectedNode = Wm.DbCat.start;
-					}
-
-					Wm.DbCol = Wm.DbCat.start;
-					selectedNode = Wm.DbCat.start;
-					nodeClickOffset = selectedNode.node.RectPos.position - mousePosGlobal;
-				}
+				DisplayNode(Wm.DbCat.start);
+				Wm.DbCat.skillCollections.ForEach(sc => DisplayNode(sc));
 			}
 			Wm.Win.EndWindows();
 
 			if (MouseInBounds) {
 				MouseActive();
+			}
+		}
+
+		void DisplayNode (SkillCollectionDefinitionBase col) {
+			col.node.RectPos = GUI.Window(col.GetInstanceID(), col.node.RectPos, DrawNode, col.DisplayName);
+
+			if (selectedNode == null && col.node.RectPos.Contains(mousePosGlobal) && e.type == EventType.mouseDown) {
+				if (e.button == 0) {
+					Wm.DbCol = col;
+					selectedNode = col;
+					selectedNode._drag = true;
+					nodeClickOffset = selectedNode.node.RectPos.position - mousePosGlobal;
+
+					if (selectedNode.Editable) {
+						Selection.activeObject = selectedNode;
+					} else {
+						Selection.activeObject = null;
+					}
+				} else if (e.button == 1) {
+					Wm.DbCol = col;
+					selectedNode = col;
+				}
+
+				Wm.DbCol = col;
+				selectedNode = col;
+				nodeClickOffset = selectedNode.node.RectPos.position - mousePosGlobal;
 			}
 		}
 
@@ -94,7 +100,7 @@ namespace Adnc.SkillTreePro {
 				if (e.button == 1 && e.type == EventType.mouseDown) {
 					GenericMenu menu = new GenericMenu();
 					Wm.Db.GetSkillGroupTypes()
-						.ForEach(t => menu.AddItem(new GUIContent(string.Format("Add Skill Group/{0}", t)), false, null));
+						.ForEach(t => menu.AddItem(new GUIContent(string.Format("Add Skill Group/{0}", t)), false, CreateCollection, t));
 					menu.ShowAsContext();
 					e.Use();
 				} else if (e.button == 0) {
@@ -106,10 +112,10 @@ namespace Adnc.SkillTreePro {
 		}
 
 		void DeleteSkillGroup () {
-			if (EditorUtility.DisplayDialog("Delete Skill Collection?", 
+			if (!EditorUtility.DisplayDialog("Delete Skill Collection?", 
 				"Are you sure you want to delete this skill collection? It will delete this collection plus all skills it contains.",
 				"Delete Skill Collection", 
-				"Cancel")) {
+				"Cancel")) return;
 
 				// @TODO Clean up 
 //				SkillCollectionBase[] collect = target.currentCategory.GetComponentsInChildren<SkillCollectionBase>();
@@ -120,8 +126,7 @@ namespace Adnc.SkillTreePro {
 //					node.childSkills.Remove(t);
 //				}
 
-				Wm.DbCat.DestroyCollection(Wm.DbCol);
-			}
+//			Wm.DbCat.DestroyCollection(Wm.DbCol);
 		}
 
 		void WrapperBegin () {
@@ -149,6 +154,19 @@ namespace Adnc.SkillTreePro {
 			if (camera.PollCamera(mousePos)) {
 				Wm.Win.Repaint();
 			}
+		}
+
+		void CreateCollection (object obj) {
+			string fullName = obj as string;
+			string[] fullNameChunks = fullName.Split('.');
+			string shortName = fullNameChunks[fullNameChunks.Length - 1];
+
+			SkillCollectionDefinitionBase scsd = ScriptableObject.CreateInstance(shortName) as SkillCollectionDefinitionBase;
+			scsd.Setup(Wm.DbCat);
+			AssetDatabase.AddObjectToAsset(scsd, Wm.Db);
+
+			EditorUtility.SetDirty(Wm.Db);
+			AssetDatabase.SaveAssets();
 		}
 
 		void DrawNode (int id) {
