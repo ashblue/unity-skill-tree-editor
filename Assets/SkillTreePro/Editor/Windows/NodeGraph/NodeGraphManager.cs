@@ -59,6 +59,7 @@ namespace Adnc.SkillTreePro {
 
 		public static void DestroyCategory (int index) {
 			SkillCategoryDefinition cat = Wm.Db.categories[index];
+			Wm.Db.ActiveCategory = null;
 
 			// Wipe all associated objects from serialization
 			Object.DestroyImmediate(cat.start, true);
