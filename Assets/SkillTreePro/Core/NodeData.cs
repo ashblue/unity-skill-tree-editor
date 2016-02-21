@@ -21,5 +21,9 @@ namespace Adnc.SkillTreePro {
 				_rect = new Rect(value.x, value.y, WIDTH, HEIGHT);
 			}
 		}
+
+		public void SetPosition (Vector2 pos) {
+			RectPos = new Rect(pos, RectPos.size);
+		}
 	}
 }

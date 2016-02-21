@@ -163,6 +163,7 @@ namespace Adnc.SkillTreePro {
 
 			SkillCollectionDefinitionBase scsd = ScriptableObject.CreateInstance(shortName) as SkillCollectionDefinitionBase;
 			scsd.Setup(Wm.DbCat);
+			scsd.node.SetPosition(mousePosGlobal);
 			AssetDatabase.AddObjectToAsset(scsd, Wm.Db);
 
 			EditorUtility.SetDirty(Wm.Db);
