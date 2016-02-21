@@ -32,6 +32,8 @@ namespace Adnc.SkillTreePro {
 		}
 
 		void Categories () {
+			EditorGUILayout.LabelField("Categories", EditorStyles.boldLabel);
+
 			int deleteIndex = -1;
 			int upIndex = -1;
 			int downIndex = -1;
