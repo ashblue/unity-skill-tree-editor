@@ -57,6 +57,20 @@ namespace Adnc.SkillTreePro {
 			}
 		}
 
+		public static void DestroyCategory (int index) {
+			SkillCategoryDefinition cat = Wm.Db.categories[index];
+
+			// Wipe all associated objects from serialization
+			Object.DestroyImmediate(cat.start, true);
+			cat.skillCollections.ForEach(sc => Object.DestroyImmediate(sc, true));
+			cat.skillDefinitions.ForEach(sd => Object.DestroyImmediate(sd, true));
+			Object.DestroyImmediate(cat, true);
+			Wm.Db.categories.RemoveAt(index);
+
+			EditorUtility.SetDirty(Wm.Db);
+			AssetDatabase.SaveAssets();
+		}
+
 		static SkillTreeDatabase GetDatabaseFromStorage () {
 			int instanceId = (int)EditorPrefs.GetFloat(DATABASE_ID_KEY);
 			Object obj = EditorUtility.InstanceIDToObject(instanceId);

@@ -10,7 +10,7 @@ namespace Adnc.SkillTreePro {
 		[HideInInspector] public int _activeCategoryIndex = -1;
 		public SkillCategoryDefinition ActiveCategory {
 			get {
-				if (_activeCategoryIndex >= 0) {
+				if (_activeCategoryIndex >= 0 && categories.Count > 0) {
 					return categories[_activeCategoryIndex];
 				}
 
@@ -24,10 +24,6 @@ namespace Adnc.SkillTreePro {
 					_activeCategoryIndex = categories.FindIndex(a => a == value);
 				}
 			}
-		}
-
-		public void DestroyCategory (int index) {
-			categories.RemoveAt(index);
 		}
 
 		public List<string> GetSkillGroupTypes () {

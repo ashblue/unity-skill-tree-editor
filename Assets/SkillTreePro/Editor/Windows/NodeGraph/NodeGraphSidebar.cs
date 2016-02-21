@@ -17,7 +17,11 @@ namespace Adnc.SkillTreePro {
 		}
 
 		void Content () {
+			EditorGUI.BeginChangeCheck();
 			Categories();
+			if (EditorGUI.EndChangeCheck()) {
+				EditorUtility.SetDirty(Wm.Db);
+			}
 		}
 
 		void Inspector () {
@@ -63,7 +67,7 @@ namespace Adnc.SkillTreePro {
 			}
 
 			if (deleteIndex > -1) {
-				Wm.Db.DestroyCategory(deleteIndex);
+				Wm.DestroyCategory(deleteIndex);
 			} else if (upIndex > -1) {
 				MoveCategory(upIndex, true);
 			} else if (downIndex > -1) {
@@ -82,6 +86,7 @@ namespace Adnc.SkillTreePro {
 				scd.start = scsd;
 				Wm.Db.categories.Add(scd);
 
+				EditorUtility.SetDirty(Wm.Db);
 				AssetDatabase.SaveAssets();
 			}
 		}
@@ -97,6 +102,8 @@ namespace Adnc.SkillTreePro {
 			} else {
 				Wm.Db.categories.Insert(Mathf.Min(index + 1, max), cat);
 			}
+
+			EditorUtility.SetDirty(Wm.Db);
 		}
 
 		void WrapperBegin () {
