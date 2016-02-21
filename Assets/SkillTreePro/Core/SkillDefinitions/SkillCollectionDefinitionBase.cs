@@ -41,7 +41,7 @@ namespace Adnc.SkillTreePro {
 		/// </summary>
 		[System.NonSerialized] public bool _drag;
 
-		public virtual void Setup (SkillCategoryDefinition cat) {
+		public virtual void Setup (SkillCategoryDefinitionBase cat) {
 			Setup();
 
 			if (cat == null) return;

@@ -35,7 +35,7 @@ namespace Adnc.SkillTreePro {
 			}
 		}
 
-		public static SkillCategoryDefinition DbCat {
+		public static SkillCategoryDefinitionBase DbCat {
 			get {
 				return Wm.Db.ActiveCategory;
 			}
@@ -58,7 +58,7 @@ namespace Adnc.SkillTreePro {
 		}
 
 		public static void DestroyCategory (int index) {
-			SkillCategoryDefinition cat = Wm.Db.categories[index];
+			SkillCategoryDefinitionBase cat = Wm.Db.categories[index];
 			Wm.Db.ActiveCategory = null;
 
 			// Wipe all associated objects from serialization
@@ -72,7 +72,7 @@ namespace Adnc.SkillTreePro {
 			AssetDatabase.SaveAssets();
 		}
 
-		public static void DestroyCollection (SkillCategoryDefinition cat, SkillCollectionDefinitionBase col) {
+		public static void DestroyCollection (SkillCategoryDefinitionBase cat, SkillCollectionDefinitionBase col) {
 			cat.skillCollections.Remove(col);
 
 			foreach (SkillCollectionDefinitionBase c in cat.skillCollections) {

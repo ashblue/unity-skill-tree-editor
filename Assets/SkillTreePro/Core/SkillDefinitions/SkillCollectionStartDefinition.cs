@@ -24,7 +24,7 @@ namespace Adnc.SkillTreePro {
 
 		public static bool hideInAddMenu = true;
 
-		public override void Setup (SkillCategoryDefinition cat) {
+		public override void Setup (SkillCategoryDefinitionBase cat) {
 			Setup();
 		}
 

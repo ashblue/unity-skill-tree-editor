@@ -14,7 +14,7 @@ namespace Adnc.SkillTreePro {
 		Vector2 mousePosGlobal;
 		Vector2 nodeClickOffset;
 
-		SkillCategoryDefinition lastDef;
+		SkillCategoryDefinitionBase lastDef;
 
 		bool MouseInBounds {
 			get {
@@ -99,7 +99,7 @@ namespace Adnc.SkillTreePro {
 			} else {
 				if (e.button == 1 && e.type == EventType.mouseDown) {
 					GenericMenu menu = new GenericMenu();
-					Wm.Db.GetSkillGroupTypes()
+					Wm.Db.GetSkillCollectionTypes()
 						.ForEach(t => menu.AddItem(new GUIContent(string.Format("Add Skill Group/{0}", t)), false, CreateCollection, t));
 					menu.ShowAsContext();
 					e.Use();

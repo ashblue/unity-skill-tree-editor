@@ -39,7 +39,7 @@ namespace Adnc.SkillTreePro {
 			int downIndex = -1;
 
 			for (int i = 0, l = Wm.Db.categories.Count; i < l; i++) {
-				SkillCategoryDefinition cat = Wm.Db.categories[i];
+				SkillCategoryDefinitionBase cat = Wm.Db.categories[i];
 				EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
 				if (Wm.DbCat == cat) {
@@ -51,6 +51,7 @@ namespace Adnc.SkillTreePro {
 				EditorGUILayout.BeginHorizontal();
 				if (GUILayout.Button("Edit", GUILayout.ExpandWidth(false))) {
 					Wm.DbCat = cat;
+					Selection.activeObject = cat;
 				}
 
 				if (Wm.DbCat != cat && GUILayout.Button("Destroy", GUILayout.ExpandWidth(false))) {
@@ -77,25 +78,41 @@ namespace Adnc.SkillTreePro {
 			}
 
 			if (GUILayout.Button("Add Category")) {
-				SkillCategoryDefinition scd = ScriptableObject.CreateInstance("SkillCategoryDefinition") as SkillCategoryDefinition;
-				scd.Setup();
-				AssetDatabase.AddObjectToAsset(scd, Wm.Db);
-
-				SkillCollectionStartDefinition scsd = ScriptableObject.CreateInstance("SkillCollectionStartDefinition") as SkillCollectionStartDefinition;
-				scsd._displayName = "Start";
-				scsd.Setup(Wm.DbCat);
-				AssetDatabase.AddObjectToAsset(scsd, Wm.Db);
-
-				scd.start = scsd;
-				Wm.Db.categories.Add(scd);
-
-				EditorUtility.SetDirty(Wm.Db);
-				AssetDatabase.SaveAssets();
+				ShowCategoryMenu();
 			}
 		}
 
+		void ShowCategoryMenu () {
+			GenericMenu menu = new GenericMenu();
+			Wm.Db.GetSkillCategoryTypes()
+				.ForEach(t => menu.AddItem(new GUIContent(string.Format("Add Category/{0}", t)), false, CreateCategory, t));
+			menu.ShowAsContext();
+			Event.current.Use();
+		}
+
+		void CreateCategory (object obj) {
+			string fullName = obj as string;
+			string[] fullNameChunks = fullName.Split('.');
+			string shortName = fullNameChunks[fullNameChunks.Length - 1];
+
+			SkillCategoryDefinitionBase scd = ScriptableObject.CreateInstance(shortName) as SkillCategoryDefinitionBase;
+			scd.Setup();
+			AssetDatabase.AddObjectToAsset(scd, Wm.Db);
+
+			SkillCollectionStartDefinition scsd = ScriptableObject.CreateInstance("SkillCollectionStartDefinition") as SkillCollectionStartDefinition;
+			scsd._displayName = "Start";
+			scsd.Setup(Wm.DbCat);
+			AssetDatabase.AddObjectToAsset(scsd, Wm.Db);
+
+			scd.start = scsd;
+			Wm.Db.categories.Add(scd);
+
+			EditorUtility.SetDirty(Wm.Db);
+			AssetDatabase.SaveAssets();
+		}
+
 		void MoveCategory (int index, bool up) {
-			SkillCategoryDefinition cat = Wm.Db.categories[index];
+			SkillCategoryDefinitionBase cat = Wm.Db.categories[index];
 			int max = Wm.Db.categories.Count - 1;
 
 			Wm.Db.categories.RemoveAt(index);

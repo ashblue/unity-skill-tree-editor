@@ -7,8 +7,13 @@ namespace Adnc.SkillTreePro {
 	public class SkillTreeDatabase : ScriptableObject {
 		public string title = "Untitled";
 
+		[TextArea(3, 5)]
+		public string description;
+
+		[HideInInspector] public List<SkillCategoryDefinitionBase> categories = new List<SkillCategoryDefinitionBase>();
+
 		[HideInInspector] public int _activeCategoryIndex = -1;
-		public SkillCategoryDefinition ActiveCategory {
+		public SkillCategoryDefinitionBase ActiveCategory {
 			get {
 				if (_activeCategoryIndex >= 0 && _activeCategoryIndex < categories.Count) {
 					return categories[_activeCategoryIndex];
@@ -26,13 +31,15 @@ namespace Adnc.SkillTreePro {
 			}
 		}
 
-		public List<string> GetSkillGroupTypes (bool includeHidden = false) {
-			List<System.Type> types = Assembly.GetAssembly(typeof(SkillCollectionDefinitionBase))
+		public List<string> GetInheritedTypes (System.Type parentType, bool includeHidden) {
+			List<System.Type> types = Assembly.GetAssembly(parentType)
 				.GetTypes()
-				.Where(t => t.IsSubclassOf(typeof(SkillCollectionDefinitionBase)))
+				.Where(t => t.IsSubclassOf(parentType))
 				.ToList();
 
 			List<System.Type> removed = new List<System.Type>();
+
+			// Reject all classes with a static property "hideInAddMenu"
 			if (!includeHidden) {
 				foreach (System.Type type in types) {
 					FieldInfo prop = type.GetField("hideInAddMenu");
@@ -42,14 +49,18 @@ namespace Adnc.SkillTreePro {
 					if (hidden.Equals(true)) removed.Add(type);
 				}
 			}
+
 			removed.ForEach(r => types.Remove(r));
-				
+
 			return types.ConvertAll(x => x.ToString()).ToList();
 		}
 
-		[TextArea(3, 5)]
-		public string description;
+		public List<string> GetSkillCategoryTypes (bool includeHidden = false) {
+			return GetInheritedTypes(typeof(SkillCategoryDefinitionBase), includeHidden);
+		}
 
-		public List<SkillCategoryDefinition> categories = new List<SkillCategoryDefinition>();
+		public List<string> GetSkillCollectionTypes (bool includeHidden = false) {
+			return GetInheritedTypes(typeof(SkillCollectionDefinitionBase), includeHidden);
+		}
 	}	
 }
