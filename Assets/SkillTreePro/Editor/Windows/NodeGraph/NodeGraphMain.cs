@@ -7,6 +7,7 @@ namespace Adnc.SkillTreePro {
 		const int padding = 10;
 		Rect pos;
 		GraphCamera camera = new GraphCamera();
+		GridPrinter grid = new GridPrinter();
 		SkillCollectionDefinitionBase selectedNode;
 
 		Event e;
@@ -16,6 +17,15 @@ namespace Adnc.SkillTreePro {
 
 		SkillCategoryDefinitionBase lastDef;
 		bool isTransition;
+
+		Vector2 WindowSize {
+			get {
+				return new Vector2(
+					Wm.Win.position.width - Wm.Win.sidebarWidth - GUI.skin.verticalScrollbar.fixedWidth,
+					Wm.Win.position.height - GUI.skin.horizontalScrollbar.fixedHeight
+				);
+			}
+		}
 
 		bool MouseInBounds {
 			get {
@@ -190,6 +200,9 @@ namespace Adnc.SkillTreePro {
 			mousePos = e.mousePosition;
 			camera.offset = GUI.BeginScrollView(pos, camera.offset, new Rect(camera.viewportSize / -2f, camera.viewportSize / -2f, camera.viewportSize, camera.viewportSize));
 			mousePosGlobal = camera.GetMouseGlobal(mousePos);
+
+			// Offset the offset so it lines up in the middle
+			grid.Update(WindowSize, new Vector2(camera.offset.x - (camera.viewportSize / 2), camera.offset.y - (camera.viewportSize / 2)));
 		}
 
 		void WrapperEnd () {
@@ -226,9 +239,6 @@ namespace Adnc.SkillTreePro {
 		}
 
 		void DrawNode (int id) {
-//			Event e = Event.current;
-
-			// Check if this node was clicked
 		}
 
 		void DrawTitle () {
