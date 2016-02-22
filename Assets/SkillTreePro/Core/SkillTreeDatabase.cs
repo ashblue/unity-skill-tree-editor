@@ -62,5 +62,9 @@ namespace Adnc.SkillTreePro {
 		public List<string> GetSkillCollectionTypes (bool includeHidden = false) {
 			return GetInheritedTypes(typeof(SkillCollectionDefinitionBase), includeHidden);
 		}
+
+		public List<string> GetSkillTypes (bool includeHidden = false) {
+			return GetInheritedTypes(typeof(SkillDefinitionBase), includeHidden);
+		}
 	}	
 }
