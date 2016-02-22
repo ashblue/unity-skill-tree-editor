@@ -6,14 +6,23 @@ namespace Adnc.SkillTreePro {
 	public class GridPrinter {
 		Color lineColor = new Color(0f, 0f, 0f, 0.2f);
 
-		public float CellSize {
-			get {
-				return 110;
-			}
-		}
+		public static float CELL_SIZE = 110;
 
 		public void Update (Vector2 size, Vector2 offset) {
-			DrawGrid(size, offset, CellSize);
+			DrawGrid(size, offset, CELL_SIZE);
+		}
+
+		public static Rect SnapPosition (Rect r) {
+			return new Rect(
+				RoundNumber(r.position.x, CELL_SIZE) - ((r.width - CELL_SIZE) / 2),
+				RoundNumber(r.position.y, CELL_SIZE) - ((r.height - CELL_SIZE) / 2),
+				r.width,
+				r.height
+			);
+		}
+
+		public static float RoundNumber (float num, float chunk) {
+			return ((int)Mathf.Round(num / chunk)) * chunk;
 		}
 
 		void DrawGrid (Vector2 size, Vector2 offset, float cellSize) {
@@ -38,19 +47,24 @@ namespace Adnc.SkillTreePro {
 				offset.x + Mathf.Abs(offsetX), 
 				offset.y + Mathf.Abs(offsetY));
 
+			Color handleColor = Handles.color;
+			Handles.color = lineColor;
+
 			// horizontal lines
 			for (int i = 0, l = cellHorizontalCount; i < l; i++) {
-				Drawing.DrawLine(
-					new Vector2(offset.x, gridOffset.y + (i * cellSize)), 
-					new Vector2(offset.x + size.x, gridOffset.y + (i * cellSize)), lineColor);
+				Handles.DrawLine(
+					new Vector3(offset.x, gridOffset.y + (i * cellSize), 0), 
+					new Vector3(offset.x + size.x, gridOffset.y + (i * cellSize), 0));
 			}
 
 			// vertical lines
 			for (int j = 0, l = cellVerticalCount; j < l; j++) {
-				Drawing.DrawLine(
-					new Vector2(gridOffset.x + (j * cellSize), offset.y), 
-					new Vector2(gridOffset.x + (j * cellSize), offset.y + size.y), lineColor);
+				Handles.DrawLine(
+					new Vector3(gridOffset.x + (j * cellSize), offset.y, 0), 
+					new Vector3(gridOffset.x + (j * cellSize), offset.y + size.y, 0));
 			}
+
+			Handles.color = handleColor;
 		}
 	}
 }

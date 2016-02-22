@@ -161,6 +161,11 @@ namespace Adnc.SkillTreePro {
 					menu.ShowAsContext();
 					e.Use();
 				}
+
+				if (e.button == 0 && e.type == EventType.mouseUp) {
+					selectedNode.node.RectPos = GridPrinter.SnapPosition(selectedNode.node.RectPos);
+				}
+
 			} else {
 				if (e.button == 1 && e.type == EventType.mouseDown) {
 					GenericMenu menu = new GenericMenu();
