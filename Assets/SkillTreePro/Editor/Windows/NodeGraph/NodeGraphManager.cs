@@ -17,6 +17,7 @@ namespace Adnc.SkillTreePro {
 			set {
 				_db = value;
 				DbCat = null;
+				DbCol = null;
 
 				if (_db != null) {
 					EditorPrefs.SetFloat(DATABASE_ID_KEY, _db.GetInstanceID());
