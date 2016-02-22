@@ -6,23 +6,8 @@ namespace Adnc.SkillTreePro {
 	public class GridPrinter {
 		Color lineColor = new Color(0f, 0f, 0f, 0.2f);
 
-		public static float CELL_SIZE = 110;
-
 		public void Update (Vector2 size, Vector2 offset) {
-			DrawGrid(size, offset, CELL_SIZE);
-		}
-
-		public static Rect SnapPosition (Rect r) {
-			return new Rect(
-				RoundNumber(r.position.x, CELL_SIZE) - ((r.width - CELL_SIZE) / 2),
-				RoundNumber(r.position.y, CELL_SIZE) - ((r.height - CELL_SIZE) / 2),
-				r.width,
-				r.height
-			);
-		}
-
-		public static float RoundNumber (float num, float chunk) {
-			return ((int)Mathf.Round(num / chunk)) * chunk;
+			DrawGrid(size, offset, NodeData.CELL_SIZE);
 		}
 
 		void DrawGrid (Vector2 size, Vector2 offset, float cellSize) {

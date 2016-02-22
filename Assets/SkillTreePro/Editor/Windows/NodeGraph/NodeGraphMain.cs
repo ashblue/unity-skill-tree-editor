@@ -163,7 +163,7 @@ namespace Adnc.SkillTreePro {
 				}
 
 				if (e.button == 0 && e.type == EventType.mouseUp) {
-					selectedNode.node.RectPos = GridPrinter.SnapPosition(selectedNode.node.RectPos);
+					selectedNode.node.RectPos = NodeData.SnapPosition(selectedNode.node.RectPos);
 				}
 
 			} else {
@@ -236,7 +236,7 @@ namespace Adnc.SkillTreePro {
 
 			SkillCollectionDefinitionBase scsd = ScriptableObject.CreateInstance(shortName) as SkillCollectionDefinitionBase;
 			scsd.Setup(Wm.DbCat);
-			scsd.node.SetPosition(mousePosGlobal);
+			scsd.node.SetPosition(mousePosGlobal, true);
 			AssetDatabase.AddObjectToAsset(scsd, Wm.Db);
 
 			EditorUtility.SetDirty(Wm.Db);
