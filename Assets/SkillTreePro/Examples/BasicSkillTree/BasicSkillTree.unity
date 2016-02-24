@@ -3080,19 +3080,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22497364, guid: df0a974fc91094a669c35836fc633eaa, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 78.666664
       objectReference: {fileID: 0}
     - target: {fileID: 22497364, guid: df0a974fc91094a669c35836fc633eaa, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 22497364, guid: df0a974fc91094a669c35836fc633eaa, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 157.33333
       objectReference: {fileID: 0}
     - target: {fileID: 22497364, guid: df0a974fc91094a669c35836fc633eaa, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 22497364, guid: df0a974fc91094a669c35836fc633eaa, type: 2}
       propertyPath: m_AnchorMin.x
@@ -3100,7 +3100,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22497364, guid: df0a974fc91094a669c35836fc633eaa, type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22497364, guid: df0a974fc91094a669c35836fc633eaa, type: 2}
       propertyPath: m_AnchorMax.x
@@ -3108,7 +3108,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22497364, guid: df0a974fc91094a669c35836fc633eaa, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22497364, guid: df0a974fc91094a669c35836fc633eaa, type: 2}
       propertyPath: m_Pivot.x
@@ -3651,6 +3651,50 @@ MonoBehaviour:
     height: 150
   childSkills:
   - {fileID: 1851214464}
+--- !u!1 &1096364334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1096364336}
+  - 114: {fileID: 1096364335}
+  m_Layer: 0
+  m_Name: NewTestSkillTree
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1096364335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1096364334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53fe6ffc933654106a9d2573011744ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  databases:
+  - id: 
+    database: {fileID: 0}
+  - id: 
+    database: {fileID: 0}
+--- !u!4 &1096364336
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1096364334}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 497.57687, y: 288.27365, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
 --- !u!1 &1162560768
 GameObject:
   m_ObjectHideFlags: 0

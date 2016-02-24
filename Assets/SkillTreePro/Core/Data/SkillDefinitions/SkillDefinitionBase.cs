@@ -15,5 +15,18 @@ namespace Adnc.SkillTreePro {
 			cat.skillDefinitions.Add(this);
 			col.skills.Add(this);
 		}
+
+		public virtual void Activate (SkillTreeDataBase tree) {
+			// Place activation logic here
+		}
+
+		public virtual void Deactivate (SkillTreeDataBase tree) {
+			// Place teardown logic here
+		}
+
+		public virtual bool Requirements (SkillTreeDataBase tree) {
+			// Place extra unlock requirements here such as key value pairs, story progression, inventory, ect.
+			return true;
+		}
 	}
 }
