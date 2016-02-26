@@ -7,12 +7,18 @@ namespace Adnc.SkillTreePro {
 	public class SkillEntry {
 		public bool unlocked;
 		SkillCollectionDefinitionBase definition;
-		bool active; // Determines if the skill have been activated or not
+		public bool active = true; // Determines if the skill have been activated or not
 		CategoryEntry parentCategory;
 
 		SkillTreeEntry parentSkillTree {
 			get {
 				return parentCategory.parentSkillTree;
+			}
+		}
+
+		public bool IsLevelRequirement {
+			get {
+				return parentCategory.CurrentLevel >= Skill.requiredLevel;
 			}
 		}
 
@@ -56,6 +62,26 @@ namespace Adnc.SkillTreePro {
 				"Skill Collection '{0}' has {1} skill entries. Please add some or calling this skill tree will crash", 
 				def.DisplayName, def.skills.Count);
 
+			// Activate defaults
+			SkillPointer = definition.skillIndex;
+			unlocked = Skill.unlocked;
+
+			if (SkillPointer > 0) {
+				Debug.AssertFormat(IsParentUnlocked, 
+					"Parent is locked for skill collection {0}, should not be setting the active skill to anything greater than 0", 
+					definition.DisplayName);
+			}
+
+			if (unlocked) {
+				Debug.AssertFormat(IsParentUnlocked, 
+					"Parent is locked for skill collection {0}, should not be unlocking child by default", 
+					definition.DisplayName);
+
+				Debug.AssertFormat(parentCategory.CurrentLevel >= Skill.requiredLevel,
+					"Skill collection '{0}' category level is {1} but requires {2}, should not be unlocking this by default", 
+					definition.DisplayName, parentCategory.CurrentLevel, Skill.requiredLevel);
+			}
+
 			if (SkillTreeBase.current.debug) Debug.LogFormat("Skill '{0}' successfully generated", def.DisplayName);
 		}
 
@@ -94,7 +120,7 @@ namespace Adnc.SkillTreePro {
 		public bool IsPurchasable {
 			get {
 				bool canPurchase = parentSkillTree.SkillPoints > 0;
-				return canPurchase && IsParentUnlocked && !Hidden && !IsSkillMaxed;
+				return canPurchase && IsParentUnlocked && !Hidden && !IsSkillMaxed && IsLevelRequirement;
 			}
 		}
 

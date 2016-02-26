@@ -6,13 +6,11 @@ namespace Adnc.SkillTreePro {
 	public class CategoryEntry {
 		public SkillTreeEntry parentSkillTree;
 		public SkillCategoryDefinitionBase definition;
-		public List<SkillEntry> skills = new List<SkillEntry>();
-		public Dictionary<string, SkillEntry> skillsById = new Dictionary<string, SkillEntry>();
-		public Dictionary<string, SkillEntry> skillsByUuid = new Dictionary<string, SkillEntry>();
 		public Dictionary<string, List<SkillEntry>> childToParentSkills = new Dictionary<string, List<SkillEntry>>();
+		public List<SkillEntry> skills = new List<SkillEntry>();
 
 		int _currentLevel;
-		int CurrentLevel {
+		public int CurrentLevel {
 			get { return _currentLevel; }
 
 			set {
@@ -25,6 +23,7 @@ namespace Adnc.SkillTreePro {
 
 			this.definition = definition;
 			this.parentSkillTree = parentSkillTree;
+			CurrentLevel = definition.defaultSkillLv;
 			definition.skillCollections.ForEach(col => BuildSkill(col));
 		
 			if (SkillTreeBase.current.debug) Debug.LogFormat("Category '{0}' successfully generated", definition.DisplayName);
@@ -33,9 +32,10 @@ namespace Adnc.SkillTreePro {
 		void BuildSkill (SkillCollectionDefinitionBase def) {
 			SkillEntry s = new SkillEntry(def, this);
 			s.unlocked = def is SkillCollectionStartDefinition; // Start nodes are always automatically unlocked
+			parentSkillTree.skills.Add(s);
 			skills.Add(s);
-			skillsById[def.id] = s;
-			skillsByUuid[def.uuid] = s;
+			parentSkillTree.skillsById[def.id] = s;
+			parentSkillTree.skillsByUuid[def.uuid] = s;
 
 			foreach (SkillCollectionDefinitionBase c in def.childCollections) {
 				if (!childToParentSkills.ContainsKey(c.uuid)) {

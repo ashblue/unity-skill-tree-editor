@@ -50,12 +50,17 @@ namespace Adnc.SkillTreePro {
 			return GetTree(treeId).categoriesByUuid[categoryUuid];
 		}
 
-		public SkillEntry GetSkill (string treeId, string categoryId, string skillId) {
-			return GetCategory(treeId, categoryId).skillsById[skillId];
+		public SkillEntry GetSkill (string treeId, string skillId) {
+			return GetTree(treeId).skillsById[skillId];
 		}
 
-		public SkillEntry GetSkillByUuid (string treeId, string categoryUuid, string skillUuid) {
-			return GetCategory(treeId, categoryUuid).skillsByUuid[skillUuid];
+		public SkillEntry GetSkillByUuid (string treeId, string skillUuid) {
+			return GetTree(treeId).skillsByUuid[skillUuid];
+		}
+
+		public bool IsSkillUnlocked (string treeId, string skillId) {
+			SkillEntry skill = GetSkill(treeId, skillId);
+			return skill.unlocked && skill.IsActive;
 		}
 
 		public void Save () {

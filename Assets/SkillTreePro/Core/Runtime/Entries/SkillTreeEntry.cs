@@ -5,9 +5,14 @@ namespace Adnc.SkillTreePro {
 	[System.Serializable]
 	public class SkillTreeEntry {
 		public SkillTreeDataBase definition;
+
 		public List<CategoryEntry> categories = new List<CategoryEntry>();
 		public Dictionary<string, CategoryEntry> categoriesById = new Dictionary<string, CategoryEntry>();
 		public Dictionary<string, CategoryEntry> categoriesByUuid = new Dictionary<string, CategoryEntry>();
+
+		public List<SkillEntry> skills = new List<SkillEntry>();
+		public Dictionary<string, SkillEntry> skillsById = new Dictionary<string, SkillEntry>();
+		public Dictionary<string, SkillEntry> skillsByUuid = new Dictionary<string, SkillEntry>();
 
 		int _skillPoints;
 		public int SkillPoints {
@@ -52,14 +57,14 @@ namespace Adnc.SkillTreePro {
 		/// Turns on this skill tree and activates all unlocked skills
 		/// </summary>
 		public void EnableTree () {
-			// Loop through and restore all unlocked skill tree nodes that are set to active
+			skills.ForEach(s => s.Skill.Activate(definition));
 		}
 
 		/// <summary>
 		/// Disables this skill tree and deactivates all active skills
 		/// </summary>
 		public void DisableTree () {
-			// Loop through and disable all active skill tree nodes
+			skills.ForEach(s => s.Skill.Deactivate(definition));
 		}
 	}
 }
