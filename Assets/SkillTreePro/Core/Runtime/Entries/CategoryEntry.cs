@@ -21,9 +21,13 @@ namespace Adnc.SkillTreePro {
 		}
 
 		public CategoryEntry (SkillCategoryDefinitionBase definition, SkillTreeEntry parentSkillTree) {
+			if (SkillTreeBase.current.debug) Debug.LogFormat("Parsing category: {0}", definition.DisplayName);
+
 			this.definition = definition;
 			this.parentSkillTree = parentSkillTree;
 			definition.skillCollections.ForEach(col => BuildSkill(col));
+		
+			if (SkillTreeBase.current.debug) Debug.LogFormat("Category '{0}' successfully generated", definition.DisplayName);
 		}
 
 		void BuildSkill (SkillCollectionDefinitionBase def) {
@@ -33,11 +37,13 @@ namespace Adnc.SkillTreePro {
 			skillsById[def.id] = s;
 			skillsByUuid[def.uuid] = s;
 
-			def.childCollections.ForEach(c => childToParentSkills[c.uuid].Add(s));
-		}
+			foreach (SkillCollectionDefinitionBase c in def.childCollections) {
+				if (!childToParentSkills.ContainsKey(c.uuid)) {
+					childToParentSkills[c.uuid] = new List<SkillEntry>();
+				}
 
-		void Requirements () {
-			// @TODO Check if this category is unlocked by querying the definitions base requirements
+				childToParentSkills[c.uuid].Add(s);
+			}
 		}
 	}
 }

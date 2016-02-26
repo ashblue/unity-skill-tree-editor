@@ -46,12 +46,17 @@ namespace Adnc.SkillTreePro {
 		}
 
 		public SkillEntry (SkillCollectionDefinitionBase def, CategoryEntry cat) {
+			if (SkillTreeBase.current.debug) Debug.LogFormat("Parsing skill: {0}", def.DisplayName);
+
 			definition = def;
 			parentCategory = cat;
 
-			Debug.AssertFormat(def.skills.Count < 1, 
-				"Skill Collection {0} has no skill entries. Please add some or calling this skill tree will crash", 
-				def.DisplayName);
+			// Allow parents will prevent start nodes from being picked up
+			Debug.AssertFormat(def.skills.Count > 0, 
+				"Skill Collection '{0}' has {1} skill entries. Please add some or calling this skill tree will crash", 
+				def.DisplayName, def.skills.Count);
+
+			if (SkillTreeBase.current.debug) Debug.LogFormat("Skill '{0}' successfully generated", def.DisplayName);
 		}
 
 		public void Activate () {
@@ -83,15 +88,13 @@ namespace Adnc.SkillTreePro {
 		public bool IsParentUnlocked {
 			get {
 				return parentCategory.childToParentSkills[definition.uuid].Any(p => unlocked);
-				// @TODO We need a child to parent dictionary built inside the skill tree entry
-//				return SkillTreeBase.current.GetSkillByUuid();
 			}
 		}
 
-		// @TODO Also needs to check status
 		public bool IsPurchasable {
 			get {
-				return parentSkillTree.SkillPoints > 0 && !IsSkillMaxed;
+				bool canPurchase = parentSkillTree.SkillPoints > 0;
+				return canPurchase && IsParentUnlocked && !Hidden && !IsSkillMaxed;
 			}
 		}
 
@@ -105,6 +108,16 @@ namespace Adnc.SkillTreePro {
 
 				Activate();
 			}
+		}
+
+		public NodeStatus GetStatus () {
+			if (Hidden) {
+				return NodeStatus.Hidden;
+			} else if (IsPurchasable) {
+				return NodeStatus.Purchasable;
+			}
+
+			return NodeStatus.Locked;
 		}
 	}
 }

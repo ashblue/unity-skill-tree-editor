@@ -3678,11 +3678,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53fe6ffc933654106a9d2573011744ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 1
   databases:
-  - id: 
-    database: {fileID: 0}
-  - id: 
-    database: {fileID: 0}
+  - id: player
+    database: {fileID: 11400000, guid: f2444d227bfe147baa2bb5191ea4c20a, type: 2}
 --- !u!4 &1096364336
 Transform:
   m_ObjectHideFlags: 0

@@ -187,15 +187,6 @@ namespace Adnc.SkillTreePro {
 				"Delete Skill Collection", 
 				"Cancel")) return;
 
-				// @TODO Clean up 
-//				SkillCollectionBase[] collect = target.currentCategory.GetComponentsInChildren<SkillCollectionBase>();
-//				SkillCollectionBase t = collect[selectIndex];
-
-				// Clean out all references to our skill collection
-//				foreach (SkillCollectionBase node in collect) {
-//					node.childSkills.Remove(t);
-//				}
-
 			Wm.DestroyCollection(Wm.DbCat, Wm.DbCol);
 		}
 

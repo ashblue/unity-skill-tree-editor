@@ -21,8 +21,12 @@ namespace Adnc.SkillTreePro {
 		}
 
 		public SkillTreeEntry (SkillTreeDataBase definition) {
+			if (SkillTreeBase.current.debug) Debug.LogFormat("Parsing skill tree: {0}", definition.database.title);
+
 			this.definition = definition;
 			definition.database.categories.ForEach(cat => BuildCategory(cat));
+
+			if (SkillTreeBase.current.debug) Debug.LogFormat("Skill tree '{0}' successfully generated", definition.database.title);
 		}
 
 		void BuildCategory (SkillCategoryDefinitionBase def) {

@@ -3,15 +3,35 @@ using System.Collections.Generic;
 
 namespace Adnc.SkillTreePro {
 	public abstract class SkillTreeBase : MonoBehaviour {
+		/// <summary>
+		/// Reference for current running skill tree, will be auto-cleared when this GameObject is destroyed
+		/// </summary>
 		public static SkillTreeBase current;
 
+//		[Tooltip("These databases will be post-processed at run-time into a usable format")]
 		public abstract List<SkillTreeDataBase> Databases { get; }
+
+		[Tooltip("Prints out a log of the skill tree at key events")]
+		public bool debug;
 
 		Dictionary<string, SkillTreeEntry> skillTrees = new Dictionary<string, SkillTreeEntry>();
 
 		void Awake () {
 			current = this;
-			Databases.ForEach(d => BuildTree(d));
+
+			foreach (SkillTreeDataBase d in Databases) {
+				if (d.database == null) {
+					Debug.LogError("Skill tree database is misssing, skipping entry.");
+					continue;
+				}
+
+				if (d.id == null) {
+					Debug.LogError("Cannot use a skill tree database without assigning an ID to it.");
+					continue;
+				}
+					
+				BuildTree(d);
+			}
 		}
 
 		void BuildTree (SkillTreeDataBase data) {
@@ -47,7 +67,9 @@ namespace Adnc.SkillTreePro {
 		}
 
 		void OnDestroy () {
-			current = null;
+			if (current == this) {
+				current = null;
+			}
 		}
 	}
 }
